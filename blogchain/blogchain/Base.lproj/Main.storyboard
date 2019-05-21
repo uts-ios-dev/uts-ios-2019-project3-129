@@ -73,12 +73,31 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="gk7-YW-CY0" kind="relationship" relationship="rootViewController" id="Jax-4b-QdX"/>
+                        <segue destination="xI5-nF-yI6" kind="relationship" relationship="rootViewController" id="fhk-bh-fE6"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F7s-fj-feH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-971" y="-902"/>
+        </scene>
+        <!--Note Root View Controller-->
+        <scene sceneID="8nN-jV-BYP">
+            <objects>
+                <tableViewController id="xI5-nF-yI6" customClass="NoteRootViewController" customModule="blogchain" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RXW-kh-jTK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="xI5-nF-yI6" id="i18-oj-VUn"/>
+                            <outlet property="delegate" destination="xI5-nF-yI6" id="MmS-KG-Ima"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="MVF-bi-iTN"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bo5-Fj-7TA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-107" y="-902"/>
         </scene>
         <!--Chain-->
         <scene sceneID="3Kp-qP-cdR">
@@ -121,31 +140,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xiQ-ql-a2m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-39" y="-1773"/>
-        </scene>
-        <!--Note Root View Controller-->
-        <scene sceneID="Foe-wi-zad">
-            <objects>
-                <viewController id="gk7-YW-CY0" customClass="NoteRootViewController" customModule="blogchain" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="IH6-Yp-y9h">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzt-1C-vbc">
-                                <rect key="frame" x="186" y="438" width="37" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="CbU-o7-BR1"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="OCS-D2-Ghz"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2tr-m9-Kt5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-39" y="-902"/>
         </scene>
         <!--User Root View Controller-->
         <scene sceneID="D5G-4W-VwS">

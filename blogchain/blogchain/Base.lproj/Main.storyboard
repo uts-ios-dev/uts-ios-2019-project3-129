@@ -23,11 +23,28 @@
                         <segue destination="BQR-1o-LPg" kind="relationship" relationship="viewControllers" id="pFP-lj-J3j"/>
                         <segue destination="SCJ-SA-Pce" kind="relationship" relationship="viewControllers" id="Cq4-BC-TVM"/>
                         <segue destination="mEs-nq-D91" kind="relationship" relationship="viewControllers" id="7jF-zo-V3j"/>
+                        <segue destination="qEp-Ps-hDb" kind="relationship" relationship="viewControllers" id="aeB-HH-tIB"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8KO-2h-YnJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1961" y="-902"/>
+        </scene>
+        <!--New Note-->
+        <scene sceneID="GSn-G6-i60">
+            <objects>
+                <viewController id="qEp-Ps-hDb" customClass="NewNoteViewController" customModule="blogchain" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v7O-zb-5Le">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ZeL-q6-Ue8"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="New Note" id="edv-Bn-CwH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sMe-F4-4NQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1962" y="-52"/>
         </scene>
         <!--User-->
         <scene sceneID="NZH-fV-6l6">
@@ -139,7 +156,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWd-v7-4kN">
-                                <rect key="frame" x="0.0" y="0.044585587675555871" width="414" height="895.99999999999989"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>

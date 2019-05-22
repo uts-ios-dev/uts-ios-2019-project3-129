@@ -44,18 +44,21 @@ class textFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
         addContent();
     }
     
-    // you should bind action on view controller if back button is necessary
+    // you should bind action on view controller if the button is back button
     func addBackButton() {
+        self.addSubview(backButton);
+        backButton.snp.makeConstraints{ (make) -> Void in
+            make.top.equalToSuperview();
+            make.leading.equalToSuperview();
+            make.width.equalToSuperview().multipliedBy(0.2);
+            make.height.equalToSuperview().multipliedBy(0.1);
+        }
+        backButton.setTitleColor(.black, for: .normal);
         if (showButton) {
-            self.addSubview(backButton);
-            backButton.snp.makeConstraints{ (make) -> Void in
-                make.top.equalToSuperview();
-                make.leading.equalToSuperview();
-                make.width.equalToSuperview().multipliedBy(0.2);
-                make.height.equalToSuperview().multipliedBy(0.1);
-            }
-            backButton.tintColor = .blue;
             backButton.setTitle("Back", for: .normal);
+        } else {
+            backButton.setTitle("Reset", for: .normal);
+            backButton.addTarget(self, action: #selector(cleanAll), for: .touchUpInside);
         }
     }
     
@@ -84,7 +87,7 @@ class textFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
         let baseline = titleView.font!.ascender + titleView.font!.lineHeight + titleView.font!.capHeight ;
         let border = CAShapeLayer();
         border.fillColor = UIColor.clear.cgColor;
-        border.strokeColor = UIColor.black.cgColor;
+        border.strokeColor = UIColor.lightGray.cgColor;
         border.lineWidth = 2;
         border.lineDashPattern = [2, 5];
         let path = UIBezierPath();
@@ -121,5 +124,11 @@ class textFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
         contentView.font = .systemFont(ofSize: 16);
 //        contentView.backgroundColor = .green;
     }
+    
+    @objc func cleanAll(){
+        self.contentView.text = nil;
+        self.titleView.text = nil;
+    }
+    
 
 }

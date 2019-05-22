@@ -7,29 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A6246922293C59F001A7A78 /* NoteRootTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6246912293C59F001A7A78 /* NoteRootTableViewCell.swift */; };
 		9AC477B52292AD7F009B49FB /* NoteRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477B42292AD7F009B49FB /* NoteRootViewController.swift */; };
 		9AC477B72292ADD4009B49FB /* ChainRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477B62292ADD4009B49FB /* ChainRootViewController.swift */; };
 		9AC477BC2292B1F7009B49FB /* UserRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477BB2292B1F7009B49FB /* UserRegisterController.swift */; };
 		9AC477BE2292B249009B49FB /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477BD2292B249009B49FB /* UserLoginViewController.swift */; };
 		9AC477C12292B30D009B49FB /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477C02292B30D009B49FB /* NewNoteViewController.swift */; };
 		9AC477C42292C4BC009B49FB /* textFileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477C32292C4BC009B49FB /* textFileEditor.swift */; };
+		9AC644CE2293B2AF00112225 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC644CD2293B2AF00112225 /* Config.swift */; };
+		9AC644D12293B3E900112225 /* dataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC644D02293B3E900112225 /* dataController.swift */; };
 		9ADE2E30228F8EE60016291B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADE2E2F228F8EE60016291B /* AppDelegate.swift */; };
 		9ADE2E32228F8EE60016291B /* UserRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADE2E31228F8EE60016291B /* UserRootViewController.swift */; };
 		9ADE2E35228F8EE60016291B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADE2E33228F8EE60016291B /* Main.storyboard */; };
 		9ADE2E38228F8EE60016291B /* blogchain.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9ADE2E36228F8EE60016291B /* blogchain.xcdatamodeld */; };
 		9ADE2E3A228F8EE70016291B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ADE2E39228F8EE70016291B /* Assets.xcassets */; };
 		9ADE2E3D228F8EE70016291B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADE2E3B228F8EE70016291B /* LaunchScreen.storyboard */; };
+		9AEBC58722940036000BF266 /* NoteDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBC58622940036000BF266 /* NoteDetailedViewController.swift */; };
 		BD7D00A2A8DAC098DD5A3821 /* Pods_blogchain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57393E72666268ED922CA9C /* Pods_blogchain.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		006971CECA7854C38F2817D1 /* Pods-blogchain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blogchain.debug.xcconfig"; path = "Target Support Files/Pods-blogchain/Pods-blogchain.debug.xcconfig"; sourceTree = "<group>"; };
+		9A6246912293C59F001A7A78 /* NoteRootTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRootTableViewCell.swift; sourceTree = "<group>"; };
 		9AC477B42292AD7F009B49FB /* NoteRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRootViewController.swift; sourceTree = "<group>"; };
 		9AC477B62292ADD4009B49FB /* ChainRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainRootViewController.swift; sourceTree = "<group>"; };
 		9AC477BB2292B1F7009B49FB /* UserRegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterController.swift; sourceTree = "<group>"; };
 		9AC477BD2292B249009B49FB /* UserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
 		9AC477C02292B30D009B49FB /* NewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
 		9AC477C32292C4BC009B49FB /* textFileEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textFileEditor.swift; sourceTree = "<group>"; };
+		9AC644CD2293B2AF00112225 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		9AC644D02293B3E900112225 /* dataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataController.swift; sourceTree = "<group>"; };
 		9ADE2E2C228F8EE60016291B /* blogchain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blogchain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ADE2E2F228F8EE60016291B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9ADE2E31228F8EE60016291B /* UserRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRootViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +45,7 @@
 		9ADE2E39228F8EE70016291B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9ADE2E3C228F8EE70016291B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9ADE2E3E228F8EE70016291B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AEBC58622940036000BF266 /* NoteDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailedViewController.swift; sourceTree = "<group>"; };
 		D57393E72666268ED922CA9C /* Pods_blogchain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blogchain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA892A61EAF16E66CE70F04D /* Pods-blogchain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blogchain.release.xcconfig"; path = "Target Support Files/Pods-blogchain/Pods-blogchain.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +73,7 @@
 		9AC477B12292AA9D009B49FB /* UserComponent */ = {
 			isa = PBXGroup;
 			children = (
+				9AC477B82292B10C009B49FB /* LoginManagement */,
 				9ADE2E31228F8EE60016291B /* UserRootViewController.swift */,
 			);
 			path = UserComponent;
@@ -74,6 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				9AC477B42292AD7F009B49FB /* NoteRootViewController.swift */,
+				9A6246912293C59F001A7A78 /* NoteRootTableViewCell.swift */,
+				9AEBC58622940036000BF266 /* NoteDetailedViewController.swift */,
 			);
 			path = NoteComponent;
 			sourceTree = "<group>";
@@ -86,13 +97,13 @@
 			path = ChainComponent;
 			sourceTree = "<group>";
 		};
-		9AC477B82292B10C009B49FB /* UserManagement */ = {
+		9AC477B82292B10C009B49FB /* LoginManagement */ = {
 			isa = PBXGroup;
 			children = (
 				9AC477BA2292B152009B49FB /* UserRegisterComponent */,
 				9AC477B92292B147009B49FB /* UserLogInComponent */,
 			);
-			path = UserManagement;
+			path = LoginManagement;
 			sourceTree = "<group>";
 		};
 		9AC477B92292B147009B49FB /* UserLogInComponent */ = {
@@ -127,6 +138,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		9AC644CF2293B3C300112225 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				9AC644D02293B3E900112225 /* dataController.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		9ADE2E23228F8EE60016291B = {
 			isa = PBXGroup;
 			children = (
@@ -148,9 +167,9 @@
 		9ADE2E2E228F8EE60016291B /* blogchain */ = {
 			isa = PBXGroup;
 			children = (
+				9AC644CF2293B3C300112225 /* Database */,
 				9AC477C22292C49B009B49FB /* Components */,
 				9AC477BF2292B2EA009B49FB /* NewNoteComponent */,
-				9AC477B82292B10C009B49FB /* UserManagement */,
 				9AC477B32292AAD6009B49FB /* ChainComponent */,
 				9AC477B22292AAC1009B49FB /* NoteComponent */,
 				9AC477B12292AA9D009B49FB /* UserComponent */,
@@ -160,6 +179,7 @@
 				9ADE2E3B228F8EE70016291B /* LaunchScreen.storyboard */,
 				9ADE2E3E228F8EE70016291B /* Info.plist */,
 				9ADE2E36228F8EE60016291B /* blogchain.xcdatamodeld */,
+				9AC644CD2293B2AF00112225 /* Config.swift */,
 			);
 			path = blogchain;
 			sourceTree = "<group>";
@@ -296,12 +316,16 @@
 				9AC477BE2292B249009B49FB /* UserLoginViewController.swift in Sources */,
 				9AC477B52292AD7F009B49FB /* NoteRootViewController.swift in Sources */,
 				9ADE2E38228F8EE60016291B /* blogchain.xcdatamodeld in Sources */,
+				9A6246922293C59F001A7A78 /* NoteRootTableViewCell.swift in Sources */,
 				9AC477B72292ADD4009B49FB /* ChainRootViewController.swift in Sources */,
+				9AEBC58722940036000BF266 /* NoteDetailedViewController.swift in Sources */,
 				9AC477BC2292B1F7009B49FB /* UserRegisterController.swift in Sources */,
 				9AC477C42292C4BC009B49FB /* textFileEditor.swift in Sources */,
 				9AC477C12292B30D009B49FB /* NewNoteViewController.swift in Sources */,
+				9AC644CE2293B2AF00112225 /* Config.swift in Sources */,
 				9ADE2E32228F8EE60016291B /* UserRootViewController.swift in Sources */,
 				9ADE2E30228F8EE60016291B /* AppDelegate.swift in Sources */,
+				9AC644D12293B3E900112225 /* dataController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

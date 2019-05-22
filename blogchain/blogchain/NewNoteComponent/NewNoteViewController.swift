@@ -8,7 +8,8 @@
 
 import SnapKit
 
-class NewNoteViewController: UIViewController, UITextFieldDelegate {
+class NewNoteViewController: UIViewController {
+    let tx = textFileEdutior(showButton: false);
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -16,12 +17,17 @@ class NewNoteViewController: UIViewController, UITextFieldDelegate {
     }
     
     func addTextEditor(){
-        let tx = textFileEdutior(showButton: false);
         self.view.addSubview(tx);
         tx.snp.makeConstraints{(make)->Void in
             make.top.bottom.left.right.equalTo(self.view.safeAreaLayoutGuide);
         }
         tx.viewInitial();
+        tx.saveButton.addTarget(self, action: #selector(savaArtical), for: .touchUpInside);
+
+    }
+    
+    @objc func savaArtical(){
+        ArticalInstance.instance().saveArtical(title: tx.titleView.text, content: tx.contentView.text);
     }
     
 }

@@ -18,20 +18,25 @@ final class Block: Content{
     
     private (set) var transactions = [Transaction]()
     
-    // for generating hash
-    var key: String{
-        get{
+    // for generating the hash
+    var key: String {
+        get {
             let transactionData = try! JSONEncoder().encode(self.transactions)
             let transactionString = String(data: transactionData, encoding: .utf8)!
-            return String(self.index) + self.previousHash+String(self.nonce)+transactionString
+            return String(self.index) + self.previousHash + String(self.nonce) + transactionString
         }
-    }
-    
-    func addTransaction(transaction: Transaction) {
-        self.transactions.append(transaction)
     }
     
     init() {
         self.nonce = 0
+    }
+    
+    func addTransaction(title: String, author: String, category: String, content: String) {
+        let transaction = Transaction(title: title, author: author, category: category, content: content)
+        self.transactions.append(transaction)
+    }
+    
+    func getLatestTransaction() -> Transaction? {
+        return self.transactions.last
     }
 }

@@ -21,7 +21,13 @@ class ArticalInstance {
         return _instance!;
     };
     
-    private var artical: Artical?;
+    private var articals: [Artical]?;
+    public var allArticals: [Artical]?{
+        get {
+            if ( articals != nil ){ return articals; }
+            else { return fetchAllArtical() }
+        }
+    }
     
     func saveArtical(title: String?, content: String?) {
         let now = Date();
@@ -32,6 +38,7 @@ class ArticalInstance {
         newArtical?.created = now;
         newArtical?.modified = now;
         saveContext();
+        self.articals = fetchAllArtical();
     }
     
     func saveArtical(instance: Artical, title:String?, content: String?) {
@@ -39,23 +46,25 @@ class ArticalInstance {
         instance.modified = now;
         instance.title = title;
         instance.content = content;
+        if(instance.addressKey != nil){ instance.dirty = true; }
         saveContext();
     }
     
     private func saveContext() {
         let context = persistentContainer.viewContext
         do {
-            try context.save()
+            try context.save();
+            
         } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            let nserror = error as NSError;
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)");
         }
     }
     
-    private func resetInstance() {
-        let entity = NSEntityDescription.entity(forEntityName: "Artical", in: persistentContainer.viewContext)!;
-        self.artical = NSManagedObject(entity: entity, insertInto: persistentContainer.viewContext) as? Artical;
-    }
+//    private func resetInstance() {
+//        let entity = NSEntityDescription.entity(forEntityName: "Artical", in: persistentContainer.viewContext)!;
+//        self.artical = NSManagedObject(entity: entity, insertInto: persistentContainer.viewContext) as? Artical;
+//    }
     
     func fetchAllArtical() -> [Artical]? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Artical");
@@ -72,6 +81,20 @@ class ArticalInstance {
             print("Failed");
             return nil;
         }
+    }
+    
+    func deleteArtical(artical: Artical) {
+        persistentContainer.viewContext.delete(artical);
+        saveContext();
+        articals = fetchAllArtical();
+    }
+    
+    func deleteArtical(articals: [Artical]) {
+        for artical in articals{
+            persistentContainer.viewContext.delete(artical);
+        }
+        saveContext();
+        self.articals = fetchAllArtical();
     }
     
     func deleteAllArtical() {

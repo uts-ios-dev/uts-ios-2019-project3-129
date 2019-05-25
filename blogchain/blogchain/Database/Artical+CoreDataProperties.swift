@@ -2,7 +2,7 @@
 //  Artical+CoreDataProperties.swift
 //  
 //
-//  Created by 李宇沛 on 21/5/19.
+//  Created by 李宇沛 on 23/5/19.
 //
 //
 
@@ -19,8 +19,9 @@ extension Artical {
     @NSManaged public var category: Int16
     @NSManaged public var content: String?
     @NSManaged public var created: NSDate?
-    @NSManaged public var hashKey: String?
+    @NSManaged public var addressKey: String?
     @NSManaged public var modified: NSDate?
     @NSManaged public var title: String?
+    @NSManaged public var dirty: Bool
 
 }

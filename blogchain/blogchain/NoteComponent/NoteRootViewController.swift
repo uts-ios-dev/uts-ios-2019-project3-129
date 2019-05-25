@@ -8,21 +8,40 @@
 
 import SnapKit
 
-class NoteRootViewController: UITableViewController, UISearchBarDelegate {
+class NoteRootViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    private var cellData: [Artical]? = [];
+    private let dataInstance = ArticalInstance.instance();
+    private let quatedData: [Artical] = [];
     private var headerView = UIView();
     private let searchBar = UISearchBar();
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private let tableView = UITableView();
+    private let bottomBar = UIView();
+    private let segments = UISegmentedControl(items:["Personal", "Qutation"]);
+    private var renderedCellData: [Artical] {
+        get {
+            return Bool(truncating: segments.selectedSegmentIndex as NSNumber) ? quatedData : dataInstance.allArticals!;
+        }
+        
+    }
+    
+    override func loadView() {
+        super.loadView();
         // Do any additional setup after loading the view.
         self.tableView.delegate = self;
-        cellData = ArticalInstance.instance().fetchAllArtical();
+        self.tableView.dataSource = self;
         self.tableView.register(NoteRootTableViewCell.self, forCellReuseIdentifier: "NoteRootTableViewCell");
+        self.navigationController?.navigationBar.shadowImage = UIImage();
+        self.navigationController?.navigationBar.isTranslucent = false;
+        self.title = "Articles";
+        settingSearchBar();
+        settingSegment();
+        settingTable();
         selfStyleSetting();
-        settingHeader();
         addButton();
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad();
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -31,62 +50,147 @@ class NoteRootViewController: UITableViewController, UISearchBarDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         print("appear");
-        cellData = ArticalInstance.instance().fetchAllArtical();
         self.tableView.reloadData();
     }
     
     func selfStyleSetting() {
-        //self view
+        // self view
         self.view.backgroundColor = .white;
         
         // self table
-        self.tableView.rowHeight = 60;
-        self.tableView.separatorStyle = .none;
-//        self.tableView.backgroundColor = .red;
+        self.tableView.rowHeight = 70;
+        self.tableView.tableFooterView = UIView();
     }
     
-    func settingHeader() {
+    func settingSearchBar() {
+        self.view.addSubview(searchBar);
         searchBar.searchBarStyle = .minimal;
         searchBar.placeholder = "Keywords here";
-        searchBar.backgroundColor = .white;
+        searchBar.snp.makeConstraints{ make -> Void in
+            make.leading.trailing.equalToSuperview();
+            make.top.equalTo(self.view.safeAreaLayoutGuide);
+        }
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField;
+        textFieldInsideSearchBar?.borderStyle = .line;
+        textFieldInsideSearchBar?.backgroundColor = .white;
+        textFieldInsideSearchBar?.layer.cornerRadius = 14;
+        textFieldInsideSearchBar?.layer.borderWidth = 1;
+        textFieldInsideSearchBar?.layer.masksToBounds = true;
+        textFieldInsideSearchBar?.layer.borderColor = UIColor.lightGray.cgColor;
+    }
+    
+    func settingSegment() {
+        self.view.addSubview(segments);
+        segments.snp.makeConstraints{ make -> Void in
+            make.leading.trailing.equalToSuperview();
+            make.top.equalTo(searchBar.snp.bottom);
+        }
+        segments.selectedSegmentIndex = 0;
+        segments.translatesAutoresizingMaskIntoConstraints = false;
+        segments.tintColor = .clear;
+        segments.backgroundColor = .clear;
+        segments.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18),
+            NSAttributedString.Key.foregroundColor: UIColor.lightGray
+            ], for: .normal);
+        segments.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18),
+            NSAttributedString.Key.foregroundColor: UIColor.black
+            ], for: .selected);
+        bottomBar.translatesAutoresizingMaskIntoConstraints = false;
+        bottomBar.backgroundColor = UIColor.lightGray;
+        segments.addSubview(bottomBar);
+        bottomBar.snp.makeConstraints{make -> Void in
+            make.bottom.equalToSuperview();
+            make.leading.equalToSuperview().offset(segments.frame.width / 2 * CGFloat(segments.selectedSegmentIndex));
+            make.width.equalToSuperview().dividedBy(2);
+        }
+        bottomBar.heightAnchor.constraint(equalToConstant: 3).isActive = true;
+        segments.addTarget(self, action: #selector(segmentedControlChange(_:)), for: .valueChanged);
+    }
+    
+    func settingTable() {
+        self.view.addSubview(tableView);
+        tableView.snp.makeConstraints{ make -> Void in
+            make.top.equalTo(segments.snp.bottom).offset(10);
+            make.leading.trailing.equalToSuperview();
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide);
+        }
     }
     
     // do something here;
     func addButton() {
-        let functionButton = UIBarButtonItem(title: "\u{2022}\u{2022}\u{2022}", style: .plain, target: self, action: nil);
-        functionButton.tintColor = .black;
-        self.navigationItem.rightBarButtonItem = functionButton;
+        let rightButton = UIBarButtonItem(title: "\u{2022}\u{2022}\u{2022}", style: .plain, target: self, action: nil);
+        rightButton.tintColor = .black;
+        self.navigationItem.rightBarButtonItem = rightButton;
+        let leftButton = UIBarButtonItem(title: "Update", style: .plain, target: self, action: nil);
+        leftButton.tintColor = .black;
+        self.navigationItem.leftBarButtonItem = leftButton;
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellData!.count;
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.renderedCellData.count;
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteRootTableViewCell", for: indexPath) as! NoteRootTableViewCell;
-        
-        cell.titleLable.text = cellData?[indexPath.row].title;
-        cell.contentLable.text = cellData?[indexPath.row].content;
+        let data = self.renderedCellData[indexPath.row];
+        cell.titleLable.text = data.title;
+        cell.contentLable.text = data.content;
         let dateformatter = DateFormatter()
         dateformatter.dateStyle = .short;
-        dateformatter.timeStyle = .none;
-        cell.lastModifiedTime.text = dateformatter.string(from: (cellData?[indexPath.row].modified!)!);        
-        
+        dateformatter.timeStyle = .short;
+        cell.lastModifiedTime.text = dateformatter.string(from: data.modified!);
+        if( data.addressKey == nil ){
+            cell.statusLabel.text = "private";
+            cell.statusLabel.textColor = .lightGray;
+        }else{
+            if(data.dirty == true){
+                cell.statusLabel.text = "modified";
+                cell.statusLabel.textColor = .yellow;
+            }else{
+                cell.statusLabel.text = "publish";
+                cell.statusLabel.textColor = .green;
+            }
+        }
         return cell;
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let noteDetailed = NoteDetailedViewController();
-        noteDetailed.articalData = cellData?[indexPath.row];
+        noteDetailed.articalData = self.renderedCellData[indexPath.row];
+        self.navigationController?.setNavigationBarHidden(true, animated: true);
         self.navigationController?.pushViewController(noteDetailed, animated: true);
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self.searchBar;
-    }
-
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50;
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let more = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
+            print(action);
+            print(index);
+            ArticalInstance.instance().deleteArtical(artical: self.renderedCellData[indexPath.row]);
+            self.tableView.reloadData();
+        }
+        more.backgroundColor = .red;
+        
+        return [more];
     }
     
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let closeAction = UIContextualAction(style: .normal, title:  "Upload", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            print("OK, marked as Closed")
+            success(true)
+        })
+        closeAction.backgroundColor = self.renderedCellData[indexPath.row].dirty ? .gray : .purple;
+        
+        return UISwipeActionsConfiguration(actions: [closeAction])
+        
+    }
+    
+    @objc func segmentedControlChange(_ segmented: UISegmentedControl) {
+        UIView.animate(withDuration: 0.3) {
+            self.bottomBar.frame.origin.x = self.segments.frame.width / 2 * CGFloat(self.segments.selectedSegmentIndex);
+        }
+        self.tableView.reloadData();
+    }
 }

@@ -31,35 +31,36 @@ class NoteRootTableViewCell: UITableViewCell {
         titleLable.snp.makeConstraints{ (make) -> Void in
             make.top.equalToSuperview();
             make.leading.equalToSuperview().offset(10);
-            make.width.equalToSuperview().multipliedBy(0.7)
-            make.height.equalToSuperview().multipliedBy(0.3)
+            make.width.equalToSuperview().multipliedBy(0.7);
+            make.height.equalToSuperview().multipliedBy(0.7);
         }
-//        titleLable.textColor = .black;
+//        titleLable.backgroundColor = .black;
         
         contentLable.snp.makeConstraints{ (make) -> Void in
-            make.bottom.equalToSuperview();
-            make.leading.equalToSuperview().offset(10);
-            make.top.equalTo(titleLable.snp.bottom);
-            make.width.equalTo(titleLable);
+            make.bottom.trailing.equalToSuperview();
+            make.leading.equalTo(lastModifiedTime.snp.trailing).offset(5);
+            make.top.equalTo(statusLabel.snp.bottom);
         }
         
         statusLabel.snp.makeConstraints{ (make) -> Void in
             make.top.equalToSuperview();
-            make.trailing.equalToSuperview().offset(-5);
+            make.trailing.equalToSuperview();
             make.leading.equalTo(titleLable.snp.trailing);
             make.height.equalTo(titleLable);
         }
         
         lastModifiedTime.snp.makeConstraints{ (make) -> Void in
             make.bottom.equalToSuperview();
-            make.trailing.equalToSuperview().offset(-5);
-            make.leading.equalTo(contentLable.snp.trailing);
-            make.top.equalTo(statusLabel.snp.bottom);
+            make.leading.equalToSuperview().offset(10);
+            make.width.equalToSuperview().multipliedBy(0.4);
+            make.top.equalTo(titleLable.snp.bottom);
         }
         
         contentLable.lineBreakMode = .byTruncatingTail;
         contentLable.textColor = .gray;
-//        lastModifiedTime.font = .systemFont(ofSize: 16);
+        lastModifiedTime.font = .systemFont(ofSize: 14);
+        lastModifiedTime.textAlignment = .left;
+        statusLabel.textAlignment = .right;
         
     }
     

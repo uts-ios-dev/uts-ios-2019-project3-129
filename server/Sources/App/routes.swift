@@ -3,6 +3,7 @@ import Vapor
 /// Register your application's routes here.
 public func routes(_ router: Router) throws {
     let blockchainController = BlockchainController()
+    router.get("/", use: blockchainController.greet)
     router.get("/api/greet", use: blockchainController.greet)
     router.get("/blockchain", use: blockchainController.getBlockchain)
     router.post(Transaction.self, at: "mine", use: blockchainController.mine)

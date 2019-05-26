@@ -47,9 +47,6 @@ class BlockchainService: Service {
             if (block.owner == userHash) {
                 if let transaction = block.getLatestTransaction() {
                     transactions.append(transaction)
-                    #if DEBUG
-                    print("t1tle: \(transaction.title)")
-                    #endif
                 }
             }
         }

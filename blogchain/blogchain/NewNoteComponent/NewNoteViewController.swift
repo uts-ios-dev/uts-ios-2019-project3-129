@@ -21,13 +21,20 @@ class NewNoteViewController: UIViewController {
         tx.snp.makeConstraints{(make)->Void in
             make.top.bottom.left.right.equalTo(self.view.safeAreaLayoutGuide);
         }
+        tx.addLeftButton(title: "CLEAR")
         tx.viewInitial();
-        tx.saveButton.addTarget(self, action: #selector(savaArtical), for: .touchUpInside);
-
+        tx.addRightButton(title: "SAVE");
+        tx.rightButton.addTarget(self, action: #selector(savaArtical), for: .touchUpInside);
+        tx.leftButton.addTarget(self, action: #selector(cleanAll), for: .touchUpInside);
     }
     
     @objc func savaArtical(){
         ArticalInstance.instance().saveArtical(title: tx.titleView.text, content: tx.contentView.text);
+    }
+    
+    @objc func cleanAll(){
+        tx.contentView.text = nil;
+        tx.titleView.text = nil;
     }
     
 }

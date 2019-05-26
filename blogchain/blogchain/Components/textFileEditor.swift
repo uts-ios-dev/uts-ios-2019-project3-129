@@ -10,9 +10,9 @@ import SnapKit
 
 class textFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
     let titleView = UITextField();
-    let backButton = UIButton();
+    let leftButton = UIButton();
     let contentView = UITextView();
-    let saveButton = UIButton();
+    let rightButton = UIButton();
     var titleText: String?;
     var contentText: String?;
     var showButton: Bool;
@@ -38,28 +38,22 @@ class textFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
     // Order can not change;
     // back button is optional, setting in the init() with the parameter of showButton
     func viewInitial() {
-        addBackButton();
         addTitle();
-        addSaveButton();
+//        addSaveButton();
         addContent();
     }
     
     // you should bind action on view controller if the button is back button
-    func addBackButton() {
-        self.addSubview(backButton);
-        backButton.snp.makeConstraints{ (make) -> Void in
+    func addLeftButton(title: String) {
+        self.addSubview(leftButton);
+        leftButton.snp.makeConstraints{ (make) -> Void in
             make.top.equalToSuperview();
             make.leading.equalToSuperview();
             make.width.equalToSuperview().multipliedBy(0.2);
             make.height.equalToSuperview().multipliedBy(0.1);
         }
-        backButton.setTitleColor(.black, for: .normal);
-        if (showButton) {
-            backButton.setTitle("Back", for: .normal);
-        } else {
-            backButton.setTitle("Reset", for: .normal);
-            backButton.addTarget(self, action: #selector(cleanAll), for: .touchUpInside);
-        }
+        leftButton.setTitleColor(.black, for: .normal);
+        leftButton.setTitle(title, for: .normal);
     }
     
     func addTitle() {
@@ -67,7 +61,7 @@ class textFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
         if(showButton){
             titleView.snp.makeConstraints{ (make) -> Void in
                 make.top.equalToSuperview();
-                make.leading.equalTo(backButton.snp.trailing);
+                make.leading.equalTo(leftButton.snp.trailing);
                 make.height.equalToSuperview().multipliedBy(0.1);
                 make.width.equalToSuperview().multipliedBy(0.6);
             }
@@ -98,17 +92,17 @@ class textFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
     }
     
     // you should bind action on view controller
-    func addSaveButton() {
-        self.addSubview(saveButton);
-        saveButton.setTitle("Save", for: .normal);
-        saveButton.setTitleColor(.black, for: .normal);
-        saveButton.snp.makeConstraints{(make)-> Void in
+    func addRightButton(title: String) {
+        self.addSubview(rightButton);
+        rightButton.setTitle(title, for: .normal);
+        rightButton.setTitleColor(.black, for: .normal);
+        rightButton.snp.makeConstraints{(make)-> Void in
             make.leading.equalTo(titleView.snp.trailing);
             make.top.equalToSuperview();
             make.trailing.equalToSuperview();
             make.height.equalToSuperview().multipliedBy(0.1);
         }
-//        saveButton.backgroundColor = .white;
+//        rightButton.backgroundColor = .white;
     }
     
     func addContent() {
@@ -123,11 +117,6 @@ class textFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
         contentView.allowsEditingTextAttributes = true;
         contentView.font = .systemFont(ofSize: 16);
 //        contentView.backgroundColor = .green;
-    }
-    
-    @objc func cleanAll(){
-        self.contentView.text = nil;
-        self.titleView.text = nil;
     }
     
 

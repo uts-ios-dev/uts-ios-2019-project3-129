@@ -4,21 +4,20 @@ A simple blockchain server build with Vapor.
 
 ## Run
 
-You can run server on different servers to make it decentralize.
-
 ```shell
 vapor build
 ```
 
 ```shell
-vapor run --port=8080
+vapor run --port 8080
 ```
 
+You can run it on more than one servers to make it decentralize.
 ## API
 
-### Get Blog
+### Get whole blogchain
 
-Get [http://localhost:8080/blockchain](http://localhost:8080/blockchain)
+Get [http://localhost:8080/api/blockchain](http://localhost:8080/api/blockchain)
 
 Return the total blocks in this blockchain:
 
@@ -36,37 +35,16 @@ Return the total blocks in this blockchain:
 }
 ```
 
-### Mine Blog
+### Post an article
 
-Post [http://localhost:8080/mine](http://localhost:8080/mine) with `Content-Type: application/json`
+Post [http://localhost:8080/api/newArticle](http://localhost:8080/api/newArticle) with `Content-Type: application/json`
 
-Post body: 
+`curl -d "title=bad&author= Naniel&sender=Tester&category=IT&content=mama&isHide=false" -X POST http://localhost:8080/api/newArticle`
 
-```json
-{
-    "title": "first blog",
-    "category": "iOS",
-    "content": "this is my first blog!"
-}
-```
+### Update an article
+Post [http://localhost:8080/api/updateArticle](http://localhost:8080/api/updateArticle) with `Content-Type: application/json`
 
-Return the block:
-
-```json
-{
-  "nonce": 25,
-  "previousHash": "0073c9bf671f34aa448c27a8e6ed3f662d1bb1cf",
-  "hash": "00295c184251ffc617034ed0dc92befa1b38e4ba",
-  "transactions": [
-    {
-      "title": "first blog",
-      "category": "iOS",
-      "content": "this is my first blog!"
-    }
-  ],
-  "index": 1
-}
-```
+`curl -d "height=1&title=bad&author= Naniel&sender=Tester&category=IT&content=mama&isHide=false" -X POST http://localhost:8080/api/updateArticle`
 
 ### Resolving Conflicts
 
@@ -101,5 +79,3 @@ Get [http://localhost:8080/nodes](http://localhost:8080/nodes) to know other blo
 ```
 
 Get [http://localhost:8080/resolve](http://localhost:8080/resolve) on one server to transfer information between each blockchain. Thus we can ensure the newest blogs are stored in other blockchains.
-
-

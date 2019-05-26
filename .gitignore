@@ -28,7 +28,7 @@ xcuserdata/
 *.dSYM.zip
 *.dSYM
 
-.DS_Store
+\.DS_Store
 # Vapor
 server/Packages
 server/.build

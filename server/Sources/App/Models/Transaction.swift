@@ -11,18 +11,22 @@ import Vapor
 // A version of article
 final class Transaction: Content {
     let hash: String // generate from the content
-    let title: String
+    let sender: String // farc757a-3fvb-4bdf-a418-15a29870c82a
     let author: String
+    let title: String
     let category: String
     let content: String
     let dateCreated: Double
+    let isHide: Bool
     
-    init(title: String, author: String, category: String, content: String) {
-        self.hash = content.sha1Hash()
-        self.title = title
+    init(sender: String, author: String, title: String, category: String, content: String, isHide: Bool) {
+        self.hash = content.sha256()!
+        self.sender = sender
         self.author = author
+        self.title = title
         self.category = category
         self.content = content
-        self.dateCreated  = NSDate().timeIntervalSince1970
+        self.dateCreated  = Date().timeIntervalSince1970
+        self.isHide = isHide
     }
 }

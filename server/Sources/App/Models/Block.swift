@@ -11,10 +11,12 @@ import Vapor
 // A block can have multiple transactions
 final class Block: Content{
     // the position in the blockchain
-    var index: Int = 0
+    var height: Int = 0
     var previousHash: String = ""
     var hash: String!
+    let timestamp = Date().timeIntervalSince1970
     var nonce:Int
+    let owner: String!
     
     private (set) var transactions = [Transaction]()
     
@@ -23,20 +25,30 @@ final class Block: Content{
         get {
             let transactionData = try! JSONEncoder().encode(self.transactions)
             let transactionString = String(data: transactionData, encoding: .utf8)!
-            return String(self.index) + self.previousHash + String(self.nonce) + transactionString
+            return String(self.height) + self.previousHash + String(self.nonce) + transactionString
         }
     }
     
-    init() {
-        self.nonce = 0
+    init(height: Int, owner: String) {
+        self.height = height
+        self.owner = owner
+        self.nonce = Int.random(in: 0...Int.max)
     }
     
-    func addTransaction(title: String, author: String, category: String, content: String) {
-        let transaction = Transaction(title: title, author: author, category: category, content: content)
+    func addTransaction(sender: String, author: String, title: String, category: String, content: String, isHide: Bool) {
+        let transaction = Transaction(sender: sender, author: author, title: title, category: category, content: content, isHide: isHide)
+        self.transactions.append(transaction)
+    }
+    
+    func appendTransaction(_ transaction: Transaction) {
         self.transactions.append(transaction)
     }
     
     func getLatestTransaction() -> Transaction? {
         return self.transactions.last
+    }
+    
+    func getAllTransactions() -> [Transaction] {
+        return self.transactions
     }
 }

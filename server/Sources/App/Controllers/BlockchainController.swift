@@ -9,15 +9,6 @@ import Foundation
 import Vapor
 
 class BlockchainController {
-//    private (set) var blockchainService: BlockchainService
-    
-//    init() {
-//        self.blockchainService = BlockchainService()
-//    }
-//
-//    func mine(req:Request,transaction:Transaction) -> Block {
-//        return self.blockchainService.getNextBlock(transactions: [transaction])
-//    }
     
     func getBlockchain(req: Request) throws -> Blockchain {
         return try req.make(BlockchainService.self).getBlockchain()
@@ -55,12 +46,14 @@ class BlockchainController {
                                           category: category,
                                           content: newArticleRequest.content,
                                           isHide: newArticleRequest.isHide)
-            try req.make(BlockchainService.self).addNewBlockWith(transaction: transaction)
-            return HTTPResponse(status: .ok, body: "New article received")
+            
+            let service = try req.make(BlockchainService.self)
+            let articleAddress = service.addNewBlockWith(transaction: transaction)
+            return HTTPResponse(status: .ok, body: "{ articleAddress: \(articleAddress) }")
         }
     }
 
-    func updateArticle(req: Request) throws  -> Future<HTTPResponse> {
+    func updateArticle(req: Request) throws -> Future<HTTPResponse> {
         return try req.content.decode(UpdateArticleRequest.self).map(to: HTTPResponse.self) { updateArticleRequest in
             guard let sender = updateArticleRequest.sender.sha256() else { return HTTPResponse(status: .notAcceptable, body: "Missing sender's key") }
             if updateArticleRequest.content.isEmpty { return HTTPResponse(status: .notAcceptable, body: "Missing content") }
@@ -71,7 +64,12 @@ class BlockchainController {
                                           category: category,
                                           content: updateArticleRequest.content,
                                           isHide: updateArticleRequest.isHide)
-            try req.make(BlockchainService.self).appendTransactionTo(height: updateArticleRequest.height, transaction: transaction)
+            let service = try req.make(BlockchainService.self)
+            do {
+                try service.appendTransactionToBlock(hash: updateArticleRequest.articleAddress, transaction: transaction)
+            } catch BlockError.blockHashNotExist {
+                return HTTPResponse(status: .badRequest, body: "Article not existed")
+            }
             return HTTPResponse(status: .ok, body: "Article updated")
         }
     }

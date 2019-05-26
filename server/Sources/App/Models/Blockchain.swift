@@ -34,8 +34,17 @@ final class Blockchain: Content {
         self.blocks.append(block)
     }
     
-    func getBlockAt(height: Int) -> Block {
-        return self.blocks[height]
+    func getBlockBy(hash: String) -> Block? {
+        for block in self.blocks {
+            if block.hash == hash {
+                return block
+            }
+        }
+        return nil
+    }
+    
+    func getLastBlock() -> Block {
+        return self.blocks.last!
     }
     // get article by hash address
 //    func getTransactionBy(hash: String) -> Transaction {

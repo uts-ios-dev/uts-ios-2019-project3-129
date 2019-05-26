@@ -44,7 +44,11 @@ Post [http://localhost:8080/api/newArticle](http://localhost:8080/api/newArticle
 ### Update an article
 Post [http://localhost:8080/api/updateArticle](http://localhost:8080/api/updateArticle) with `Content-Type: application/json`
 
-`curl -d "height=1&title=bad&author= Naniel&sender=Tester&category=IT&content=mama&isHide=false" -X POST http://localhost:8080/api/updateArticle`
+`curl -d "articleAddress=4f53289d5e7f59c04ae46d12c3ea079fa208a1f265bfbc5bfd30b25265e2119a&title=TITLE&author= Naniel&sender=Tester&category=IT&content=mama&isHide=false" -X POST http://localhost:8080/api/updateArticle`
+
+### Delete an article
+
+`curl -d "articleAddress=18dc984801871a7fda94d1919139749585e89ebab30441392ca418deba50bb1a&title=TITLE&author= Naniel&sender=Tester&category=IT&content=mama&isHide=true" -X POST http://localhost:8080/api/updateArticle`
 
 ### Resolving Conflicts
 

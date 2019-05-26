@@ -10,7 +10,7 @@ import Vapor
 
 struct UpdateArticleRequest: Content {
     let sender: String
-    let height: Int
+    let articleAddress: String
     let author: String
     let title: String
     let category: String

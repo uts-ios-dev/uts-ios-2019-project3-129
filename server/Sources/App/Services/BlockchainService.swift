@@ -21,11 +21,11 @@ class BlockchainService: Service {
         let tranC = Transaction(sender: "sender-hash-tester", author: "TESTER", title: "Forgetfulness", category: "Medecine", content: "Ark", isHide: false)
         let tranD = Transaction(sender: "sender-hash-tester2", author: "Daniel", title: "Tuition pumps", category: "Medecine", content: "# Preview", isHide: false)
         let tranE = Transaction(sender: "sender-hash-tester2", author: "Daniel", title: "Tuition pumps", category: "Medecine", content: "# Preview", isHide: true)
-        addNewBlockWith(transaction: tranA)
-        addNewBlockWith(transaction: tranB)
-        appendTransactionTo(height: 2, transaction: tranC)
-        addNewBlockWith(transaction: tranD)
-        appendTransactionTo(height: 3, transaction: tranE)
+        _ = addNewBlockWith(transaction: tranA)
+        _ = addNewBlockWith(transaction: tranB)
+        try! appendTransactionToBlock(hash: self.blockchain.getLastBlock().hash, transaction: tranC)
+        _ = addNewBlockWith(transaction: tranD)
+        try! appendTransactionToBlock(hash: self.blockchain.getLastBlock().previousHash, transaction: tranE)
         #endif
     }
     
@@ -53,14 +53,15 @@ class BlockchainService: Service {
         return transactions
     }
     // new article
-    func addNewBlockWith(transaction: Transaction) {
+    func addNewBlockWith(transaction: Transaction) -> String {
         let block = Block(height: self.blockchain.blocks.count, owner: transaction.sender)
         block.appendTransaction(transaction)
         self.blockchain.appendBlock(block)
+        return self.blockchain.getLastBlock().hash
     }
     // update/delete article
-    func appendTransactionTo(height: Int, transaction: Transaction) {
-        let block = self.blockchain.getBlockAt(height: height)
+    func appendTransactionToBlock(hash: String, transaction: Transaction) throws {
+        guard let block = self.blockchain.getBlockBy(hash: hash) else { throw BlockError.blockHashNotExist }
         block.appendTransaction(transaction)
     }
     

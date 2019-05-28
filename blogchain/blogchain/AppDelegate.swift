@@ -17,6 +17,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        APIUtils.getBlockchain() { (blockchain)->() in
+            print("------------")
+            print(blockchain.blocks[0].previousHash)
+        }
+        let article = Article(title: "111", author: "Frank", sender: "test", category: "IpHONE", content: "Make blog great again!", isHide: false)
+        APIUtils.postArticle(article: article){ (result)->() in
+            print("Post Article, address: \(result.articleAddress)")
+            let updateArticle = UpdateArticle(address: result.articleAddress,article: article)
+            APIUtils.updateArticle(article: updateArticle){ (success)->() in
+                print("------------")
+                print("Success: \(success)")
+                APIUtils.deleteArticle(article: updateArticle){ (success)->() in
+                    print("------------")
+                    print("Delete: \(success)")
+                    APIUtils.getBlockchain() { (blockchain)->() in
+                        print("------------")
+                        print("Get Blockchain")
+                        print(blockchain.blocks[1].transactions[0].content)
+                        print(blockchain.blocks[1].transactions[0].isHide)
+                    }
+                    
+                }
+            }
+        }
         return true
     }
 

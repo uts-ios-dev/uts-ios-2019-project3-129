@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		017AB28F229D03E400665B1A /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB28E229D03E400665B1A /* Block.swift */; };
+		017AB291229D045600665B1A /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB290229D045600665B1A /* Transaction.swift */; };
+		017AB293229D04F500665B1A /* APIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB292229D04F500665B1A /* APIUtils.swift */; };
+		017AB295229D0AFD00665B1A /* Blockchain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB294229D0AFD00665B1A /* Blockchain.swift */; };
+		017AB297229D0B5600665B1A /* BlockchainNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB296229D0B5500665B1A /* BlockchainNode.swift */; };
 		9A6246922293C59F001A7A78 /* NoteRootTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6246912293C59F001A7A78 /* NoteRootTableViewCell.swift */; };
 		9AC477B52292AD7F009B49FB /* NoteRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477B42292AD7F009B49FB /* NoteRootViewController.swift */; };
 		9AC477B72292ADD4009B49FB /* ChainRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477B62292ADD4009B49FB /* ChainRootViewController.swift */; };
@@ -28,6 +33,11 @@
 
 /* Begin PBXFileReference section */
 		006971CECA7854C38F2817D1 /* Pods-blogchain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blogchain.debug.xcconfig"; path = "Target Support Files/Pods-blogchain/Pods-blogchain.debug.xcconfig"; sourceTree = "<group>"; };
+		017AB28E229D03E400665B1A /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		017AB290229D045600665B1A /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		017AB292229D04F500665B1A /* APIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUtils.swift; sourceTree = "<group>"; };
+		017AB294229D0AFD00665B1A /* Blockchain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blockchain.swift; sourceTree = "<group>"; };
+		017AB296229D0B5500665B1A /* BlockchainNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockchainNode.swift; sourceTree = "<group>"; };
 		9A6246912293C59F001A7A78 /* NoteRootTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRootTableViewCell.swift; sourceTree = "<group>"; };
 		9AC477B42292AD7F009B49FB /* NoteRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRootViewController.swift; sourceTree = "<group>"; };
 		9AC477B62292ADD4009B49FB /* ChainRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainRootViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +74,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		017AB28D229D03A600665B1A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				017AB28E229D03E400665B1A /* Block.swift */,
+				017AB290229D045600665B1A /* Transaction.swift */,
+				017AB294229D0AFD00665B1A /* Blockchain.swift */,
+				017AB296229D0B5500665B1A /* BlockchainNode.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		058B83799F09FDE819DEDCC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				9AC477C32292C4BC009B49FB /* textFileEditor.swift */,
+				017AB292229D04F500665B1A /* APIUtils.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -169,6 +191,7 @@
 		9ADE2E2E228F8EE60016291B /* blogchain */ = {
 			isa = PBXGroup;
 			children = (
+				017AB28D229D03A600665B1A /* Models */,
 				9AC644CF2293B3C300112225 /* Database */,
 				9AC477C22292C49B009B49FB /* Components */,
 				9AC477BF2292B2EA009B49FB /* NewNoteComponent */,
@@ -276,6 +299,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-blogchain/Pods-blogchain-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -283,6 +307,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,8 +345,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AC477BE2292B249009B49FB /* UserLoginViewController.swift in Sources */,
+				017AB28F229D03E400665B1A /* Block.swift in Sources */,
 				9AC477B52292AD7F009B49FB /* NoteRootViewController.swift in Sources */,
 				9ADE2E38228F8EE60016291B /* blogchain.xcdatamodeld in Sources */,
+				017AB295229D0AFD00665B1A /* Blockchain.swift in Sources */,
+				017AB293229D04F500665B1A /* APIUtils.swift in Sources */,
 				9A6246922293C59F001A7A78 /* NoteRootTableViewCell.swift in Sources */,
 				9AC477B72292ADD4009B49FB /* ChainRootViewController.swift in Sources */,
 				9AEBC58722940036000BF266 /* NoteDetailedViewController.swift in Sources */,
@@ -332,6 +360,8 @@
 				9ADE2E32228F8EE60016291B /* UserRootViewController.swift in Sources */,
 				9ADE2E30228F8EE60016291B /* AppDelegate.swift in Sources */,
 				9AC644D12293B3E900112225 /* dataController.swift in Sources */,
+				017AB291229D045600665B1A /* Transaction.swift in Sources */,
+				017AB297229D0B5600665B1A /* BlockchainNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,20 +1,24 @@
 PODS:
-  - Alamofire (5.0.0-beta.6)
+  - Alamofire (4.8.2)
+  - CodableFirebase (0.2.1)
   - SnapKit (5.0.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.0.0-beta.5)
+  - Alamofire (~> 4.8.1)
+  - CodableFirebase
   - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - CodableFirebase
     - SnapKit
 
 SPEC CHECKSUMS:
-  Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  CodableFirebase: 0bf201991eeec35eb9fcd987d271ea463cf34a80
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
 
-PODFILE CHECKSUM: ad283218d0a473d9fc807ca4ab20ec38dc835129
+PODFILE CHECKSUM: ba9483840eda7c1b84d6c69f725d1329dfb03312
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.6.2

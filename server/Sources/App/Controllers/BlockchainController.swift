@@ -49,7 +49,7 @@ class BlockchainController {
             
             let service = try req.make(BlockchainService.self)
             let articleAddress = service.addNewBlockWith(transaction: transaction)
-            return HTTPResponse(status: .ok, body: "{ articleAddress: \(articleAddress) }")
+            return HTTPResponse(status: .ok, body: "{ \"articleAddress\": \"\(articleAddress)\" }")
         }
     }
 

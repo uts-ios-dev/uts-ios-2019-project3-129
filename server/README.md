@@ -9,7 +9,7 @@ vapor build
 ```
 
 ```shell
-vapor run --port 8080
+vapor run --port=8080
 ```
 
 You can run it on more than one servers to make it decentralize.

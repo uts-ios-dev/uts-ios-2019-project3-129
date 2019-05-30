@@ -36,19 +36,20 @@ class ChainRootViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return blockchain.blocks.count
+        // ignore the first block
+        return blockchain.blocks.count - 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let block = blockchain.blocks[section]
+        let block = blockchain.blocks[section + 1]
         return block.transactions.count
         
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.blockchain.blocks[section].transactions.last?.title
+        return self.blockchain.blocks[section + 1].transactions.last?.title
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteRootTableViewCell", for: indexPath) as! NoteRootTableViewCell;
-        let data = self.blockchain.blocks[indexPath.section].transactions[indexPath.row]
+        let data = self.blockchain.blocks[indexPath.section + 1].transactions[indexPath.row]
         let hash = data.hash.prefix(6)
         cell.titleLable.text = "\(data.title) #\(hash)"
         cell.contentLable.text = data.content
@@ -65,7 +66,7 @@ class ChainRootViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let noteDetailed = NoteDetailedViewController()
-        let data = self.blockchain.blocks[indexPath.section].transactions[indexPath.row]
+        let data = self.blockchain.blocks[indexPath.section + 1].transactions[indexPath.row]
         noteDetailed.transaction = data
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.navigationController?.pushViewController(noteDetailed, animated: true)

@@ -19,7 +19,7 @@ You can run it on more than one servers to make it decentralize.
 
 Get [http://localhost:8080/api/blockchain](http://localhost:8080/api/blockchain)
 
-Return the total blocks in this blockchain:
+Return all blocks in this blockchain:
 
 ```json
 {
@@ -38,6 +38,33 @@ Return the total blocks in this blockchain:
 GET [http://localhost:8080/api/articlesFrom/](http://localhost:8080/api/articlesFrom/) with `Content-Type: application/json`
 
 `curl -X GET http://localhost:8080/api/articlesFrom/sender-hash-tester`
+
+Return all articles from this user:
+
+```json
+[
+    {
+        "author": "TESTER",
+        "hash": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d",
+        "sender": "sender-hash-tester",
+        "category": "IT",
+        "content": "C",
+        "dateCreated": 1559186249.983808,
+        "title": "Remembering",
+        "isHide": false
+    },
+    {
+        "author": "Daniel",
+        "hash": "8545da324c45583d86d59dea575f60ffd8d9a594382d1c59df2a2d98740d173e",
+        "sender": "sender-hash-tester2",
+        "category": "Medecine",
+        "content": "# Preview",
+        "dateCreated": 1559186249.9843121,
+        "title": "Tuition pumps",
+        "isHide": true
+    }
+]
+```
 
 
 ### Post an article
@@ -89,3 +116,5 @@ Get [http://localhost:8080/nodes](http://localhost:8080/nodes) to know other blo
 ```
 
 Get [http://localhost:8080/resolve](http://localhost:8080/resolve) on one server to transfer information between each blockchain. Thus we can ensure the newest blogs are stored in other blockchains.
+
+

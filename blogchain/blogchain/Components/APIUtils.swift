@@ -13,7 +13,7 @@ import CodableFirebase
 class APIUtils {
     static let hostAddr = "http://localhost:8080/"
     
-    static func getBlockchain(completion: @escaping (_ blockchain: Blockchain)->()) {
+    static func getBlockchain(completion: @escaping (_ blockchain: Blockchain)->Void) {
         Alamofire.request("\(hostAddr)api/blockchain", method: .get).responseData { response in
             do{
                 switch response.result {
@@ -30,7 +30,24 @@ class APIUtils {
         }
     }
     
-    static func postArticle(article:Article, completion: @escaping (_ result: PostArticleResult)->()) {
+    static func getArticlesFromUser(hash:String,completion: @escaping (_ blockchain: [Transaction])->Void) {
+        Alamofire.request("\(hostAddr)api/articlesFrom/\(hash)", method: .get).responseData { response in
+            do{
+                switch response.result {
+                case .success(let value):
+                    let decoder = JSONDecoder()
+                    let jsonData = try decoder.decode([Transaction].self, from: value)
+                    completion(jsonData)
+                case .failure(let error):
+                    print(error)
+                }
+            }catch{
+                print("error: \(error)")
+            }
+        }
+    }
+    
+    static func postArticle(article:Article, completion: @escaping (_ result: PostArticleResult)->Void) {
         let parameters: Parameters = try! FirestoreEncoder().encode(article)
 
         Alamofire.request("\(hostAddr)api/newArticle", method: .post,parameters: parameters).responseData { response in
@@ -49,7 +66,7 @@ class APIUtils {
         }
     }
     
-    static func updateArticle(article:UpdateArticle, completion: @escaping (_ success: Bool)->()) {
+    static func updateArticle(article:UpdateArticle, completion: @escaping (_ success: Bool)->Void) {
         let parameters: Parameters = try! FirestoreEncoder().encode(article)
         
         Alamofire.request("\(hostAddr)api/updateArticle", method: .post,parameters: parameters).responseData { response in
@@ -63,7 +80,7 @@ class APIUtils {
         }
     }
     
-    static func deleteArticle(article : UpdateArticle, completion: @escaping (_ success: Bool)->()) {
+    static func deleteArticle(article : UpdateArticle, completion: @escaping (_ success: Bool)->Void) {
         var deleteArticle = article
         deleteArticle.isHide = true
         updateArticle(article: deleteArticle, completion: completion)

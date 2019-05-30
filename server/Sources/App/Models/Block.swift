@@ -51,4 +51,8 @@ final class Block: Content{
     func getAllTransactions() -> [Transaction] {
         return self.transactions
     }
+    
+    func getTransactionCount() -> Int {
+        return self.transactions.count
+    }
 }

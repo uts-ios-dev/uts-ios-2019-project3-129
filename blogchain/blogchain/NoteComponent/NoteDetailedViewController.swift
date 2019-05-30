@@ -37,23 +37,26 @@ class NoteDetailedViewController: UIViewController, UIGestureRecognizerDelegate 
         tx.viewInitial();
         tx.addRightButton(title: "EDIT");
         if let transaction = self.transaction {
-            let hash = transaction.hash.prefix(6)
             tx.titleView.text = transaction.title
-            tx.contentView.text = transaction.content
+//            tx.contentView.text = transaction.content
+            tx.mdEditor?.text = transaction.content
             tx.rightButton.isHidden = true
         } else {
             tx.titleView.text = articalData?.title;
-            tx.contentView.text = articalData?.content;
+//            tx.contentView.text = articalData?.content;
+            tx.mdEditor?.text = articalData?.content
         }
         tx.titleView.isEnabled = false;
-        tx.contentView.isEditable = false;
+//        tx.contentView.isEditable = false;
+        tx.mdEditor?.isEditable = false
         tx.leftButton.addTarget(self, action: #selector(backButtonSelector), for: .touchUpInside);
         tx.rightButton.addTarget(self, action: #selector(editArtical), for: .touchUpInside);
     }
     
     @objc func editArtical() {
         tx.titleView.isEnabled = true;
-        tx.contentView.isEditable = true;
+//        tx.contentView.isEditable = true;
+        tx.mdEditor?.isEditable = true
         self.tabBarController?.tabBar.isHidden = true;
         tx.rightButton.removeTarget(nil, action: nil, for: .allEvents);
         tx.rightButton.setTitle("SAVE", for: .normal);
@@ -82,10 +85,12 @@ class NoteDetailedViewController: UIViewController, UIGestureRecognizerDelegate 
             return
         }
         // local saving
-        ArticalInstance.instance().saveArtical(instance: articalData!, title: tx.titleView.text, content: tx.contentView.text);
+//        ArticalInstance.instance().saveArtical(instance: articalData!, title: tx.titleView.text, content: tx.contentView.text);
+        ArticalInstance.instance().saveArtical(instance: articalData!, title: tx.titleView.text, content: tx.mdEditor?.text);
         self.tabBarController?.tabBar.isHidden = false;
         tx.titleView.isEnabled = false;
-        tx.contentView.isEditable = false;
+//        tx.contentView.isEditable = false;
+        tx.mdEditor?.isEditable = false
         tx.rightButton.removeTarget(nil, action: nil, for: .allEvents);
         tx.rightButton.setTitle("EDIT", for: .normal);
         tx.rightButton.addTarget(self, action: #selector(editArtical), for: .touchUpInside);

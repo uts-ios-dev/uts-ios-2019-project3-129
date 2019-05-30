@@ -38,7 +38,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         selfStyleSetting();
         addButton();
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad();
     }
@@ -50,6 +50,17 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         print("appear");
         self.tableView.reloadData();
+    }
+    
+    func fetchData() {
+        // TODO: fill in the user private key
+        APIUtils.getArticlesFromUser(hash: "9e7cd9cb5a63a3591e16f4d835f32a1c4a84ab66e39ae27aa448c03b66bf63e7") { transactions in
+            for transaction in transactions {
+                #if DEBUG
+                print(transaction.content)
+                #endif
+            }
+        }
     }
     
     func selfStyleSetting() {
@@ -140,14 +151,14 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         dateformatter.dateStyle = .short;
         dateformatter.timeStyle = .short;
         cell.lastModifiedTime.text = dateformatter.string(from: data.modified!);
-        if( data.addressKey == nil ){
+        if ( data.addressKey == nil ) {
             cell.statusLabel.text = "private";
             cell.statusLabel.textColor = .lightGray;
-        }else{
-            if(data.dirty == true){
+        } else{
+            if (data.dirty == true) {
                 cell.statusLabel.text = "modified";
                 cell.statusLabel.textColor = .yellow;
-            }else{
+            } else {
                 cell.statusLabel.text = "publish";
                 cell.statusLabel.textColor = .green;
             }
@@ -190,7 +201,6 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         closeAction.backgroundColor = self.renderedCellData[indexPath.row].dirty ? .gray : .purple;
         
         return UISwipeActionsConfiguration(actions: [closeAction])
-        
     }
     
     @objc func segmentedControlChange(_ segmented: UISegmentedControl) {

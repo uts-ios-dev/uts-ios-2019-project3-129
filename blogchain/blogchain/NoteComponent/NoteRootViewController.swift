@@ -39,11 +39,11 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         settingTable();
         selfStyleSetting();
         addButton();
-        loadAllArticles()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        loadAllArticles()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -91,7 +91,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
             textFieldInsideSearchBar.layer.borderWidth = 1;
             textFieldInsideSearchBar.layer.masksToBounds = true;
             textFieldInsideSearchBar.layer.borderColor = UIColor.lightGray.cgColor;
-            
+            // bind revertSearchMode() with the clear button in the search bar
             if let clearButton = textFieldInsideSearchBar.value(forKey: "clearButton") as? UIButton {
                 clearButton.addTarget(self, action: #selector(revertSearchMode), for: .touchUpInside)
             }
@@ -207,14 +207,14 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
             cell.titleLable.text = data.title;
             cell.contentLable.text = data.content;
             cell.lastModifiedTime.text = dateformatter.string(from: data.modified!);
-            if( data.addressKey == nil ){
+            if ( data.addressKey == nil ) {
                 cell.statusLabel.text = "private";
                 cell.statusLabel.textColor = .lightGray;
             } else {
-                if(data.dirty == true){
+                if (data.dirty) {
                     cell.statusLabel.text = "modified";
                     cell.statusLabel.textColor = .yellow;
-                } else{
+                } else {
                     cell.statusLabel.text = "publish";
                     cell.statusLabel.textColor = .green;
                 }
@@ -228,7 +228,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         let noteDetailed = NoteDetailedViewController();
         if Bool(truncating: segments.selectedSegmentIndex as NSNumber) {
             noteDetailed.transaction = self.allArticlesInBlockchain[indexPath.row + 1].transactions.last
-        }else{
+        } else {
             noteDetailed.articalData = self.renderedCellData[indexPath.row];
         }
         self.navigationController?.setNavigationBarHidden(true, animated: true);

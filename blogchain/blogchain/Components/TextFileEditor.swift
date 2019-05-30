@@ -7,6 +7,7 @@
 //
 
 import SnapKit
+import Notepad
 
 class TextFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
     let titleView = UITextField();
@@ -16,6 +17,7 @@ class TextFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
     var titleText: String?;
     var contentText: String?;
     var showButton: Bool;
+    var mdEditor: Notepad?
     
     init(showButton: Bool) {
         self.showButton = showButton;
@@ -39,8 +41,9 @@ class TextFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
     // back button is optional, setting in the init() with the parameter of showButton
     func viewInitial() {
         addTitle();
-        //        addSaveButton();
-        addContent();
+//        addSaveButton();
+//        addContent();
+        addMarkDownContent()
     }
     
     // you should bind action on view controller if the button is back button
@@ -119,5 +122,11 @@ class TextFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
         //        contentView.backgroundColor = .green;
     }
     
-    
+    func addMarkDownContent() {
+        let frame = CGRect(x: 20, y: titleView.frame.maxY, width: self.frame.size.width-40, height: self.frame.size.height-30)
+        mdEditor = Notepad(frame: frame, themeFile: "solarized-light")
+        mdEditor?.isEditable = false
+        mdEditor?.textContainerInset = UIEdgeInsets(top: 40, left: 20, bottom: 40, right: 20)
+        self.addSubview(mdEditor!)
+    }
 }

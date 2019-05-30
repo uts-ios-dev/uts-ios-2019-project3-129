@@ -60,7 +60,7 @@ class ChainRootViewController: UIViewController, UITableViewDelegate, UITableVie
         dateformatter.locale = NSLocale.current
         let date = Date(timeIntervalSince1970: data.dateCreated)
         cell.lastModifiedTime.text = dateformatter.string(from: date)
-        cell.statusLabel.alpha = 0
+        cell.statusLabel.isHidden = true
         return cell;
     }
     

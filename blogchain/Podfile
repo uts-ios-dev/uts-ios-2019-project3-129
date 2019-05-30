@@ -9,4 +9,5 @@ target 'blogchain' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'Alamofire', '~> 4.8.1'
   pod 'CodableFirebase'
+  pod 'Notepad'
 end

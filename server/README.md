@@ -34,12 +34,18 @@ Return the total blocks in this blockchain:
   ]
 }
 ```
+### Get articles from an author
+GET [http://localhost:8080/api/articlesFrom/](http://localhost:8080/api/articlesFrom/) with `Content-Type: application/json`
+
+`curl -X GET http://localhost:8080/api/articlesFrom/sender-hash-tester`
+
 
 ### Post an article
 
 Post [http://localhost:8080/api/newArticle](http://localhost:8080/api/newArticle) with `Content-Type: application/json`
 
 `curl -d "title=bad&author= Naniel&sender=Tester&category=IT&content=mama&isHide=false" -X POST http://localhost:8080/api/newArticle`
+
 
 ### Update an article
 Post [http://localhost:8080/api/updateArticle](http://localhost:8080/api/updateArticle) with `Content-Type: application/json`

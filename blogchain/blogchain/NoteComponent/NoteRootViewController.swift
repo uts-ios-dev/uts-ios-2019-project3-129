@@ -39,7 +39,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         addButton();
         loadAllArticles()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad();
     }
@@ -51,6 +51,17 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         print("appear");
         self.tableView.reloadData();
+    }
+    
+    func fetchData() {
+        // TODO: fill in the user private key
+        APIUtils.getArticlesFromUser(hash: "9e7cd9cb5a63a3591e16f4d835f32a1c4a84ab66e39ae27aa448c03b66bf63e7") { transactions in
+            for transaction in transactions {
+                #if DEBUG
+                print(transaction.content)
+                #endif
+            }
+        }
     }
     
     func selfStyleSetting() {
@@ -225,7 +236,6 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         closeAction.backgroundColor = self.renderedCellData[indexPath.row].dirty ? .gray : .purple;
         
         return UISwipeActionsConfiguration(actions: [closeAction])
-        
     }
     
     @objc func segmentedControlChange(_ segmented: UISegmentedControl) {

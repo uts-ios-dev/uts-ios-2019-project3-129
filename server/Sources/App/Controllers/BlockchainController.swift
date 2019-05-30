@@ -74,8 +74,15 @@ class BlockchainController {
         }
     }
     
+    func searchArticle(req: Request) throws -> Future<[Transaction]> {
+        let keywords = try req.parameters.next(String.self)
+        return Future.map(on: req){ () -> [Transaction] in
+            return try req.make(BlockchainService.self).searchArticle(keywords: keywords)
+        }
+    }
+    
     func resolve(req: Request) throws -> Future<Blockchain> {
-        let promise :EventLoopPromise<Blockchain> = req.eventLoop.newPromise()
+        let promise: EventLoopPromise<Blockchain> = req.eventLoop.newPromise()
         try req.make(BlockchainService.self).resolve {
             promise.succeed(result: $0)
         }

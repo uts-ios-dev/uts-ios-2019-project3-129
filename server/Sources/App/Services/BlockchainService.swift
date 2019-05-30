@@ -57,29 +57,61 @@ class BlockchainService: Service {
         let block = Block(height: self.blockchain.blocks.count, owner: transaction.sender)
         block.appendTransaction(transaction)
         self.blockchain.appendBlock(block)
+        syncNodes()
         return self.blockchain.getLastBlock().hash
     }
     // update/delete article
     func appendTransactionToBlock(hash: String, transaction: Transaction) throws {
         guard let block = self.blockchain.getBlockBy(hash: hash) else { throw BlockError.blockHashNotExist }
         block.appendTransaction(transaction)
+        syncNodes()
+    }
+    
+    func searchArticle(keywords: String) -> [Transaction] {
+        var results = [Transaction]()
+        for block in self.blockchain.blocks {
+            if let transaction = block.getLatestTransaction() {
+                if (transaction.content ~= keywords ||
+                    transaction.title ~= keywords) {
+                    results.append(block.getLatestTransaction()!)
+                }
+            }
+        }
+        return results
     }
     
     func resolve(completion : @escaping (Blockchain) -> ()) {
         let nodes = self.blockchain.nodes
         for node in nodes {
-            let url = URL(string :"\(node.address)/blockchain")!
+            let url = URL(string :"\(node.address)/api/blockchain")!
             URLSession.shared.dataTask(with: url) { data, _, _ in
                 if let data = data {
                     let blockchain = try! JSONDecoder().decode(Blockchain.self, from: data)
-                    if self.blockchain.blocks.count > blockchain.blocks.count {
-                        completion(self.blockchain)
-                    } else {
+                    if (self.blockchain.blocks.count < blockchain.blocks.count) {
                         self.blockchain = blockchain
                         completion(blockchain)
+                    } else if (self.blockchain.blocks.count == blockchain.blocks.count) {
+                        // Compare the transaction count
+                        for i in 0..<self.blockchain.blocks.count {
+                            let selfBlock = self.blockchain.blocks[i]
+                            let nodeBlock = blockchain.blocks[i]
+                            let selfTransactionCount = selfBlock.getTransactionCount()
+                            let nodeTransactionCount = nodeBlock.getTransactionCount()
+                            if (selfTransactionCount < nodeTransactionCount) {
+                                completion(blockchain)
+                            }
+                        }
+                        
                     }
                 }
             }.resume()
+        }
+    }
+    
+    func syncNodes() {
+        for node in self.blockchain.nodes {
+            let url = URL(string :"\(node.address)/resolve")!
+            URLSession.shared.dataTask(with: url).resume()
         }
     }
 }

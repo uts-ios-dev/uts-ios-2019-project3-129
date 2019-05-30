@@ -20,7 +20,7 @@ final class Transaction: Content {
     let isHide: Bool
     
     init(sender: String, author: String, title: String, category: String, content: String, isHide: Bool) {
-        self.hash = content.sha256()!
+        self.hash = (content + String(Date().timeIntervalSince1970)).sha256()!
         self.sender = sender
         self.author = author
         self.title = title

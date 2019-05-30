@@ -11,7 +11,7 @@ import SnapKit
 class NoteRootViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     private let dataInstance = ArticalInstance.instance();
-    private let quatedData: [Artical] = [];
+    private var allArticlesInBlockchain: [Block] = []
     private var headerView = UIView();
     private let searchBar = UISearchBar();
     private let tableView = UITableView();
@@ -19,7 +19,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     private let segments = UISegmentedControl(items:["Personal", "All"]);
     private var renderedCellData: [Artical] {
         get {
-            return Bool(truncating: segments.selectedSegmentIndex as NSNumber) ? quatedData : dataInstance.allArticals!;
+            return dataInstance.allArticals!;
         }
     }
     
@@ -37,6 +37,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         settingTable();
         selfStyleSetting();
         addButton();
+        loadAllArticles()
     }
     
     override func viewDidLoad() {
@@ -138,42 +139,73 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationItem.leftBarButtonItem = leftButton;
     }
     
+    func loadAllArticles() {
+        APIUtils.getBlockchain { blockchan in
+            self.allArticlesInBlockchain = blockchan.blocks
+            if Bool(truncating: self.segments.selectedSegmentIndex as NSNumber) {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.renderedCellData.count;
+        if Bool(truncating: segments.selectedSegmentIndex as NSNumber) {
+            return self.allArticlesInBlockchain.count - 1
+        }else{
+            return self.renderedCellData.count;
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteRootTableViewCell", for: indexPath) as! NoteRootTableViewCell;
-        let data = self.renderedCellData[indexPath.row];
-        cell.titleLable.text = data.title;
-        cell.contentLable.text = data.content;
         let dateformatter = DateFormatter()
-        dateformatter.dateStyle = .short;
-        dateformatter.timeStyle = .short;
-        cell.lastModifiedTime.text = dateformatter.string(from: data.modified!);
-        if ( data.addressKey == nil ) {
-            cell.statusLabel.text = "private";
-            cell.statusLabel.textColor = .lightGray;
-        } else{
-            if (data.dirty == true) {
-                cell.statusLabel.text = "modified";
-                cell.statusLabel.textColor = .yellow;
-            } else {
-                cell.statusLabel.text = "publish";
-                cell.statusLabel.textColor = .green;
+        dateformatter.dateStyle = .short
+        dateformatter.timeStyle = .short
+        if Bool(truncating: segments.selectedSegmentIndex as NSNumber) {
+            let data = self.allArticlesInBlockchain[indexPath.row + 1].transactions.last!
+            cell.titleLable.text = data.title
+            cell.contentLable.text = data.content
+            let date = Date(timeIntervalSince1970: data.dateCreated)
+            cell.lastModifiedTime.text = dateformatter.string(from: date)
+            cell.statusLabel.text = "via: \(data.author)"
+            cell.statusLabel.textColor = .lightGray
+        }else{
+            let data = self.renderedCellData[indexPath.row];
+            cell.titleLable.text = data.title;
+            cell.contentLable.text = data.content;
+            cell.lastModifiedTime.text = dateformatter.string(from: data.modified!);
+            if( data.addressKey == nil ){
+                cell.statusLabel.text = "private";
+                cell.statusLabel.textColor = .lightGray;
+            }else{
+                if(data.dirty == true){
+                    cell.statusLabel.text = "modified";
+                    cell.statusLabel.textColor = .yellow;
+                }else{
+                    cell.statusLabel.text = "publish";
+                    cell.statusLabel.textColor = .green;
+                }
             }
         }
-        return cell;
+       
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let noteDetailed = NoteDetailedViewController();
-        noteDetailed.articalData = self.renderedCellData[indexPath.row];
+        if Bool(truncating: segments.selectedSegmentIndex as NSNumber) {
+            noteDetailed.transaction = self.allArticlesInBlockchain[indexPath.row + 1].transactions.last
+        }else{
+            noteDetailed.articalData = self.renderedCellData[indexPath.row];
+        }
         self.navigationController?.setNavigationBarHidden(true, animated: true);
         self.navigationController?.pushViewController(noteDetailed, animated: true);
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        if Bool(truncating: segments.selectedSegmentIndex as NSNumber) {
+            return []
+        }
         let more = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
             print(action);
             print(index);
@@ -194,6 +226,9 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
+        if Bool(truncating: segments.selectedSegmentIndex as NSNumber) {
+            return nil
+        }
         let closeAction = UIContextualAction(style: .normal, title:  "Upload", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("OK, marked as Closed")
             success(true)

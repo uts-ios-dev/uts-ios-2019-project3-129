@@ -67,6 +67,19 @@ class BlockchainService: Service {
         syncNodes()
     }
     
+    func searchArticle(keywords: String) -> [Transaction] {
+        var results = [Transaction]()
+        for block in self.blockchain.blocks {
+            if let transaction = block.getLatestTransaction() {
+                if (transaction.content ~= keywords ||
+                    transaction.title ~= keywords) {
+                    results.append(block.getLatestTransaction()!)
+                }
+            }
+        }
+        return results
+    }
+    
     func resolve(completion : @escaping (Blockchain) -> ()) {
         let nodes = self.blockchain.nodes
         for node in nodes {

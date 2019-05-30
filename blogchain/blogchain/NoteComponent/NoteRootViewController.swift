@@ -16,12 +16,11 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     private let searchBar = UISearchBar();
     private let tableView = UITableView();
     private let bottomBar = UIView();
-    private let segments = UISegmentedControl(items:["Personal", "Qutation"]);
+    private let segments = UISegmentedControl(items:["Personal", "All"]);
     private var renderedCellData: [Artical] {
         get {
             return Bool(truncating: segments.selectedSegmentIndex as NSNumber) ? quatedData : dataInstance.allArticals!;
         }
-        
     }
     
     override func loadView() {
@@ -45,7 +44,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        print("disappera");
+        print("disapper");
     }
     
     override func viewWillAppear(_ animated: Bool) {

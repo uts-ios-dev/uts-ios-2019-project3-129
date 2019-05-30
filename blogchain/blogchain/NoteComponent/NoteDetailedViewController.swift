@@ -12,6 +12,7 @@ class NoteDetailedViewController: UIViewController, UIGestureRecognizerDelegate 
     
     var articalData: Artical?;
     let tx = textFileEdutior(showButton: true);
+    var transaction : Transaction?
     
     override func loadView() {
         super.loadView();
@@ -35,8 +36,15 @@ class NoteDetailedViewController: UIViewController, UIGestureRecognizerDelegate 
         tx.addLeftButton(title: "BACK");
         tx.viewInitial();
         tx.addRightButton(title: "EDIT");
-        tx.titleView.text = articalData?.title;
-        tx.contentView.text = articalData?.content;
+        if let transaction = self.transaction {
+            let hash = transaction.hash.prefix(6)
+            tx.titleView.text = transaction.title
+            tx.contentView.text = transaction.content
+            tx.rightButton.isHidden = true
+        } else {
+            tx.titleView.text = articalData?.title;
+            tx.contentView.text = articalData?.content;
+        }
         tx.titleView.isEnabled = false;
         tx.contentView.isEditable = false;
         tx.leftButton.addTarget(self, action: #selector(backButtonSelector), for: .touchUpInside);

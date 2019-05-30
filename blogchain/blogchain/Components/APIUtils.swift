@@ -49,7 +49,6 @@ class APIUtils {
     
     static func postArticle(article: Article, completion: @escaping (_ result: PostArticleResult)->Void) {
         let parameters: Parameters = try! FirestoreEncoder().encode(article)
-
         Alamofire.request("\(hostAddr)api/newArticle", method: .post,parameters: parameters).responseData { response in
             do{
                 switch response.result {

@@ -17,6 +17,8 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     private let tableView = UITableView();
     private let bottomBar = UIView();
     private let segments = UISegmentedControl(items:["Personal", "All"]);
+    private var inSearchMode = false;
+    private var searchResults = [Transaction]();
     private var renderedCellData: [Artical] {
         get {
             return dataInstance.allArticals!;
@@ -75,19 +77,41 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     
     func settingSearchBar() {
         self.view.addSubview(searchBar);
+        searchBar.delegate = self
         searchBar.searchBarStyle = .minimal;
         searchBar.placeholder = "Keywords here";
         searchBar.snp.makeConstraints{ make -> Void in
             make.leading.trailing.equalToSuperview();
             make.top.equalTo(self.view.safeAreaLayoutGuide);
         }
-        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField;
-        textFieldInsideSearchBar?.borderStyle = .line;
-        textFieldInsideSearchBar?.backgroundColor = .white;
-        textFieldInsideSearchBar?.layer.cornerRadius = 14;
-        textFieldInsideSearchBar?.layer.borderWidth = 1;
-        textFieldInsideSearchBar?.layer.masksToBounds = true;
-        textFieldInsideSearchBar?.layer.borderColor = UIColor.lightGray.cgColor;
+        if let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField {
+            textFieldInsideSearchBar.borderStyle = .line;
+            textFieldInsideSearchBar.backgroundColor = .white;
+            textFieldInsideSearchBar.layer.cornerRadius = 14;
+            textFieldInsideSearchBar.layer.borderWidth = 1;
+            textFieldInsideSearchBar.layer.masksToBounds = true;
+            textFieldInsideSearchBar.layer.borderColor = UIColor.lightGray.cgColor;
+            
+            if let clearButton = textFieldInsideSearchBar.value(forKey: "clearButton") as? UIButton {
+                clearButton.addTarget(self, action: #selector(revertSearchMode), for: .touchUpInside)
+            }
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        APIUtils.searchArticle(keywords: searchText) { (transactions) in
+            self.searchResults = transactions
+            self.inSearchMode = true
+            self.tableView.reloadData()
+            #if DEBUG
+            print("Find \(transactions.count) result(s)")
+            #endif
+        }
+    }
+    
+    @objc func revertSearchMode() {
+        inSearchMode = false
+        self.tableView.reloadData()
     }
     
     func settingSegment() {
@@ -129,7 +153,6 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    // do something here;
     func addButton() {
         let rightButton = UIBarButtonItem(title: "\u{2022}\u{2022}\u{2022}", style: .plain, target: self, action: nil);
         rightButton.tintColor = .black;
@@ -151,7 +174,9 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if Bool(truncating: segments.selectedSegmentIndex as NSNumber) {
             return self.allArticlesInBlockchain.count - 1
-        }else{
+        } else if (inSearchMode) {
+            return searchResults.count
+        } else {
             return self.renderedCellData.count;
         }
     }
@@ -169,7 +194,15 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
             cell.lastModifiedTime.text = dateformatter.string(from: date)
             cell.statusLabel.text = "via: \(data.author)"
             cell.statusLabel.textColor = .lightGray
-        }else{
+        } else if (inSearchMode) {
+            let data = searchResults[indexPath.row]
+            cell.titleLable.text = data.title
+            cell.contentLable.text = data.content
+            let date = Date(timeIntervalSince1970: data.dateCreated)
+            cell.lastModifiedTime.text = dateformatter.string(from: date)
+            cell.statusLabel.text = "via: \(data.author)"
+            cell.statusLabel.textColor = .lightGray
+        } else {
             let data = self.renderedCellData[indexPath.row];
             cell.titleLable.text = data.title;
             cell.contentLable.text = data.content;
@@ -177,11 +210,11 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
             if( data.addressKey == nil ){
                 cell.statusLabel.text = "private";
                 cell.statusLabel.textColor = .lightGray;
-            }else{
+            } else {
                 if(data.dirty == true){
                     cell.statusLabel.text = "modified";
                     cell.statusLabel.textColor = .yellow;
-                }else{
+                } else{
                     cell.statusLabel.text = "publish";
                     cell.statusLabel.textColor = .green;
                 }

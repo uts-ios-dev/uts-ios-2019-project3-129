@@ -11,7 +11,7 @@ import SnapKit
 class NoteDetailedViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var articalData: Artical?;
-    let tx = textFileEdutior(showButton: true);
+    let tx = TextFileEdutior(showButton: true);
     var transaction : Transaction?
     
     override func loadView() {

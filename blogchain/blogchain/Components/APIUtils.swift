@@ -30,9 +30,9 @@ class APIUtils {
         }
     }
     
-    static func getArticlesFromUser(hash:String,completion: @escaping (_ blockchain: [Transaction])->Void) {
+    static func getArticlesFromUser(hash:String, completion: @escaping (_ blockchain: [Transaction]) -> Void) {
         Alamofire.request("\(hostAddr)api/articlesFrom/\(hash)", method: .get).responseData { response in
-            do{
+            do {
                 switch response.result {
                 case .success(let value):
                     let decoder = JSONDecoder()
@@ -41,7 +41,24 @@ class APIUtils {
                 case .failure(let error):
                     print(error)
                 }
-            }catch{
+            } catch {
+                print("error: \(error)")
+            }
+        }
+    }
+    
+    static func searchArticle(keywords: String, completion: @escaping (_ blockchain: [Transaction]) -> Void) {
+        Alamofire.request("\(hostAddr)api/search/\(keywords)", method: .get).responseData { response in
+            do {
+                switch response.result {
+                case .success(let value):
+                    let decoder = JSONDecoder()
+                    let jsonData = try decoder.decode([Transaction].self, from: value)
+                    completion(jsonData)
+                case .failure(let error):
+                    print(error)
+                }
+            } catch {
                 print("error: \(error)")
             }
         }

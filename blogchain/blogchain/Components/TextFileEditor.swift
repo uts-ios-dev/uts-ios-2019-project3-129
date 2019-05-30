@@ -8,7 +8,7 @@
 
 import SnapKit
 
-class textFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
+class TextFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
     let titleView = UITextField();
     let leftButton = UIButton();
     let contentView = UITextView();
@@ -20,7 +20,7 @@ class textFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
     init(showButton: Bool) {
         self.showButton = showButton;
         super.init(frame: CGRect());
-//        self.backgroundColor = .red;
+        //        self.backgroundColor = .red;
     }
     
     init(title: String, content: String, showButton: Bool, frame: CGRect) {
@@ -39,7 +39,7 @@ class textFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
     // back button is optional, setting in the init() with the parameter of showButton
     func viewInitial() {
         addTitle();
-//        addSaveButton();
+        //        addSaveButton();
         addContent();
     }
     
@@ -65,7 +65,7 @@ class textFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
                 make.height.equalToSuperview().multipliedBy(0.1);
                 make.width.equalToSuperview().multipliedBy(0.6);
             }
-        }else{
+        } else {
             titleView.snp.makeConstraints{ (make)->Void in
                 make.top.equalToSuperview();
                 make.centerX.equalToSuperview();
@@ -102,7 +102,7 @@ class textFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
             make.trailing.equalToSuperview();
             make.height.equalToSuperview().multipliedBy(0.1);
         }
-//        rightButton.backgroundColor = .white;
+        //        rightButton.backgroundColor = .white;
     }
     
     func addContent() {
@@ -116,8 +116,8 @@ class textFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
         contentView.isEditable = true;
         contentView.allowsEditingTextAttributes = true;
         contentView.font = .systemFont(ofSize: 16);
-//        contentView.backgroundColor = .green;
+        //        contentView.backgroundColor = .green;
     }
     
-
+    
 }

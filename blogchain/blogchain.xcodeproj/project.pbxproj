@@ -18,9 +18,9 @@
 		9AC477BC2292B1F7009B49FB /* UserRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477BB2292B1F7009B49FB /* UserRegisterController.swift */; };
 		9AC477BE2292B249009B49FB /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477BD2292B249009B49FB /* UserLoginViewController.swift */; };
 		9AC477C12292B30D009B49FB /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477C02292B30D009B49FB /* NewNoteViewController.swift */; };
-		9AC477C42292C4BC009B49FB /* textFileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477C32292C4BC009B49FB /* textFileEditor.swift */; };
+		9AC477C42292C4BC009B49FB /* TextFileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477C32292C4BC009B49FB /* TextFileEditor.swift */; };
 		9AC644CE2293B2AF00112225 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC644CD2293B2AF00112225 /* Config.swift */; };
-		9AC644D12293B3E900112225 /* dataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC644D02293B3E900112225 /* dataController.swift */; };
+		9AC644D12293B3E900112225 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC644D02293B3E900112225 /* DataController.swift */; };
 		9ADE2E30228F8EE60016291B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADE2E2F228F8EE60016291B /* AppDelegate.swift */; };
 		9ADE2E32228F8EE60016291B /* UserRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADE2E31228F8EE60016291B /* UserRootViewController.swift */; };
 		9ADE2E35228F8EE60016291B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADE2E33228F8EE60016291B /* Main.storyboard */; };
@@ -44,9 +44,9 @@
 		9AC477BB2292B1F7009B49FB /* UserRegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterController.swift; sourceTree = "<group>"; };
 		9AC477BD2292B249009B49FB /* UserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
 		9AC477C02292B30D009B49FB /* NewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
-		9AC477C32292C4BC009B49FB /* textFileEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textFileEditor.swift; sourceTree = "<group>"; };
+		9AC477C32292C4BC009B49FB /* TextFileEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFileEditor.swift; sourceTree = "<group>"; };
 		9AC644CD2293B2AF00112225 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		9AC644D02293B3E900112225 /* dataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataController.swift; sourceTree = "<group>"; };
+		9AC644D02293B3E900112225 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		9ADE2E2C228F8EE60016291B /* blogchain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blogchain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ADE2E2F228F8EE60016291B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9ADE2E31228F8EE60016291B /* UserRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRootViewController.swift; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 		9AC477C22292C49B009B49FB /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				9AC477C32292C4BC009B49FB /* textFileEditor.swift */,
+				9AC477C32292C4BC009B49FB /* TextFileEditor.swift */,
 				017AB292229D04F500665B1A /* APIUtils.swift */,
 			);
 			path = Components;
@@ -163,7 +163,7 @@
 		9AC644CF2293B3C300112225 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				9AC644D02293B3E900112225 /* dataController.swift */,
+				9AC644D02293B3E900112225 /* DataController.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -341,12 +341,12 @@
 				9AC477B72292ADD4009B49FB /* ChainRootViewController.swift in Sources */,
 				9AEBC58722940036000BF266 /* NoteDetailedViewController.swift in Sources */,
 				9AC477BC2292B1F7009B49FB /* UserRegisterController.swift in Sources */,
-				9AC477C42292C4BC009B49FB /* textFileEditor.swift in Sources */,
+				9AC477C42292C4BC009B49FB /* TextFileEditor.swift in Sources */,
 				9AC477C12292B30D009B49FB /* NewNoteViewController.swift in Sources */,
 				9AC644CE2293B2AF00112225 /* Config.swift in Sources */,
 				9ADE2E32228F8EE60016291B /* UserRootViewController.swift in Sources */,
 				9ADE2E30228F8EE60016291B /* AppDelegate.swift in Sources */,
-				9AC644D12293B3E900112225 /* dataController.swift in Sources */,
+				9AC644D12293B3E900112225 /* DataController.swift in Sources */,
 				017AB291229D045600665B1A /* Transaction.swift in Sources */,
 				017AB297229D0B5600665B1A /* BlockchainNode.swift in Sources */,
 			);

@@ -9,7 +9,7 @@
 import SnapKit
 
 class NewNoteViewController: UIViewController {
-    let tx = textFileEdutior(showButton: false);
+    let tx = TextFileEdutior(showButton: false);
     
     override func viewDidLoad() {
         super.viewDidLoad();

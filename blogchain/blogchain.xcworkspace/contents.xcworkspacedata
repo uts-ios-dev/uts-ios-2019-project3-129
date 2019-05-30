@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:blogchain/Database/Artical+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:blogchain/Database/Artical+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:blogchain.xcodeproj">
    </FileRef>
    <FileRef

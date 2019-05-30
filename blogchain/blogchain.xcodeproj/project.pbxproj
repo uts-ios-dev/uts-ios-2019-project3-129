@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -57,8 +57,6 @@
 		9ADE2E3E228F8EE70016291B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AEBC58622940036000BF266 /* NoteDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailedViewController.swift; sourceTree = "<group>"; };
 		D57393E72666268ED922CA9C /* Pods_blogchain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blogchain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D939591D229AAB3B008377FB /* Artical+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Artical+CoreDataProperties.swift"; path = "/Users/anluoridge/Library/Mobile Documents/com~apple~CloudDocs/UTS/iOS (Application Development in the iOS Environment)/Ass3/uts-ios-2019-project3-129/blogchain/blogchain/Artical+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		D939591E229AAB45008377FB /* Artical+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Artical+CoreDataClass.swift"; path = "/Users/anluoridge/Library/Mobile Documents/com~apple~CloudDocs/UTS/iOS (Application Development in the iOS Environment)/Ass3/uts-ios-2019-project3-129/blogchain/blogchain/Artical+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		DA892A61EAF16E66CE70F04D /* Pods-blogchain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blogchain.release.xcconfig"; path = "Target Support Files/Pods-blogchain/Pods-blogchain.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,8 +203,6 @@
 				9ADE2E3E228F8EE70016291B /* Info.plist */,
 				9ADE2E36228F8EE60016291B /* blogchain.xcdatamodeld */,
 				9AC644CD2293B2AF00112225 /* Config.swift */,
-				D939591E229AAB45008377FB /* Artical+CoreDataClass.swift */,
-				D939591D229AAB3B008377FB /* Artical+CoreDataProperties.swift */,
 			);
 			path = blogchain;
 			sourceTree = "<group>";

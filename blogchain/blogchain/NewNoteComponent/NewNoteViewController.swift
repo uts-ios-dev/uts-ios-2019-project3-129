@@ -53,7 +53,7 @@ class NewNoteViewController: UIViewController {
         let article = Article(title: title, author: author, sender: privateKey, category: category, content: content, isHide: false)
         // chain saving
         APIUtils.postArticle(article: article){ result in
-            // TODO: save to CoreData
+            // TODO: save the address to CoreData
             print("Article address: \(result.articleAddress)")
         }
     }

@@ -169,6 +169,13 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
             print(index);
             ArticalInstance.instance().deleteArtical(artical: self.renderedCellData[indexPath.row]);
             self.tableView.reloadData();
+            // chain deleting
+            let article = Article(title: "111", author: "Frank", sender: "test", category: "IpHONE", content: "Make blog great again!", isHide: true)
+            let articleAddress = "d754daeebb51bb4bb17f1ac39e47297e4b18c2291b77c95b3e1793e5de656720"
+            let updateArticle = UpdateArticle(address: articleAddress, article: article)
+            APIUtils.updateArticle(article: updateArticle){ success in
+                // TODO: HUD
+            }
         }
         more.backgroundColor = .red;
         

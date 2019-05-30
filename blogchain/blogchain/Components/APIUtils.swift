@@ -47,7 +47,7 @@ class APIUtils {
         }
     }
     
-    static func postArticle(article:Article, completion: @escaping (_ result: PostArticleResult)->Void) {
+    static func postArticle(article: Article, completion: @escaping (_ result: PostArticleResult)->Void) {
         let parameters: Parameters = try! FirestoreEncoder().encode(article)
 
         Alamofire.request("\(hostAddr)api/newArticle", method: .post,parameters: parameters).responseData { response in
@@ -66,7 +66,7 @@ class APIUtils {
         }
     }
     
-    static func updateArticle(article:UpdateArticle, completion: @escaping (_ success: Bool)->Void) {
+    static func updateArticle(article: UpdateArticle, completion: @escaping (_ success: Bool)->Void) {
         let parameters: Parameters = try! FirestoreEncoder().encode(article)
         
         Alamofire.request("\(hostAddr)api/updateArticle", method: .post,parameters: parameters).responseData { response in
@@ -78,11 +78,5 @@ class APIUtils {
                 completion(false)
             }
         }
-    }
-    
-    static func deleteArticle(article : UpdateArticle, completion: @escaping (_ success: Bool)->Void) {
-        var deleteArticle = article
-        deleteArticle.isHide = true
-        updateArticle(article: deleteArticle, completion: completion)
     }
 }

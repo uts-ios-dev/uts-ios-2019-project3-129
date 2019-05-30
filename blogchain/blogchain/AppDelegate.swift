@@ -30,17 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             APIUtils.updateArticle(article: updateArticle){ success in
                 print("------------")
                 print("Success: \(success)")
-                APIUtils.deleteArticle(article: updateArticle){ success in
-                    print("------------")
-                    print("Delete: \(success)")
-                    APIUtils.getBlockchain() { blockchain in
-                        print("------------")
-                        print("Get Blockchain")
-                        print(blockchain.blocks[1].transactions[0].content)
-                        print(blockchain.blocks[1].transactions[0].isHide)
-                    }
-                    
-                }
             }
         }
         

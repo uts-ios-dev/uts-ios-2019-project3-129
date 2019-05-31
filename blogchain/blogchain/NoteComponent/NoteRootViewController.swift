@@ -10,6 +10,12 @@ import SnapKit
 
 class NoteRootViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
+    enum SearchType {
+        case none
+        case local
+        case server
+    }
+    
     private let dataInstance = ArticalInstance.instance();
     private var allArticlesInBlockchain: [Block] = []
     private var headerView = UIView();
@@ -17,13 +23,15 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     private let tableView = UITableView();
     private let bottomBar = UIView();
     private let segments = UISegmentedControl(items:["Personal", "All"]);
-    private var inSearchMode = false;
-    private var searchResults = [Transaction]();
+//    private var inSearchMode = false;
+    private var serverSearchResults = [Transaction]();
+    private var localSearchResults = [Artical]();
     private var renderedCellData: [Artical] {
         get {
             return dataInstance.allArticals!;
         }
     }
+    private var searchType = SearchType.none
     
     override func loadView() {
         super.loadView();
@@ -99,18 +107,33 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        APIUtils.searchArticle(keywords: searchText) { (transactions) in
-            self.searchResults = transactions
-            self.inSearchMode = true
+        if searchText.isEmpty {
+            revertSearchMode()
+            return
+        }
+        if inAllTab() {
+            self.searchType = SearchType.server
+            APIUtils.searchArticle(keywords: searchText) { (transactions) in
+                self.serverSearchResults = transactions
+                self.tableView.reloadData()
+                #if DEBUG
+                print("Find \(transactions.count) result(s)")
+                #endif
+            }
+        } else {
+            self.searchType = SearchType.local
+            print("local")
+            localSearchResults = dataInstance.searchArticles(keyword: searchText)
             self.tableView.reloadData()
             #if DEBUG
-            print("Find \(transactions.count) result(s)")
+            print("Find \(localSearchResults.count) result(s)")
             #endif
         }
     }
     
     @objc func revertSearchMode() {
-        inSearchMode = false
+        searchType = .none
+        serverSearchResults.removeAll()
         self.tableView.reloadData()
     }
     
@@ -144,6 +167,10 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         segments.addTarget(self, action: #selector(segmentedControlChange(_:)), for: .valueChanged);
     }
     
+    func inAllTab() -> Bool {
+        return Bool(truncating: self.segments.selectedSegmentIndex as NSNumber)
+    }
+    
     func settingTable() {
         self.view.addSubview(tableView);
         tableView.snp.makeConstraints{ make -> Void in
@@ -165,68 +192,91 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     func loadAllArticles() {
         APIUtils.getBlockchain { blockchan in
             self.allArticlesInBlockchain = blockchan.blocks
-            if Bool(truncating: self.segments.selectedSegmentIndex as NSNumber) {
+            if self.inAllTab() {
                 self.tableView.reloadData()
             }
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if Bool(truncating: segments.selectedSegmentIndex as NSNumber) {
+        if searchType != .none {
+            if searchType == .server {
+                return serverSearchResults.count
+            } else {
+                return localSearchResults.count
+            }
+        } else if inAllTab() {
             return self.allArticlesInBlockchain.count - 1
-        } else if (inSearchMode) {
-            return searchResults.count
         } else {
             return self.renderedCellData.count;
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteRootTableViewCell", for: indexPath) as! NoteRootTableViewCell;
-        let dateformatter = DateFormatter()
-        dateformatter.dateStyle = .short
-        dateformatter.timeStyle = .short
-        if Bool(truncating: segments.selectedSegmentIndex as NSNumber) {
-            let data = self.allArticlesInBlockchain[indexPath.row + 1].transactions.last!
-            cell.titleLable.text = data.title
-            cell.contentLable.text = data.content
-            let date = Date(timeIntervalSince1970: data.dateCreated)
-            cell.lastModifiedTime.text = dateformatter.string(from: date)
-            cell.statusLabel.text = "via: \(data.author)"
-            cell.statusLabel.textColor = .lightGray
-        } else if (inSearchMode) {
-            let data = searchResults[indexPath.row]
-            cell.titleLable.text = data.title
-            cell.contentLable.text = data.content
-            let date = Date(timeIntervalSince1970: data.dateCreated)
-            cell.lastModifiedTime.text = dateformatter.string(from: date)
-            cell.statusLabel.text = "via: \(data.author)"
-            cell.statusLabel.textColor = .lightGray
-        } else {
-            let data = self.renderedCellData[indexPath.row];
-            cell.titleLable.text = data.title;
-            cell.contentLable.text = data.content;
-            cell.lastModifiedTime.text = dateformatter.string(from: data.modified!);
-            if ( data.addressKey == nil ) {
-                cell.statusLabel.text = "private";
-                cell.statusLabel.textColor = .lightGray;
+        var cell = tableView.dequeueReusableCell(withIdentifier: "NoteRootTableViewCell", for: indexPath) as! NoteRootTableViewCell;
+       
+        if (searchType != .none) {
+            if searchType == .server {
+                if serverSearchResults.count > indexPath.row {
+                    let data = serverSearchResults[indexPath.row]
+                    cell = getTableCellOfAllTab(cell: cell, data: data)
+                }
             } else {
-                if (data.dirty) {
-                    cell.statusLabel.text = "modified";
-                    cell.statusLabel.textColor = .yellow;
-                } else {
-                    cell.statusLabel.text = "publish";
-                    cell.statusLabel.textColor = .green;
+                // local search
+                if localSearchResults.count > indexPath.row {
+                    let data = localSearchResults[indexPath.row]
+                    cell = getTableCellOfPersonalTab(cell: cell, data: data)
                 }
             }
+        } else if inAllTab() {
+            let data = self.allArticlesInBlockchain[indexPath.row + 1].transactions.last!
+            cell = getTableCellOfAllTab(cell: cell, data: data)
+        } else {
+            let data = self.renderedCellData[indexPath.row]
+            cell = getTableCellOfPersonalTab(cell: cell, data: data)
         }
        
         return cell
     }
     
+    func getTableCellOfAllTab(cell: NoteRootTableViewCell , data : Transaction) -> NoteRootTableViewCell {
+        let dateformatter = DateFormatter()
+        dateformatter.dateStyle = .short
+        dateformatter.timeStyle = .short
+        cell.titleLable.text = data.title
+        cell.contentLable.text = data.content
+        let date = Date(timeIntervalSince1970: data.dateCreated)
+        cell.lastModifiedTime.text = dateformatter.string(from: date)
+        cell.statusLabel.text = "via: \(data.author)"
+        cell.statusLabel.textColor = .lightGray
+        return cell
+    }
+    
+     func getTableCellOfPersonalTab(cell: NoteRootTableViewCell , data : Artical) -> NoteRootTableViewCell {
+        let dateformatter = DateFormatter()
+        dateformatter.dateStyle = .short
+        dateformatter.timeStyle = .short
+        cell.titleLable.text = data.title;
+        cell.contentLable.text = data.content;
+        cell.lastModifiedTime.text = dateformatter.string(from: data.modified!)
+        if ( data.addressKey == nil ) {
+            cell.statusLabel.text = "private";
+            cell.statusLabel.textColor = .lightGray;
+        } else {
+            if (data.dirty) {
+                cell.statusLabel.text = "modified";
+                cell.statusLabel.textColor = .yellow;
+            } else {
+                cell.statusLabel.text = "publish";
+                cell.statusLabel.textColor = .green;
+            }
+        }
+        return cell
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let noteDetailed = NoteDetailedViewController();
-        if Bool(truncating: segments.selectedSegmentIndex as NSNumber) {
+        if inAllTab() {
             noteDetailed.transaction = self.allArticlesInBlockchain[indexPath.row + 1].transactions.last
         } else {
             noteDetailed.articalData = self.renderedCellData[indexPath.row];
@@ -236,7 +286,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        if Bool(truncating: segments.selectedSegmentIndex as NSNumber) {
+        if inAllTab() || searchType == .local {
             return []
         }
         let more = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
@@ -259,7 +309,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        if Bool(truncating: segments.selectedSegmentIndex as NSNumber) {
+        if inAllTab() || searchType == .local {
             return nil
         }
         let closeAction = UIContextualAction(style: .normal, title:  "Upload", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in

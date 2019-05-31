@@ -41,6 +41,21 @@ class ArticalInstance {
         self.articals = fetchAllArtical();
     }
     
+    func searchArticles(keyword: String) -> [Artical] {
+        let fetch : NSFetchRequest<Artical> = Artical.fetchRequest()
+        let predicate = NSPredicate(format: "(%K contains [c] %@) OR (%K contains [c] %@)", #keyPath(Artical.title), keyword, #keyPath(Artical.content), keyword)
+        
+        fetch.predicate = predicate
+        let context = persistentContainer.viewContext
+        var articles = [Artical]()
+        do {
+            articles = try context.fetch(fetch)
+        } catch {
+            print("search with error: \(error)")
+        }
+        return articles
+    }
+    
     func saveArtical(instance: Artical, title:String?, content: String?) {
         let now = Date();
         instance.modified = now;

@@ -125,7 +125,7 @@ class TextFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
     func addMarkDownContent() {
         let frame = CGRect(x: 20, y: titleView.frame.maxY, width: self.frame.size.width-40, height: self.frame.size.height-30)
         mdEditor = Notepad(frame: frame, themeFile: "solarized-light")
-        mdEditor?.isEditable = false
+        mdEditor?.isEditable = true
         mdEditor?.textContainerInset = UIEdgeInsets(top: 40, left: 20, bottom: 40, right: 20)
         self.addSubview(mdEditor!)
     }

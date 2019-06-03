@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A2407FE229B74EF00EBAA3E /* keyChainExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2407FD229B74EF00EBAA3E /* keyChainExtension.swift */; };
+		9A3801B8229D22D7004D40AC /* hashExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3801B7229D22D7004D40AC /* hashExtension.swift */; };
+		9A3801BA229F8C4C004D40AC /* pinComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3801B9229F8C4C004D40AC /* pinComponent.swift */; };
+		9A3801BC229FD046004D40AC /* privateKeyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3801BB229FD046004D40AC /* privateKeyComponent.swift */; };
 		9A6246922293C59F001A7A78 /* NoteRootTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6246912293C59F001A7A78 /* NoteRootTableViewCell.swift */; };
+		9A673D8F22A3DF6E00BFB5B2 /* keyBoardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A673D8E22A3DF6E00BFB5B2 /* keyBoardComponent.swift */; };
+		9A673D9122A3EDC000BFB5B2 /* passwordComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A673D9022A3EDC000BFB5B2 /* passwordComponent.swift */; };
 		9AC477B52292AD7F009B49FB /* NoteRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477B42292AD7F009B49FB /* NoteRootViewController.swift */; };
 		9AC477B72292ADD4009B49FB /* ChainRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477B62292ADD4009B49FB /* ChainRootViewController.swift */; };
-		9AC477BC2292B1F7009B49FB /* UserRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477BB2292B1F7009B49FB /* UserRegisterController.swift */; };
-		9AC477BE2292B249009B49FB /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477BD2292B249009B49FB /* UserLoginViewController.swift */; };
+		9AC477BC2292B1F7009B49FB /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477BB2292B1F7009B49FB /* UserLoginViewController.swift */; };
+		9AC477BE2292B249009B49FB /* UserInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477BD2292B249009B49FB /* UserInitialViewController.swift */; };
 		9AC477C12292B30D009B49FB /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477C02292B30D009B49FB /* NewNoteViewController.swift */; };
 		9AC477C42292C4BC009B49FB /* textFileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477C32292C4BC009B49FB /* textFileEditor.swift */; };
 		9AC644CE2293B2AF00112225 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC644CD2293B2AF00112225 /* Config.swift */; };
@@ -28,11 +34,17 @@
 
 /* Begin PBXFileReference section */
 		006971CECA7854C38F2817D1 /* Pods-blogchain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blogchain.debug.xcconfig"; path = "Target Support Files/Pods-blogchain/Pods-blogchain.debug.xcconfig"; sourceTree = "<group>"; };
+		9A2407FD229B74EF00EBAA3E /* keyChainExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyChainExtension.swift; sourceTree = "<group>"; };
+		9A3801B7229D22D7004D40AC /* hashExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hashExtension.swift; sourceTree = "<group>"; };
+		9A3801B9229F8C4C004D40AC /* pinComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pinComponent.swift; sourceTree = "<group>"; };
+		9A3801BB229FD046004D40AC /* privateKeyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = privateKeyComponent.swift; sourceTree = "<group>"; };
 		9A6246912293C59F001A7A78 /* NoteRootTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRootTableViewCell.swift; sourceTree = "<group>"; };
+		9A673D8E22A3DF6E00BFB5B2 /* keyBoardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyBoardComponent.swift; sourceTree = "<group>"; };
+		9A673D9022A3EDC000BFB5B2 /* passwordComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passwordComponent.swift; sourceTree = "<group>"; };
 		9AC477B42292AD7F009B49FB /* NoteRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRootViewController.swift; sourceTree = "<group>"; };
 		9AC477B62292ADD4009B49FB /* ChainRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainRootViewController.swift; sourceTree = "<group>"; };
-		9AC477BB2292B1F7009B49FB /* UserRegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterController.swift; sourceTree = "<group>"; };
-		9AC477BD2292B249009B49FB /* UserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
+		9AC477BB2292B1F7009B49FB /* UserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
+		9AC477BD2292B249009B49FB /* UserInitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInitialViewController.swift; sourceTree = "<group>"; };
 		9AC477C02292B30D009B49FB /* NewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
 		9AC477C32292C4BC009B49FB /* textFileEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textFileEditor.swift; sourceTree = "<group>"; };
 		9AC644CD2293B2AF00112225 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -75,6 +87,8 @@
 			children = (
 				9AC477B82292B10C009B49FB /* LoginManagement */,
 				9ADE2E31228F8EE60016291B /* UserRootViewController.swift */,
+				9A2407FD229B74EF00EBAA3E /* keyChainExtension.swift */,
+				9A3801B7229D22D7004D40AC /* hashExtension.swift */,
 			);
 			path = UserComponent;
 			sourceTree = "<group>";
@@ -100,26 +114,30 @@
 		9AC477B82292B10C009B49FB /* LoginManagement */ = {
 			isa = PBXGroup;
 			children = (
-				9AC477BA2292B152009B49FB /* UserRegisterComponent */,
-				9AC477B92292B147009B49FB /* UserLogInComponent */,
+				9AC477BA2292B152009B49FB /* UserLoginComponent */,
+				9AC477B92292B147009B49FB /* UserInitComponent */,
 			);
 			path = LoginManagement;
 			sourceTree = "<group>";
 		};
-		9AC477B92292B147009B49FB /* UserLogInComponent */ = {
+		9AC477B92292B147009B49FB /* UserInitComponent */ = {
 			isa = PBXGroup;
 			children = (
-				9AC477BD2292B249009B49FB /* UserLoginViewController.swift */,
+				9AC477BD2292B249009B49FB /* UserInitialViewController.swift */,
+				9A3801B9229F8C4C004D40AC /* pinComponent.swift */,
+				9A3801BB229FD046004D40AC /* privateKeyComponent.swift */,
 			);
-			path = UserLogInComponent;
+			path = UserInitComponent;
 			sourceTree = "<group>";
 		};
-		9AC477BA2292B152009B49FB /* UserRegisterComponent */ = {
+		9AC477BA2292B152009B49FB /* UserLoginComponent */ = {
 			isa = PBXGroup;
 			children = (
-				9AC477BB2292B1F7009B49FB /* UserRegisterController.swift */,
+				9AC477BB2292B1F7009B49FB /* UserLoginViewController.swift */,
+				9A673D8E22A3DF6E00BFB5B2 /* keyBoardComponent.swift */,
+				9A673D9022A3EDC000BFB5B2 /* passwordComponent.swift */,
 			);
-			path = UserRegisterComponent;
+			path = UserLoginComponent;
 			sourceTree = "<group>";
 		};
 		9AC477BF2292B2EA009B49FB /* NewNoteComponent */ = {
@@ -313,18 +331,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AC477BE2292B249009B49FB /* UserLoginViewController.swift in Sources */,
+				9AC477BE2292B249009B49FB /* UserInitialViewController.swift in Sources */,
 				9AC477B52292AD7F009B49FB /* NoteRootViewController.swift in Sources */,
+				9A3801BC229FD046004D40AC /* privateKeyComponent.swift in Sources */,
 				9ADE2E38228F8EE60016291B /* blogchain.xcdatamodeld in Sources */,
+				9A673D8F22A3DF6E00BFB5B2 /* keyBoardComponent.swift in Sources */,
+				9A2407FE229B74EF00EBAA3E /* keyChainExtension.swift in Sources */,
+				9A673D9122A3EDC000BFB5B2 /* passwordComponent.swift in Sources */,
 				9A6246922293C59F001A7A78 /* NoteRootTableViewCell.swift in Sources */,
 				9AC477B72292ADD4009B49FB /* ChainRootViewController.swift in Sources */,
 				9AEBC58722940036000BF266 /* NoteDetailedViewController.swift in Sources */,
-				9AC477BC2292B1F7009B49FB /* UserRegisterController.swift in Sources */,
+				9A3801BA229F8C4C004D40AC /* pinComponent.swift in Sources */,
+				9AC477BC2292B1F7009B49FB /* UserLoginViewController.swift in Sources */,
 				9AC477C42292C4BC009B49FB /* textFileEditor.swift in Sources */,
 				9AC477C12292B30D009B49FB /* NewNoteViewController.swift in Sources */,
 				9AC644CE2293B2AF00112225 /* Config.swift in Sources */,
 				9ADE2E32228F8EE60016291B /* UserRootViewController.swift in Sources */,
 				9ADE2E30228F8EE60016291B /* AppDelegate.swift in Sources */,
+				9A3801B8229D22D7004D40AC /* hashExtension.swift in Sources */,
 				9AC644D12293B3E900112225 /* dataController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

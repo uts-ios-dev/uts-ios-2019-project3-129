@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,11 @@
 		9A3801B8229D22D7004D40AC /* hashExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3801B7229D22D7004D40AC /* hashExtension.swift */; };
 		9A3801BA229F8C4C004D40AC /* pinComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3801B9229F8C4C004D40AC /* pinComponent.swift */; };
 		9A3801BC229FD046004D40AC /* privateKeyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3801BB229FD046004D40AC /* privateKeyComponent.swift */; };
+		017AB28F229D03E400665B1A /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB28E229D03E400665B1A /* Block.swift */; };
+		017AB291229D045600665B1A /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB290229D045600665B1A /* Transaction.swift */; };
+		017AB293229D04F500665B1A /* APIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB292229D04F500665B1A /* APIUtils.swift */; };
+		017AB295229D0AFD00665B1A /* Blockchain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB294229D0AFD00665B1A /* Blockchain.swift */; };
+		017AB297229D0B5600665B1A /* BlockchainNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB296229D0B5500665B1A /* BlockchainNode.swift */; };
 		9A6246922293C59F001A7A78 /* NoteRootTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6246912293C59F001A7A78 /* NoteRootTableViewCell.swift */; };
 		9A673D8F22A3DF6E00BFB5B2 /* keyBoardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A673D8E22A3DF6E00BFB5B2 /* keyBoardComponent.swift */; };
 		9A673D9122A3EDC000BFB5B2 /* passwordComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A673D9022A3EDC000BFB5B2 /* passwordComponent.swift */; };
@@ -19,9 +24,9 @@
 		9AC477BC2292B1F7009B49FB /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477BB2292B1F7009B49FB /* UserLoginViewController.swift */; };
 		9AC477BE2292B249009B49FB /* UserInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477BD2292B249009B49FB /* UserInitialViewController.swift */; };
 		9AC477C12292B30D009B49FB /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477C02292B30D009B49FB /* NewNoteViewController.swift */; };
-		9AC477C42292C4BC009B49FB /* textFileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477C32292C4BC009B49FB /* textFileEditor.swift */; };
+		9AC477C42292C4BC009B49FB /* TextFileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC477C32292C4BC009B49FB /* TextFileEditor.swift */; };
 		9AC644CE2293B2AF00112225 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC644CD2293B2AF00112225 /* Config.swift */; };
-		9AC644D12293B3E900112225 /* dataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC644D02293B3E900112225 /* dataController.swift */; };
+		9AC644D12293B3E900112225 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC644D02293B3E900112225 /* DataController.swift */; };
 		9ADE2E30228F8EE60016291B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADE2E2F228F8EE60016291B /* AppDelegate.swift */; };
 		9ADE2E32228F8EE60016291B /* UserRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADE2E31228F8EE60016291B /* UserRootViewController.swift */; };
 		9ADE2E35228F8EE60016291B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADE2E33228F8EE60016291B /* Main.storyboard */; };
@@ -29,7 +34,7 @@
 		9ADE2E3A228F8EE70016291B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ADE2E39228F8EE70016291B /* Assets.xcassets */; };
 		9ADE2E3D228F8EE70016291B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADE2E3B228F8EE70016291B /* LaunchScreen.storyboard */; };
 		9AEBC58722940036000BF266 /* NoteDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBC58622940036000BF266 /* NoteDetailedViewController.swift */; };
-		BD7D00A2A8DAC098DD5A3821 /* Pods_blogchain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57393E72666268ED922CA9C /* Pods_blogchain.framework */; };
+		DF9A15C6BEE0A9EA1DB3664C /* Pods_blogchain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D24BCF7A0C8F61DC95EF36 /* Pods_blogchain.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +43,12 @@
 		9A3801B7229D22D7004D40AC /* hashExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hashExtension.swift; sourceTree = "<group>"; };
 		9A3801B9229F8C4C004D40AC /* pinComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pinComponent.swift; sourceTree = "<group>"; };
 		9A3801BB229FD046004D40AC /* privateKeyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = privateKeyComponent.swift; sourceTree = "<group>"; };
+		017AB28E229D03E400665B1A /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		017AB290229D045600665B1A /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		017AB292229D04F500665B1A /* APIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUtils.swift; sourceTree = "<group>"; };
+		017AB294229D0AFD00665B1A /* Blockchain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blockchain.swift; sourceTree = "<group>"; };
+		017AB296229D0B5500665B1A /* BlockchainNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockchainNode.swift; sourceTree = "<group>"; };
+		1BF9A040F700F69408AFF4FF /* Pods-blogchain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blogchain.release.xcconfig"; path = "Target Support Files/Pods-blogchain/Pods-blogchain.release.xcconfig"; sourceTree = "<group>"; };
 		9A6246912293C59F001A7A78 /* NoteRootTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRootTableViewCell.swift; sourceTree = "<group>"; };
 		9A673D8E22A3DF6E00BFB5B2 /* keyBoardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyBoardComponent.swift; sourceTree = "<group>"; };
 		9A673D9022A3EDC000BFB5B2 /* passwordComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passwordComponent.swift; sourceTree = "<group>"; };
@@ -46,9 +57,9 @@
 		9AC477BB2292B1F7009B49FB /* UserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
 		9AC477BD2292B249009B49FB /* UserInitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInitialViewController.swift; sourceTree = "<group>"; };
 		9AC477C02292B30D009B49FB /* NewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
-		9AC477C32292C4BC009B49FB /* textFileEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textFileEditor.swift; sourceTree = "<group>"; };
+		9AC477C32292C4BC009B49FB /* TextFileEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFileEditor.swift; sourceTree = "<group>"; };
 		9AC644CD2293B2AF00112225 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		9AC644D02293B3E900112225 /* dataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataController.swift; sourceTree = "<group>"; };
+		9AC644D02293B3E900112225 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		9ADE2E2C228F8EE60016291B /* blogchain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blogchain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ADE2E2F228F8EE60016291B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9ADE2E31228F8EE60016291B /* UserRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRootViewController.swift; sourceTree = "<group>"; };
@@ -58,8 +69,8 @@
 		9ADE2E3C228F8EE70016291B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9ADE2E3E228F8EE70016291B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AEBC58622940036000BF266 /* NoteDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailedViewController.swift; sourceTree = "<group>"; };
-		D57393E72666268ED922CA9C /* Pods_blogchain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blogchain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA892A61EAF16E66CE70F04D /* Pods-blogchain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blogchain.release.xcconfig"; path = "Target Support Files/Pods-blogchain/Pods-blogchain.release.xcconfig"; sourceTree = "<group>"; };
+		C0D24BCF7A0C8F61DC95EF36 /* Pods_blogchain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blogchain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5A113A53582C87B3ACDC866 /* Pods-blogchain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blogchain.debug.xcconfig"; path = "Target Support Files/Pods-blogchain/Pods-blogchain.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,17 +78,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD7D00A2A8DAC098DD5A3821 /* Pods_blogchain.framework in Frameworks */,
+				DF9A15C6BEE0A9EA1DB3664C /* Pods_blogchain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		058B83799F09FDE819DEDCC8 /* Frameworks */ = {
+		017AB28D229D03A600665B1A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D57393E72666268ED922CA9C /* Pods_blogchain.framework */,
+				017AB28E229D03E400665B1A /* Block.swift */,
+				017AB290229D045600665B1A /* Transaction.swift */,
+				017AB294229D0AFD00665B1A /* Blockchain.swift */,
+				017AB296229D0B5500665B1A /* BlockchainNode.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		51661209DFECD596E7CCF7DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0D24BCF7A0C8F61DC95EF36 /* Pods_blogchain.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -151,7 +173,8 @@
 		9AC477C22292C49B009B49FB /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				9AC477C32292C4BC009B49FB /* textFileEditor.swift */,
+				9AC477C32292C4BC009B49FB /* TextFileEditor.swift */,
+				017AB292229D04F500665B1A /* APIUtils.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -159,7 +182,7 @@
 		9AC644CF2293B3C300112225 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				9AC644D02293B3E900112225 /* dataController.swift */,
+				9AC644D02293B3E900112225 /* DataController.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -170,7 +193,7 @@
 				9ADE2E2E228F8EE60016291B /* blogchain */,
 				9ADE2E2D228F8EE60016291B /* Products */,
 				B0313DC59C11C58F1061A2A5 /* Pods */,
-				058B83799F09FDE819DEDCC8 /* Frameworks */,
+				51661209DFECD596E7CCF7DC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -185,6 +208,7 @@
 		9ADE2E2E228F8EE60016291B /* blogchain */ = {
 			isa = PBXGroup;
 			children = (
+				017AB28D229D03A600665B1A /* Models */,
 				9AC644CF2293B3C300112225 /* Database */,
 				9AC477C22292C49B009B49FB /* Components */,
 				9AC477BF2292B2EA009B49FB /* NewNoteComponent */,
@@ -205,8 +229,8 @@
 		B0313DC59C11C58F1061A2A5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				006971CECA7854C38F2817D1 /* Pods-blogchain.debug.xcconfig */,
-				DA892A61EAF16E66CE70F04D /* Pods-blogchain.release.xcconfig */,
+				E5A113A53582C87B3ACDC866 /* Pods-blogchain.debug.xcconfig */,
+				1BF9A040F700F69408AFF4FF /* Pods-blogchain.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -218,11 +242,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9ADE2E41228F8EE70016291B /* Build configuration list for PBXNativeTarget "blogchain" */;
 			buildPhases = (
-				CBD19352BB32E44E237993CD /* [CP] Check Pods Manifest.lock */,
+				7C143E4DE8CDE6FB7BD1BFA4 /* [CP] Check Pods Manifest.lock */,
 				9ADE2E28228F8EE60016291B /* Sources */,
 				9ADE2E29228F8EE60016291B /* Frameworks */,
 				9ADE2E2A228F8EE60016291B /* Resources */,
-				AA20F5E8FA7C753281EFE8DD /* [CP] Embed Pods Frameworks */,
+				BA8C8E7055F082BBB91BF653 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -280,29 +304,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AA20F5E8FA7C753281EFE8DD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-blogchain/Pods-blogchain-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-blogchain/Pods-blogchain-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CBD19352BB32E44E237993CD /* [CP] Check Pods Manifest.lock */ = {
+		7C143E4DE8CDE6FB7BD1BFA4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -324,6 +326,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BA8C8E7055F082BBB91BF653 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-blogchain/Pods-blogchain-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-blogchain/Pods-blogchain-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-blogchain/Pods-blogchain-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -331,7 +350,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AC477BE2292B249009B49FB /* UserInitialViewController.swift in Sources */,
+				9AC477BE2292B249009B49FB /* UserLoginViewController.swift in Sources */,
+				017AB28F229D03E400665B1A /* Block.swift in Sources */,
 				9AC477B52292AD7F009B49FB /* NoteRootViewController.swift in Sources */,
 				9A3801BC229FD046004D40AC /* privateKeyComponent.swift in Sources */,
 				9ADE2E38228F8EE60016291B /* blogchain.xcdatamodeld in Sources */,
@@ -339,17 +359,21 @@
 				9A2407FE229B74EF00EBAA3E /* keyChainExtension.swift in Sources */,
 				9A673D9122A3EDC000BFB5B2 /* passwordComponent.swift in Sources */,
 				9A6246922293C59F001A7A78 /* NoteRootTableViewCell.swift in Sources */,
-				9AC477B72292ADD4009B49FB /* ChainRootViewController.swift in Sources */,
 				9AEBC58722940036000BF266 /* NoteDetailedViewController.swift in Sources */,
 				9A3801BA229F8C4C004D40AC /* pinComponent.swift in Sources */,
 				9AC477BC2292B1F7009B49FB /* UserLoginViewController.swift in Sources */,
-				9AC477C42292C4BC009B49FB /* textFileEditor.swift in Sources */,
+				017AB295229D0AFD00665B1A /* Blockchain.swift in Sources */,
+				017AB293229D04F500665B1A /* APIUtils.swift in Sources */,
+				9AC477B72292ADD4009B49FB /* ChainRootViewController.swift in Sources */,
+				9AC477C42292C4BC009B49FB /* TextFileEditor.swift in Sources */,
 				9AC477C12292B30D009B49FB /* NewNoteViewController.swift in Sources */,
 				9AC644CE2293B2AF00112225 /* Config.swift in Sources */,
 				9ADE2E32228F8EE60016291B /* UserRootViewController.swift in Sources */,
 				9ADE2E30228F8EE60016291B /* AppDelegate.swift in Sources */,
 				9A3801B8229D22D7004D40AC /* hashExtension.swift in Sources */,
-				9AC644D12293B3E900112225 /* dataController.swift in Sources */,
+				9AC644D12293B3E900112225 /* DataController.swift in Sources */,
+				017AB291229D045600665B1A /* Transaction.swift in Sources */,
+				017AB297229D0B5600665B1A /* BlockchainNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,7 +517,7 @@
 		};
 		9ADE2E42228F8EE70016291B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 006971CECA7854C38F2817D1 /* Pods-blogchain.debug.xcconfig */;
+			baseConfigurationReference = E5A113A53582C87B3ACDC866 /* Pods-blogchain.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -512,7 +536,7 @@
 		};
 		9ADE2E43228F8EE70016291B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA892A61EAF16E66CE70F04D /* Pods-blogchain.release.xcconfig */;
+			baseConfigurationReference = 1BF9A040F700F69408AFF4FF /* Pods-blogchain.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

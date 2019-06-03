@@ -9,7 +9,7 @@
 import SnapKit
 
 class NewNoteViewController: UIViewController {
-    let tx = textFileEdutior(showButton: false);
+    let tx = TextFileEdutior(showButton: false);
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -28,8 +28,34 @@ class NewNoteViewController: UIViewController {
         tx.leftButton.addTarget(self, action: #selector(cleanAll), for: .touchUpInside);
     }
     
-    @objc func savaArtical(){
+    @objc func savaArtical() {
+        // TODO: Refactor
+        let author = "ANONYMOUS"
+        let privateKey = "sender-hash-test"
+        let category = "Dafault"
+        
+        guard let title = tx.titleView.text else {
+                // TODO: HUD
+                #if DEBUG
+                print("Missing the title")
+                #endif
+                return
+        }
+        guard let content = tx.contentView.text else {
+            // TODO: HUD
+            #if DEBUG
+            print("Missing the content")
+            #endif
+            return
+        }
+        // local saving
         ArticalInstance.instance().saveArtical(title: tx.titleView.text, content: tx.contentView.text);
+        let article = Article(title: title, author: author, sender: privateKey, category: category, content: content, isHide: false)
+        // chain saving
+        APIUtils.postArticle(article: article){ result in
+            // TODO: save the address to CoreData
+            print("Article address: \(result.articleAddress)")
+        }
     }
     
     @objc func cleanAll(){

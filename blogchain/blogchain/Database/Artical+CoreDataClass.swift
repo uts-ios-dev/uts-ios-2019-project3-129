@@ -2,7 +2,7 @@
 //  Artical+CoreDataClass.swift
 //  
 //
-//  Created by 李宇沛 on 21/5/19.
+//  Created by AnLuoRidge on 30/5/19.
 //
 //
 

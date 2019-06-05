@@ -36,11 +36,13 @@ class UserRootViewController: UIViewController {
             self.parent?.present(v, animated: true, completion: nil);
         } else {
             //validation key code
-            let v = UserLoginViewController();
-            v.modalPresentationStyle = .overCurrentContext;
-            v.view.backgroundColor = UIColor(red: 100, green: 100, blue: 100, alpha: 0.4);
-            v.callbackSuccess = {v.selfDismiss()};
-            self.tabBarController?.present(v, animated: true, completion: nil);
+            let v = UserLoginViewController()
+            v.modalPresentationStyle = .overCurrentContext
+            v.view.backgroundColor = UIColor(red: 100, green: 100, blue: 100, alpha: 0.4)
+            v.callbackSuccess = {
+                v.selfDismiss()
+            }
+            self.tabBarController?.present(v, animated: true, completion: nil)
         }
     }
     

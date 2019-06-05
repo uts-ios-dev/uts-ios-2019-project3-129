@@ -9,6 +9,6 @@
 import Foundation
 
 struct Blockchain: Codable {
-    let blocks : [Block]
-    let nodes  : [BlockchainNode]
+    let blocks: [Block]
+    let nodes: [BlockchainNode]
 }

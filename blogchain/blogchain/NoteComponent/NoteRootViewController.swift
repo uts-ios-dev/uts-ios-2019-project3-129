@@ -28,6 +28,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     private var localSearchResults = [Artical]();
     private var renderedCellData: [Artical] {
         get {
+            if(!searchBar.text!.isEmpty){ return localSearchResults; }
             return dataInstance.allArticals!;
         }
     }

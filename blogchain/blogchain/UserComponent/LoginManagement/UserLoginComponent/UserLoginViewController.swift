@@ -22,12 +22,13 @@ class UserLoginViewController: UIViewController {
             passwordBoard.updateLabel(content: pinCode);
             if(pinCode.count == 4){
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.08) {
-                    if(self.callback4C == nil){self.validation();}
+                    if(self.callback4C == nil){self.validation(sample: self.truePinCode!);}
                     else {self.callback4C!()}
                 }
             }
         }
     };
+    var rePinCode: String?;
     var truePinCode: String?;
     
     override func loadView() {
@@ -91,8 +92,8 @@ class UserLoginViewController: UIViewController {
         }
     }
 
-    func validation() {
-        if(self.pinCode == self.truePinCode){
+    func validation(sample: String) {
+        if(self.pinCode == sample){
             if (self.callbackSuccess != nil){ self.callbackSuccess!(); }
         } else {
             invalied();
@@ -115,6 +116,23 @@ class UserLoginViewController: UIViewController {
     
     func onButtonPress(input: String) {
         self.pinCode = "\(self.pinCode)\(input)";
+    }
+    
+    func changePinCode() {
+        self.pinCode = "";
+        self.noteLabel.text = "Enter your new pin code";
+        self.callback4C = {
+            self.rePinCode = self.pinCode;
+            self.pinCode = "";
+            self.noteLabel.text = "Conform your pin code";
+            self.callback4C = {
+                self.callbackSuccess = {
+                    _ = keyChainExtension.updateKeyChainItem(account: keyChainExtension.account.pinCode.rawValue, newKey: self.rePinCode!);
+                    self.selfDismiss();
+                }
+                self.validation(sample: self.rePinCode!);
+            }
+        }
     }
     
     func bioAutho() {

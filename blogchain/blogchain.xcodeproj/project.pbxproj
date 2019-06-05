@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A2407FE229B74EF00EBAA3E /* keyChainExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2407FD229B74EF00EBAA3E /* keyChainExtension.swift */; };
-		9A3801B8229D22D7004D40AC /* hashExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3801B7229D22D7004D40AC /* hashExtension.swift */; };
-		9A3801BA229F8C4C004D40AC /* pinComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3801B9229F8C4C004D40AC /* pinComponent.swift */; };
-		9A3801BC229FD046004D40AC /* privateKeyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3801BB229FD046004D40AC /* privateKeyComponent.swift */; };
 		017AB28F229D03E400665B1A /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB28E229D03E400665B1A /* Block.swift */; };
 		017AB291229D045600665B1A /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB290229D045600665B1A /* Transaction.swift */; };
 		017AB293229D04F500665B1A /* APIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB292229D04F500665B1A /* APIUtils.swift */; };
 		017AB295229D0AFD00665B1A /* Blockchain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB294229D0AFD00665B1A /* Blockchain.swift */; };
 		017AB297229D0B5600665B1A /* BlockchainNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB296229D0B5500665B1A /* BlockchainNode.swift */; };
+		2F90A82E20F8B1C10F8ED0DE /* Pods_blogchain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EA1F588B7D6A3A1E6894A6 /* Pods_blogchain.framework */; };
+		9A2407FE229B74EF00EBAA3E /* keyChainExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2407FD229B74EF00EBAA3E /* keyChainExtension.swift */; };
+		9A3801B8229D22D7004D40AC /* hashExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3801B7229D22D7004D40AC /* hashExtension.swift */; };
+		9A3801BA229F8C4C004D40AC /* pinComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3801B9229F8C4C004D40AC /* pinComponent.swift */; };
+		9A3801BC229FD046004D40AC /* privateKeyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3801BB229FD046004D40AC /* privateKeyComponent.swift */; };
 		9A6246922293C59F001A7A78 /* NoteRootTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6246912293C59F001A7A78 /* NoteRootTableViewCell.swift */; };
 		9A673D8F22A3DF6E00BFB5B2 /* keyBoardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A673D8E22A3DF6E00BFB5B2 /* keyBoardComponent.swift */; };
 		9A673D9122A3EDC000BFB5B2 /* passwordComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A673D9022A3EDC000BFB5B2 /* passwordComponent.swift */; };
@@ -34,21 +35,20 @@
 		9ADE2E3A228F8EE70016291B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ADE2E39228F8EE70016291B /* Assets.xcassets */; };
 		9ADE2E3D228F8EE70016291B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADE2E3B228F8EE70016291B /* LaunchScreen.storyboard */; };
 		9AEBC58722940036000BF266 /* NoteDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBC58622940036000BF266 /* NoteDetailedViewController.swift */; };
-		DF9A15C6BEE0A9EA1DB3664C /* Pods_blogchain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D24BCF7A0C8F61DC95EF36 /* Pods_blogchain.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		006971CECA7854C38F2817D1 /* Pods-blogchain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blogchain.debug.xcconfig"; path = "Target Support Files/Pods-blogchain/Pods-blogchain.debug.xcconfig"; sourceTree = "<group>"; };
-		9A2407FD229B74EF00EBAA3E /* keyChainExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyChainExtension.swift; sourceTree = "<group>"; };
-		9A3801B7229D22D7004D40AC /* hashExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hashExtension.swift; sourceTree = "<group>"; };
-		9A3801B9229F8C4C004D40AC /* pinComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pinComponent.swift; sourceTree = "<group>"; };
-		9A3801BB229FD046004D40AC /* privateKeyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = privateKeyComponent.swift; sourceTree = "<group>"; };
 		017AB28E229D03E400665B1A /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		017AB290229D045600665B1A /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		017AB292229D04F500665B1A /* APIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUtils.swift; sourceTree = "<group>"; };
 		017AB294229D0AFD00665B1A /* Blockchain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blockchain.swift; sourceTree = "<group>"; };
 		017AB296229D0B5500665B1A /* BlockchainNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockchainNode.swift; sourceTree = "<group>"; };
-		1BF9A040F700F69408AFF4FF /* Pods-blogchain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blogchain.release.xcconfig"; path = "Target Support Files/Pods-blogchain/Pods-blogchain.release.xcconfig"; sourceTree = "<group>"; };
+		43EA1F588B7D6A3A1E6894A6 /* Pods_blogchain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blogchain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B871237B0E2D6FA285A442D /* Pods-blogchain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blogchain.debug.xcconfig"; path = "Target Support Files/Pods-blogchain/Pods-blogchain.debug.xcconfig"; sourceTree = "<group>"; };
+		9A2407FD229B74EF00EBAA3E /* keyChainExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyChainExtension.swift; sourceTree = "<group>"; };
+		9A3801B7229D22D7004D40AC /* hashExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hashExtension.swift; sourceTree = "<group>"; };
+		9A3801B9229F8C4C004D40AC /* pinComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pinComponent.swift; sourceTree = "<group>"; };
+		9A3801BB229FD046004D40AC /* privateKeyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = privateKeyComponent.swift; sourceTree = "<group>"; };
 		9A6246912293C59F001A7A78 /* NoteRootTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRootTableViewCell.swift; sourceTree = "<group>"; };
 		9A673D8E22A3DF6E00BFB5B2 /* keyBoardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyBoardComponent.swift; sourceTree = "<group>"; };
 		9A673D9022A3EDC000BFB5B2 /* passwordComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passwordComponent.swift; sourceTree = "<group>"; };
@@ -69,8 +69,7 @@
 		9ADE2E3C228F8EE70016291B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9ADE2E3E228F8EE70016291B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AEBC58622940036000BF266 /* NoteDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailedViewController.swift; sourceTree = "<group>"; };
-		C0D24BCF7A0C8F61DC95EF36 /* Pods_blogchain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blogchain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5A113A53582C87B3ACDC866 /* Pods-blogchain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blogchain.debug.xcconfig"; path = "Target Support Files/Pods-blogchain/Pods-blogchain.debug.xcconfig"; sourceTree = "<group>"; };
+		C1DC367B356BB217F20D96B0 /* Pods-blogchain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blogchain.release.xcconfig"; path = "Target Support Files/Pods-blogchain/Pods-blogchain.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF9A15C6BEE0A9EA1DB3664C /* Pods_blogchain.framework in Frameworks */,
+				2F90A82E20F8B1C10F8ED0DE /* Pods_blogchain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,10 +95,10 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		51661209DFECD596E7CCF7DC /* Frameworks */ = {
+		59FB1C4C78ED7BA6AEB0ECB5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C0D24BCF7A0C8F61DC95EF36 /* Pods_blogchain.framework */,
+				43EA1F588B7D6A3A1E6894A6 /* Pods_blogchain.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -193,7 +192,7 @@
 				9ADE2E2E228F8EE60016291B /* blogchain */,
 				9ADE2E2D228F8EE60016291B /* Products */,
 				B0313DC59C11C58F1061A2A5 /* Pods */,
-				51661209DFECD596E7CCF7DC /* Frameworks */,
+				59FB1C4C78ED7BA6AEB0ECB5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -229,8 +228,8 @@
 		B0313DC59C11C58F1061A2A5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E5A113A53582C87B3ACDC866 /* Pods-blogchain.debug.xcconfig */,
-				1BF9A040F700F69408AFF4FF /* Pods-blogchain.release.xcconfig */,
+				7B871237B0E2D6FA285A442D /* Pods-blogchain.debug.xcconfig */,
+				C1DC367B356BB217F20D96B0 /* Pods-blogchain.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -242,11 +241,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9ADE2E41228F8EE70016291B /* Build configuration list for PBXNativeTarget "blogchain" */;
 			buildPhases = (
-				7C143E4DE8CDE6FB7BD1BFA4 /* [CP] Check Pods Manifest.lock */,
+				724690A099B0115888E3E259 /* [CP] Check Pods Manifest.lock */,
 				9ADE2E28228F8EE60016291B /* Sources */,
 				9ADE2E29228F8EE60016291B /* Frameworks */,
 				9ADE2E2A228F8EE60016291B /* Resources */,
-				BA8C8E7055F082BBB91BF653 /* [CP] Embed Pods Frameworks */,
+				B0043B04659E68E1AC39D45A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -304,7 +303,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7C143E4DE8CDE6FB7BD1BFA4 /* [CP] Check Pods Manifest.lock */ = {
+		724690A099B0115888E3E259 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -326,17 +325,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BA8C8E7055F082BBB91BF653 /* [CP] Embed Pods Frameworks */ = {
+		B0043B04659E68E1AC39D45A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-blogchain/Pods-blogchain-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-blogchain/Pods-blogchain-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
+				"${BUILT_PRODUCTS_DIR}/Notepad/Notepad.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-blogchain/Pods-blogchain-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Notepad.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -350,7 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AC477BE2292B249009B49FB /* UserLoginViewController.swift in Sources */,
+				9AC477BE2292B249009B49FB /* UserInitialViewController.swift in Sources */,
 				017AB28F229D03E400665B1A /* Block.swift in Sources */,
 				9AC477B52292AD7F009B49FB /* NoteRootViewController.swift in Sources */,
 				9A3801BC229FD046004D40AC /* privateKeyComponent.swift in Sources */,
@@ -517,7 +527,7 @@
 		};
 		9ADE2E42228F8EE70016291B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E5A113A53582C87B3ACDC866 /* Pods-blogchain.debug.xcconfig */;
+			baseConfigurationReference = 7B871237B0E2D6FA285A442D /* Pods-blogchain.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -536,7 +546,7 @@
 		};
 		9ADE2E43228F8EE70016291B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1BF9A040F700F69408AFF4FF /* Pods-blogchain.release.xcconfig */;
+			baseConfigurationReference = C1DC367B356BB217F20D96B0 /* Pods-blogchain.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

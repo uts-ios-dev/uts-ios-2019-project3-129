@@ -59,14 +59,17 @@ class keyChainExtension {
     }
     
     static func updateKeyChainItem(account: String, newKey: String) -> OSStatus {
-        let keyChainItem = self.createDefaultKeyChainItemDic(account: account);
-        if SecItemCopyMatching(keyChainItem,nil) == noErr{
-            let updateDictionary = NSMutableDictionary();
-            updateDictionary.setObject(newKey.data(using: .utf8, allowLossyConversion:true)!, forKey:kSecValueData as! NSCopying);
-            let status = SecItemUpdate(keyChainItem,updateDictionary);
+        let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
+                                    kSecAttrAccount as String: account];
+        
+        if SecItemCopyMatching(query as CFDictionary, nil) == noErr{
+            let attributes: [String: Any] = [kSecAttrAccount as String: account,
+                                             kSecValueData as String: newKey.data(using: String.Encoding.utf8)!];
+            let status = SecItemUpdate(query as CFDictionary, attributes as CFDictionary);
+            print(status);
             return status;
         }else{
-            return OSStatus(6);
+            return (6);
         }
     }
     
@@ -96,8 +99,6 @@ class keyChainExtension {
             else {
                 return OSStatus(12);
         }
-        print(status);
-        print(item);
         switch account {
         case self.account.pinCode.rawValue:
             _pinCode = password;

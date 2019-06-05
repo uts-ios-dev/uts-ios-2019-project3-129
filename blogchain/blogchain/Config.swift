@@ -34,3 +34,13 @@ let persistentContainer: NSPersistentContainer = {
     })
     return container;
 }();
+
+var Author: String {
+        get {
+            return UserDefaults.standard.string(forKey: "author") ?? "name";
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "author");
+        }
+    
+};

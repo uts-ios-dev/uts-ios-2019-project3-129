@@ -15,6 +15,7 @@ class UserInitialViewController: UIViewController, UITextFieldDelegate {
     let pinView = PinPage();
     private var pinCode: String?;
     private var renderLabelsArray: [UILabel]?;
+    var finishAllCallBack: (()->())?;
     
     override func loadView() {
         super.loadView();
@@ -61,6 +62,7 @@ class UserInitialViewController: UIViewController, UITextFieldDelegate {
         let data = keyView.usernameLabel.text!.data(using: .utf8)!;
         let secret = UIDevice.current.identifierForVendor!.uuidString.data(using: .utf8)!;
         let hmac = data.authenticationCode(secretKey: secret).base64EncodedString();
+        Author = keyView.usernameLabel.text!;
         addHashKey(key: hmac);
     }
     
@@ -122,6 +124,7 @@ class UserInitialViewController: UIViewController, UITextFieldDelegate {
     }
     
     func finishAll(){
+        finishAllCallBack?();
         self.dismiss(animated: true, completion: nil);
     }
     

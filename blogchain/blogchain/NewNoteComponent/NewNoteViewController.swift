@@ -33,7 +33,8 @@ class NewNoteViewController: UIViewController {
         let author = "ANONYMOUS"
         let privateKey = "sender-hash-test"
         let category = "Dafault"
-        
+        self.tx.contentView.resignFirstResponder();
+        self.tx.titleView.resignFirstResponder();
         guard let title = tx.titleView.text else {
                 // TODO: HUD
                 #if DEBUG

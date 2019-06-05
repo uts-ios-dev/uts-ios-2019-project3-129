@@ -46,8 +46,9 @@ class privateKeysPage: UIView {
         self.addSubview(usernameLabel);
         usernameLabel.snp.makeConstraints{ make -> Void in
             make.top.equalTo(noteLabel.snp.bottom).offset(10);
-            make.leading.trailing.equalToSuperview();
-            make.height.equalToSuperview().multipliedBy(0.2);
+            make.leading.equalToSuperview().offset(20);
+            make.trailing.equalToSuperview().offset(-20);
+            make.height.equalToSuperview().multipliedBy(0.1);
         }
         usernameLabel.placeholder = "User name";
         usernameLabel.textAlignment = .center;

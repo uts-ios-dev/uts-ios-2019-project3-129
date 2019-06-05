@@ -9,13 +9,13 @@
 import Foundation
 
 // A block can have multiple transactions
-struct Block:Codable {
+struct Block: Codable {
     // the position in the blockchain
     var height: Int
     var previousHash: String
     var hash: String
-    var timestamp :Float
-    var nonce:Int
+    var timestamp: Float
+    var nonce: Int
     var owner: String
-    var transactions : [Transaction]
+    var transactions: [Transaction]
 }

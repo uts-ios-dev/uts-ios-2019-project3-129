@@ -30,15 +30,15 @@ struct Article: Codable {
 }
 
 struct UpdateArticle: Codable {
-    let articleAddress:String
+    let articleAddress: String
     let title: String
     let author: String
     let sender: String
     let category: String
     let content: String
     var isHide: Bool
-    
-    init(address: String, article:Article) {
+
+    init(address: String, article: Article) {
         self.articleAddress = address
         self.title = article.title
         self.author = article.author
@@ -49,6 +49,6 @@ struct UpdateArticle: Codable {
     }
 }
 
-struct PostArticleResult: Codable{
+struct PostArticleResult: Codable {
     let articleAddress: String
 }

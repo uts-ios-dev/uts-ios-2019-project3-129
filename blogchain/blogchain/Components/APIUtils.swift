@@ -7,15 +7,16 @@
 //
 
 //import Foundation
+
 import Alamofire
 import CodableFirebase
 
 class APIUtils {
     static let hostAddr = "http://localhost:8080/"
-    
-    static func getBlockchain(completion: @escaping (_ blockchain: Blockchain)->Void) {
+
+    static func getBlockchain(completion: @escaping (_ blockchain: Blockchain) -> Void) {
         Alamofire.request("\(hostAddr)api/blockchain", method: .get).responseData { response in
-            do{
+            do {
                 switch response.result {
                 case .success(let value):
                     let decoder = JSONDecoder()
@@ -24,13 +25,13 @@ class APIUtils {
                 case .failure(let error):
                     print(error)
                 }
-            }catch{
+            } catch {
                 print("error: \(error)")
             }
         }
     }
-    
-    static func getArticlesFromUser(hash:String, completion: @escaping (_ blockchain: [Transaction]) -> Void) {
+
+    static func getArticlesFromUser(hash: String, completion: @escaping (_ blockchain: [Transaction]) -> Void) {
         Alamofire.request("\(hostAddr)api/articlesFrom/\(hash)", method: .get).responseData { response in
             do {
                 switch response.result {
@@ -46,7 +47,7 @@ class APIUtils {
             }
         }
     }
-    
+
     static func searchArticle(keywords: String, completion: @escaping (_ blockchain: [Transaction]) -> Void) {
         Alamofire.request("\(hostAddr)api/search/\(keywords)", method: .get).responseData { response in
             do {
@@ -63,11 +64,11 @@ class APIUtils {
             }
         }
     }
-    
-    static func postArticle(article: Article, completion: @escaping (_ result: PostArticleResult)->Void) {
+
+    static func postArticle(article: Article, completion: @escaping (_ result: PostArticleResult) -> Void) {
         let parameters: Parameters = try! FirestoreEncoder().encode(article)
-        Alamofire.request("\(hostAddr)api/newArticle", method: .post,parameters: parameters).responseData { response in
-            do{
+        Alamofire.request("\(hostAddr)api/newArticle", method: .post, parameters: parameters).responseData { response in
+            do {
                 switch response.result {
                 case .success(let value):
                     let decoder = JSONDecoder()
@@ -76,23 +77,24 @@ class APIUtils {
                 case .failure(let error):
                     print(error)
                 }
-            }catch{
+            } catch {
                 print("error: \(error)")
             }
         }
     }
-    
-    static func updateArticle(article: UpdateArticle, completion: @escaping (_ success: Bool)->Void) {
+
+    static func updateArticle(article: UpdateArticle, completion: @escaping (_ success: Bool) -> Void) {
         let parameters: Parameters = try! FirestoreEncoder().encode(article)
-        
-        Alamofire.request("\(hostAddr)api/updateArticle", method: .post,parameters: parameters).responseData { response in
-            switch response.result {
-            case .success(_):
-                completion(true)
-            case .failure(let error):
-                print("Error: \(error)")
-                completion(false)
+
+        Alamofire.request("\(hostAddr)api/updateArticle", method: .post, parameters: parameters)
+            .responseData { response in
+                switch response.result {
+                case .success(_):
+                    completion(true)
+                case .failure(let error):
+                    print("Error: \(error)")
+                    completion(false)
+                }
             }
-        }
     }
 }

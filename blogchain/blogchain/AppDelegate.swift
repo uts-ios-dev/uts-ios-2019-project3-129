@@ -15,24 +15,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
         // API Testing
         APIUtils.getBlockchain() { blockchain in
             print("------------")
             print(blockchain.blocks[0].previousHash)
         }
-        let article = Article(title: "111", author: "Frank", sender: "test", category: "IpHONE", content: "Make blog great again!", isHide: false)
-        APIUtils.postArticle(article: article){ result in
+        let article = Article(title: "111",
+            author: "Frank",
+            sender: "test",
+            category: "IpHONE",
+            content: "Make blog great again!",
+            isHide: false)
+        APIUtils.postArticle(article: article) { result in
             print("Post Article, address: \(result.articleAddress)")
-            let updateArticle = UpdateArticle(address: result.articleAddress,article: article)
-            APIUtils.updateArticle(article: updateArticle){ success in
+            let updateArticle = UpdateArticle(address: result.articleAddress, article: article)
+            APIUtils.updateArticle(article: updateArticle) { success in
                 print("------------")
                 print("Success: \(success)")
             }
         }
-        
+
         APIUtils.getArticlesFromUser(hash: "sender-hash-tester") { transactions in
             print("------------")
             print("Get Article from user")
@@ -54,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        // Called as part of the transition from the background to the active state here you can undo many of the changes made on entering the background.
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -111,6 +117,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            }
 //        }
 //    }
-
 }
 

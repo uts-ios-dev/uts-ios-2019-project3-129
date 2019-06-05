@@ -6,151 +6,156 @@
 //  Copyright © 2019 uts-ios-2019-project3-129. All rights reserved.
 //
 
-import SnapKit;
+import SnapKit
 import LocalAuthentication
 
 class UserLoginViewController: UIViewController {
-    
-    let noteLabel = UILabel();
-    let keysBoard = keyBoardComponent();
-    let passwordBoard = passwordComponent();
-    var context = LAContext();
-    var callbackSuccess: (()->())?;
-    var callback4C: (()->())?;
+
+    let noteLabel = UILabel()
+    let keysBoard = keyBoardComponent()
+    let passwordBoard = passwordComponent()
+    var context = LAContext()
+    var callbackSuccess: (() -> ())?
+    var callback4C: (() -> ())?
     var pinCode: String = "" {
         didSet {
-            passwordBoard.updateLabel(content: pinCode);
-            if(pinCode.count == 4){
+            passwordBoard.updateLabel(content: pinCode)
+            if (pinCode.count == 4) {
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.08) {
-                    if(self.callback4C == nil){self.validation();}
-                    else {self.callback4C!()}
+                    if (self.callback4C == nil) {
+                        self.validation()
+                    } else {
+                        self.callback4C!()
+                    }
                 }
             }
         }
-    };
-    var truePinCode: String?;
-    
+    }
+    var truePinCode: String?
+
     override func loadView() {
-        super.loadView();
-        self.view.backgroundColor = .lightGray;
-        self.view.backgroundColor?.withAlphaComponent(0.2);
-        truePinCode = keyChainExtension.pinCode;
+        super.loadView()
+        self.view.backgroundColor = .lightGray
+        self.view.backgroundColor?.withAlphaComponent(0.2)
+        truePinCode = keyChainExtension.pinCode
     }
-    
+
     override func viewDidLoad() {
-        super.viewDidLoad();
-        initialView();
-        context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil);
+        super.viewDidLoad()
+        initialView()
+        context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
     }
-    
+
     func initialView() {
-        addNoteLabel();
-        addPasswordBoard();
-        addKeyboard();
-        bioAutho();
+        addNoteLabel()
+        addPasswordBoard()
+        addKeyboard()
+        bioAutho()
     }
-    
+
     func addNoteLabel() {
-        self.view.addSubview(noteLabel);
-        noteLabel.snp.makeConstraints{ make -> Void in
-            make.leading.trailing.equalToSuperview();
-            make.top.equalToSuperview().offset(30);
-            make.height.equalToSuperview().multipliedBy(0.1);
+        self.view.addSubview(noteLabel)
+        noteLabel.snp.makeConstraints { make -> Void in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(30)
+            make.height.equalToSuperview().multipliedBy(0.1)
         }
-        noteLabel.text = "Please enter your pin code";
-        noteLabel.textColor = .blue;
-//        noteLabel.backgroundColor = .blue;
-        noteLabel.textAlignment = .center;
+        noteLabel.text = "Please enter your pin code"
+        noteLabel.textColor = .blue
+//        noteLabel.backgroundColor = .blue
+        noteLabel.textAlignment = .center
     }
-    
+
     func addPasswordBoard() {
-        self.view.addSubview(passwordBoard);
-        passwordBoard.snp.makeConstraints{ make -> Void in
-            make.top.equalTo(noteLabel.snp.bottom);
-            make.leading.trailing.equalToSuperview();
-            make.height.equalToSuperview().multipliedBy(0.05);
+        self.view.addSubview(passwordBoard)
+        passwordBoard.snp.makeConstraints { make -> Void in
+            make.top.equalTo(noteLabel.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.05)
         }
-//        passwordBoard.backgroundColor = .lightGray;
-        passwordBoard.initialView();
+//        passwordBoard.backgroundColor = .lightGray
+        passwordBoard.initialView()
     }
-    
+
     func addKeyboard() {
-        self.view.addSubview(keysBoard);
-        keysBoard.snp.makeConstraints{ make -> Void in
-            make.top.equalTo(passwordBoard.snp.bottom).offset(40);
-            make.leading.equalToSuperview().offset(self.view.frame.width * 0.15);
-            make.trailing.equalToSuperview().offset(-self.view.frame.width * 0.15);
-            make.bottom.equalToSuperview();
+        self.view.addSubview(keysBoard)
+        keysBoard.snp.makeConstraints { make -> Void in
+            make.top.equalTo(passwordBoard.snp.bottom).offset(40)
+            make.leading.equalToSuperview().offset(self.view.frame.width * 0.15)
+            make.trailing.equalToSuperview().offset(-self.view.frame.width * 0.15)
+            make.bottom.equalToSuperview()
         }
-//        keysBoard.backgroundColor = .orange;
-        keysBoard.initialKeys();
-        for arrOut in keysBoard.keysArray{
-            for but in arrOut{
-                but.addTarget(self, action: #selector(buttonPress(_:)), for: .touchUpInside);
+//        keysBoard.backgroundColor = .orange
+        keysBoard.initialKeys()
+        for arrOut in keysBoard.keysArray {
+            for but in arrOut {
+                but.addTarget(self, action: #selector(buttonPress(_:)), for: .touchUpInside)
             }
         }
     }
 
     func validation() {
-        if(self.pinCode == self.truePinCode){
-            if (self.callbackSuccess != nil){ self.callbackSuccess!(); }
+        if (self.pinCode == self.truePinCode) {
+            if (self.callbackSuccess != nil) {
+                self.callbackSuccess!()
+            }
         } else {
-            invalied();
+            invalied()
         }
     }
-    
+
     func invalied() {
-        self.noteLabel.text = "Please try again";
-        let shake = CAKeyframeAnimation(keyPath: "position.x");
-        shake.values = [0, -10, 0, 10, 0];
-        shake.isAdditive = true;
-        shake.duration = 0.3;
-        self.noteLabel.layer.add(shake, forKey: "shake");
-        self.pinCode = "";
+        self.noteLabel.text = "Please try again"
+        let shake = CAKeyframeAnimation(keyPath: "position.x")
+        shake.values = [0, -10, 0, 10, 0]
+        shake.isAdditive = true
+        shake.duration = 0.3
+        self.noteLabel.layer.add(shake, forKey: "shake")
+        self.pinCode = ""
     }
-    
+
     func selfDismiss() {
-        self.dismiss(animated: true, completion: nil);
+        self.dismiss(animated: true, completion: nil)
     }
-    
+
     func onButtonPress(input: String) {
-        self.pinCode = "\(self.pinCode)\(input)";
+        self.pinCode = "\(self.pinCode)\(input)"
     }
-    
+
     func bioAutho() {
         // Get a fresh context for each login. If you use the same context on multiple attempts
         //  (by commenting out the next line), then a previously successful authentication
         //  causes the next policy evaluation to succeed without testing biometry again.
         //  That's usually not what you want.
-        context = LAContext();
-        context.localizedCancelTitle = "Enter Username/Password";
+        context = LAContext()
+        context.localizedCancelTitle = "Enter Username/Password"
         // First check if we have the needed hardware support.
-        var error: NSError?;
+        var error: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
-            let reason = "Log in to your account";
-            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason ) { success, error in
+            let reason = "Log in to your account"
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, error in
                 if success {
                     // Move to the main thread because a state update triggers UI changes.
                     DispatchQueue.main.async { [unowned self] in
-                        self.pinCode = self.truePinCode!;
+                        self.pinCode = self.truePinCode!
                     }
                 } else {
-                    print(error?.localizedDescription ?? "Failed to authenticate");
+                    print(error?.localizedDescription ?? "Failed to authenticate")
                     // Fall back to a asking for username and password.
                 }
             }
         } else {
-            print(error?.localizedDescription ?? "Can't evaluate policy");
+            print(error?.localizedDescription ?? "Can't evaluate policy")
             // Fall back to a asking for username and password.
             // ...
         }
     }
-    
-    @objc func buttonPress(_ sender:UIButton?) {
-        sender?.backgroundColor = .white;
+
+    @objc func buttonPress(_ sender: UIButton?) {
+        sender?.backgroundColor = .white
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.08) {
-            sender?.backgroundColor = .clear;
-            self.onButtonPress(input: sender?.titleLabel?.text ?? "");
+            sender?.backgroundColor = .clear
+            self.onButtonPress(input: sender?.titleLabel?.text ?? "")
         }
     }
 }

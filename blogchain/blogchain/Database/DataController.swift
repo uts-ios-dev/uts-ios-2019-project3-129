@@ -74,7 +74,7 @@ class ArticleInstance {
         }
         saveContext()
     }
-    
+
     func saveArticle(instance: Artical, title: String?, content: String?, modified: Date?) {
         instance.modified = modified
         instance.title = title
@@ -82,20 +82,20 @@ class ArticleInstance {
         instance.dirty = false
         saveContext()
     }
-    
+
     func saveArticle(instance: Artical, addressKey: String, modified: Date?) {
         instance.modified = modified
         instance.dirty = false
         instance.addressKey = addressKey
         saveContext()
     }
-    
+
     func saveArticle(instance: Artical, modified: Date?) {
         instance.modified = modified
         instance.dirty = false
         saveContext()
     }
-    
+
     func saveArticle(title: String?, content: String?, modified: Date?, keyaddress: String?) {
         let entity = NSEntityDescription.entity(forEntityName: "Artical", in: persistentContainer.viewContext)!
         let newArticle = NSManagedObject(entity: entity, insertInto: persistentContainer.viewContext) as? Artical

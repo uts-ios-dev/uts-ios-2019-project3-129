@@ -3,16 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ea9739cb-d571-4b6d-a772-468fc722f1e2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/blogchain.xcodeproj/xcuserdata/Frank.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain.xcodeproj/xcuserdata/Frank.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogchain.xcworkspace/xcuserdata/Frank.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain.xcworkspace/xcuserdata/Frank.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogchain/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/AppDelegate.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogchain/ChainComponent/ChainRootViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/ChainComponent/ChainRootViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogchain/Components/APIUtils.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/Components/APIUtils.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogchain/Components/TextFileEditor.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/Components/TextFileEditor.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogchain/Config.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/Config.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogchain/Database/DataController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/Database/DataController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogchain/Models/Block.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/Models/Block.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogchain/Models/Blockchain.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/Models/Blockchain.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogchain/Models/Transaction.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/Models/Transaction.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogchain/NewNoteComponent/NewNoteViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/NewNoteComponent/NewNoteViewController.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogchain/NoteComponent/NoteDetailedViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/NoteComponent/NoteDetailedViewController.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogchain/NoteComponent/NoteRootTableViewCell.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/NoteComponent/NoteRootTableViewCell.swift" afterDir="false" />
@@ -21,10 +16,7 @@
       <change beforePath="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/pinComponent.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/pinComponent.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/privateKeyComponent.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/privateKeyComponent.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/UserLoginViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/UserLoginViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/keyBoardComponent.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/keyBoardComponent.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/passwordComponent.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/passwordComponent.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogchain/UserComponent/UserRootViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/UserComponent/UserRootViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogchain/UserComponent/hashExtension.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/UserComponent/hashExtension.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogchain/UserComponent/keyChainExtension.swift" beforeDir="false" afterPath="$PROJECT_DIR$/blogchain/UserComponent/keyChainExtension.swift" afterDir="false" />
     </list>
     <ignored path="$USER_HOME$/Library/Caches/AppCode2019.1/DerivedData/blogchain-fqxclnmcgupzxqdojpzdxboqqafu/Build/Intermediates.noindex/" />
@@ -44,58 +36,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/hashExtension.swift">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-              <folding>
-                <element signature="e#148#165#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/keyChainExtension.swift">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2464">
-              <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/UserRootViewController.swift">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blogchain/AppDelegate.swift">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/keyBoardComponent.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1045">
+            <state relative-caret-position="1276">
               <caret line="58" selection-start-line="58" selection-end-line="58" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blogchain/Config.swift">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/keyChainExtension.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="-84">
+              <caret line="85" column="16" selection-start-line="85" selection-start-column="16" selection-end-line="85" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/pinComponent.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1353">
+              <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -105,29 +67,48 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/pinComponent.swift">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blogchain/Models/Blockchain.swift">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blogchain/Models/Block.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2090">
-              <caret line="95" column="1" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
+            <state relative-caret-position="308">
+              <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/passwordComponent.swift">
+        <entry file="file://$PROJECT_DIR$/blogchain/NoteComponent/NoteRootViewController.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="54" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="9746">
+              <caret line="443" column="23" selection-start-line="443" selection-start-column="23" selection-end-line="443" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/UserLoginViewController.swift">
+        <entry file="file://$PROJECT_DIR$/blogchain/Models/Transaction.swift">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/privateKeyComponent.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-496">
-              <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+            <state relative-caret-position="856">
+              <caret line="67" selection-start-line="67" selection-end-line="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/UserInitialViewController.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1826">
+              <caret line="83" column="39" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -137,6 +118,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>;</find>
+      <find>prin</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -145,28 +127,28 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/blogchain/Config.swift" />
         <option value="$PROJECT_DIR$/blogchain/Components/APIUtils.swift" />
-        <option value="$PROJECT_DIR$/blogchain/ChainComponent/ChainRootViewController.swift" />
-        <option value="$PROJECT_DIR$/blogchain/Components/TextFileEditor.swift" />
-        <option value="$PROJECT_DIR$/blogchain/Database/DataController.swift" />
         <option value="$PROJECT_DIR$/blogchain/Models/Block.swift" />
         <option value="$PROJECT_DIR$/blogchain/Models/Blockchain.swift" />
         <option value="$PROJECT_DIR$/blogchain/Models/Transaction.swift" />
-        <option value="$PROJECT_DIR$/blogchain/NewNoteComponent/NewNoteViewController.swift" />
-        <option value="$PROJECT_DIR$/blogchain/NoteComponent/NoteDetailedViewController.swift" />
-        <option value="$PROJECT_DIR$/blogchain/NoteComponent/NoteRootTableViewCell.swift" />
-        <option value="$PROJECT_DIR$/blogchain/NoteComponent/NoteRootViewController.swift" />
-        <option value="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/pinComponent.swift" />
-        <option value="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/privateKeyComponent.swift" />
-        <option value="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/UserInitialViewController.swift" />
         <option value="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/keyBoardComponent.swift" />
         <option value="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/passwordComponent.swift" />
-        <option value="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/UserLoginViewController.swift" />
         <option value="$PROJECT_DIR$/blogchain/UserComponent/hashExtension.swift" />
+        <option value="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/pinComponent.swift" />
+        <option value="$PROJECT_DIR$/blogchain/ChainComponent/ChainRootViewController.swift" />
+        <option value="$PROJECT_DIR$/blogchain/Components/TextFileEditor.swift" />
+        <option value="$PROJECT_DIR$/blogchain/Database/DataController.swift" />
+        <option value="$PROJECT_DIR$/blogchain/NewNoteComponent/NewNoteViewController.swift" />
+        <option value="$PROJECT_DIR$/blogchain/NoteComponent/NoteRootTableViewCell.swift" />
+        <option value="$PROJECT_DIR$/blogchain/NoteComponent/NoteDetailedViewController.swift" />
+        <option value="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/privateKeyComponent.swift" />
+        <option value="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/UserLoginViewController.swift" />
         <option value="$PROJECT_DIR$/blogchain/UserComponent/UserRootViewController.swift" />
-        <option value="$PROJECT_DIR$/blogchain/UserComponent/keyChainExtension.swift" />
         <option value="$PROJECT_DIR$/blogchain/AppDelegate.swift" />
+        <option value="$PROJECT_DIR$/blogchain/Config.swift" />
+        <option value="$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/UserInitialViewController.swift" />
+        <option value="$PROJECT_DIR$/blogchain/NoteComponent/NoteRootViewController.swift" />
+        <option value="$PROJECT_DIR$/blogchain/UserComponent/keyChainExtension.swift" />
       </list>
     </option>
   </component>
@@ -278,6 +260,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -318,17 +301,18 @@
       <updated>1559705932783</updated>
       <workItem from="1559705938135" duration="1460000" />
       <workItem from="1559709074628" duration="543000" />
+      <workItem from="1559812131386" duration="654000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2003000" />
+    <option name="totallyTimeSpent" value="2657000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2536349" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25767368" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -356,25 +340,22 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/blogchain/ChainComponent/ChainRootViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
+        <state relative-caret-position="-161">
           <caret line="68" column="19" selection-start-line="68" selection-start-column="19" selection-end-line="68" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blogchain/Components/APIUtils.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
+        <state relative-caret-position="-1174">
           <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
-          <folding>
-            <element signature="e#165#181#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blogchain/Components/TextFileEditor.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="-1944">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
           <folding>
             <element signature="e#149#163#0" expanded="true" />
           </folding>
@@ -384,69 +365,66 @@
     <entry file="file://$PROJECT_DIR$/blogchain/Database/DataController.swift">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blogchain/Models/Block.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blogchain/Models/Blockchain.swift">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blogchain/Models/Transaction.swift">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/blogchain/NewNoteComponent/NewNoteViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1317">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blogchain/NoteComponent/NoteDetailedViewController.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="115" column="5" selection-start-line="115" selection-start-column="5" selection-end-line="115" selection-end-column="5" />
+        <state relative-caret-position="241">
+          <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blogchain/NoteComponent/NoteRootTableViewCell.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
+        <state relative-caret-position="1180">
           <caret line="62" column="42" selection-start-line="62" selection-start-column="42" selection-end-line="62" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blogchain/NoteComponent/NoteRootViewController.swift">
+    <entry file="file://$PROJECT_DIR$/blogchain/NoteComponent/NoteDetailedViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="244" column="21" selection-start-line="244" selection-start-column="21" selection-end-line="244" selection-end-column="21" />
+        <state relative-caret-position="535">
+          <caret line="86" selection-start-line="86" selection-end-line="86" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/privateKeyComponent.swift">
+    <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/UserLoginViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1474">
-          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        <state relative-caret-position="-3021">
+          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/UserInitialViewController.swift">
+    <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/UserRootViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3630">
-          <caret line="165" column="1" selection-start-line="165" selection-start-column="1" selection-end-line="165" selection-end-column="1" />
+        <state relative-caret-position="1361">
+          <caret line="78" column="42" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/keyBoardComponent.swift">
+    <entry file="file://$PROJECT_DIR$/blogchain/AppDelegate.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1045">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        <state relative-caret-position="22">
+          <caret line="19" column="69" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blogchain/Config.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/hashExtension.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-447">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#148#165#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -457,58 +435,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/UserLoginViewController.swift">
+    <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserLoginComponent/keyBoardComponent.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-496">
-          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+        <state relative-caret-position="1276">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/hashExtension.swift">
+    <entry file="file://$PROJECT_DIR$/blogchain/NoteComponent/NoteRootViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#148#165#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="9746">
+          <caret line="443" column="23" selection-start-line="443" selection-start-column="23" selection-end-line="443" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/UserRootViewController.swift">
+    <entry file="file://$PROJECT_DIR$/blogchain/Models/Transaction.swift">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blogchain/Models/BlockchainNode.swift">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blogchain/Models/Blockchain.swift">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blogchain/Models/Block.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
+        <state relative-caret-position="308">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/pinComponent.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1353">
+          <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/privateKeyComponent.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="856">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/UserInitialViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1826">
+          <caret line="83" column="39" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/keyChainExtension.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2464">
-          <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blogchain/AppDelegate.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blogchain/Config.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blogchain/Models/BlockchainNode.swift">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blogchain/UserComponent/LoginManagement/UserInitComponent/pinComponent.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2090">
-          <caret line="95" column="1" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
+        <state relative-caret-position="-84">
+          <caret line="85" column="16" selection-start-line="85" selection-start-column="16" selection-end-line="85" selection-end-column="16" />
         </state>
       </provider>
     </entry>

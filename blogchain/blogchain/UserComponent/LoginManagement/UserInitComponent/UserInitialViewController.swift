@@ -9,14 +9,14 @@
 import SnapKit
 
 class UserInitialViewController: UIViewController, UITextFieldDelegate {
-    
+
     let background = UIView()
     let keyView = privateKeysPage()
     let pinView = PinPage()
     private var pinCode: String?
     private var renderLabelsArray: [UILabel]?
-    var finishAllCallBack: (()->())?
-    
+    var finishAllCallBack: (() -> ())?
+
     override func loadView() {
         super.loadView()
         self.view.backgroundColor = .lightGray
@@ -29,7 +29,7 @@ class UserInitialViewController: UIViewController, UITextFieldDelegate {
         addBackground()
         addKeyView()
         addPinView()
-        renderLabelsArray = [pinView.code1, pinView.code2, pinView.code3, pinView.code4]
+        renderLabelsArray = [pinView.label1, pinView.label2, pinView.label3, pinView.label4]
     }
 
     func addBackground() {
@@ -56,8 +56,8 @@ class UserInitialViewController: UIViewController, UITextFieldDelegate {
         pinView.initialView()
         pinView.hidedLabel.delegate = self
     }
-    
-    @objc func GenerateProvateKey(){
+
+    @objc func GenerateProvateKey() {
         let data = keyView.usernameLabel.text!.data(using: .utf8)!
         let secret = UIDevice.current.identifierForVendor!.uuidString.data(using: .utf8)!
         let hmac = data.authenticationCode(secretKey: secret).base64EncodedString()
@@ -81,7 +81,7 @@ class UserInitialViewController: UIViewController, UITextFieldDelegate {
                 self.pinView.hidedLabel.addTarget(self, action: #selector(self.inputGet), for: .editingChanged)
             }
         } else {
-            alertMessage(title: "Faild", message: "Name exited") { () -> Void in
+            alertMessage(title: "Failed", message: "Name exited") { () -> Void in
 
             }
         }
@@ -89,7 +89,7 @@ class UserInitialViewController: UIViewController, UITextFieldDelegate {
 
     func setPinCode(code: String) {
         if (keyChainExtension.addKeyChain(account: keyChainExtension.account.pinCode.rawValue, key: code) == 0) {
-            alertMessage(title: "Success", message: "Pin code creaction successful") { () -> Void in
+            alertMessage(title: "Success", message: "Pin code create successful") { () -> Void in
                 self.finishAll()
             }
 
@@ -121,8 +121,8 @@ class UserInitialViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
-    func finishAll(){
+
+    func finishAll() {
         finishAllCallBack?()
         self.dismiss(animated: true, completion: nil)
     }
@@ -146,7 +146,6 @@ class UserInitialViewController: UIViewController, UITextFieldDelegate {
 
     @objc func inputGet() {
         renderLabels()
-        print("value change", self.pinView.hidedLabel.text!)
         if (self.pinView.hidedLabel.text!.count == 4) {
             if (self.pinCode == nil) {
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {

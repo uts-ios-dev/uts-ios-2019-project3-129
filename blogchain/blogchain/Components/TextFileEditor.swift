@@ -9,7 +9,7 @@
 import SnapKit
 import Notepad
 
-class TextFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
+class TextFileEditor: UIView, UITextFieldDelegate, UITextViewDelegate {
     let titleView = UITextField()
     let leftButton = UIButton()
     let contentView = UITextView()
@@ -22,7 +22,6 @@ class TextFileEdutior: UIView, UITextFieldDelegate, UITextViewDelegate {
     init(showButton: Bool) {
         self.showButton = showButton
         super.init(frame: CGRect())
-        //        self.backgroundColor = .red
     }
 
     init(title: String, content: String, showButton: Bool, frame: CGRect) {

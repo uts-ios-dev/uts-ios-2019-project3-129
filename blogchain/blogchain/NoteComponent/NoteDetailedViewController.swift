@@ -11,7 +11,7 @@ import SnapKit
 class NoteDetailedViewController: UIViewController, UIGestureRecognizerDelegate {
 
     var articalData: Artical?
-    let tx = TextFileEdutior(showButton: true)
+    let tx = TextFileEditor(showButton: true)
     var transaction: Transaction?
 
     override func loadView() {
@@ -67,7 +67,8 @@ class NoteDetailedViewController: UIViewController, UIGestureRecognizerDelegate 
     @objc func saveArticle() {
         // TODO: Refactor (same with new note
         // local saving
-        ArticleInstance.instance().saveArticle(instance: articalData!, title: tx.titleView.text, content: tx.mdEditor?.text)
+        ArticleInstance.instance()
+            .saveArticle(instance: articalData!, title: tx.titleView.text, content: tx.mdEditor?.text)
         self.tabBarController?.tabBar.isHidden = false
         tx.titleView.isEnabled = false
         tx.contentView.isEditable = false

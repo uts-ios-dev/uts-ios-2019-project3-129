@@ -28,7 +28,9 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     private var localSearchResults = [Artical]()
     private var renderedCellData: [Artical] {
         get {
-            if(!searchBar.text!.isEmpty){ return localSearchResults }
+            if (!searchBar.text!.isEmpty) {
+                return localSearchResults
+            }
             return dataInstance.allArticles!
         }
     }
@@ -182,7 +184,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
 //        let rightButton = UIBarButtonItem(title: "\u{2022}\u{2022}\u{2022}", style: .plain, target: self, action: nil)
 //        rightButton.tintColor = .black
 //        self.navigationItem.rightBarButtonItem = rightButton
-        let leftButton = UIBarButtonItem(title: "Update", style: .plain, target: self, action: #selector(refreshtables))
+        let leftButton = UIBarButtonItem(title: "Update", style: .plain, target: self, action: #selector(refreshTables))
         leftButton.tintColor = .black
         self.navigationItem.leftBarButtonItem = leftButton
     }
@@ -230,87 +232,97 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         }
         return cell
     }
-    
+
     func deleteArticleOnline(title: String, content: String, address: String) {
         // chain deleting
         let article = Article(title: title,
-                              author: Author,
-                              sender: keyChainExtension.keyAddress!,
-                              category: "Default",
-                              content: content,
-                              isHide: true)
+            author: Author,
+            sender: keyChainExtension.keyAddress!,
+            category: "Default",
+            content: content,
+            isHide: true)
         let articleAddress = address
         let updateArticle = UpdateArticle(address: articleAddress, article: article)
         APIUtils.updateArticle(article: updateArticle) { success in
-            // TODO: HUD
+            self.tableView.reloadData()
         }
-        self.tableView.reloadData()
     }
-    
-    func uploadArtical(instance: Artical) {
+
+    func uploadArticle(instance: Artical) {
         let category = "Dafault"
         let privateKey = keyChainExtension.keyAddress
-        
+
         let article = Article(title: instance.title!,
-                              author: Author,
-                              sender: privateKey!,
-                              category: category,
-                              content: instance.content!,
-                              isHide: false)
+            author: Author,
+            sender: privateKey!,
+            category: category,
+            content: instance.content!,
+            isHide: false)
         // chain saving
         APIUtils.postArticle(article: article) { result in
-            // TODO: save the address to CoreData
-            print(result)
-            ArticleInstance.instance().saveArticle(instance: instance, addressKey: result.articleAddress, modified: Date(timeIntervalSince1970: Double(result.createdDate)!))
+            ArticleInstance.instance()
+                .saveArticle(instance: instance,
+                    addressKey: result.articleAddress,
+                    modified: Date(timeIntervalSince1970: Double(result.createdDate)!))
+            self.loadViewIfNeeded()
+            self.tableView.reloadData()
         }
-        self.loadViewIfNeeded()
-        self.tableView.reloadData()
     }
-    
-    func uploadArtical(articleAddress: String, title: String, content: String, instance: Artical) {
-        
+
+    func uploadArticle(articleAddress: String, title: String, content: String, instance: Artical) {
+
         let privateKey = keyChainExtension.keyAddress
         let category = "Dafault"
         // chain saving
         let article = Article(title: title,
-                              author: Author,
-                              sender: privateKey!,
-                              category: category,
-                              content: content,
-                              isHide: false)
-        
+            author: Author,
+            sender: privateKey!,
+            category: category,
+            content: content,
+            isHide: false)
+
         let updateArticle = UpdateArticle(address: articleAddress, article: article)
-        
+
         APIUtils.updateArticle(article: updateArticle) { date in
-            // TODO: HUD
-            ArticleInstance.instance().saveArticle(instance: instance, modified: Date(timeIntervalSince1970: Double(date)!))
+            ArticleInstance.instance()
+                .saveArticle(instance: instance, modified: Date(timeIntervalSince1970: Double(date)!))
+            self.loadViewIfNeeded()
+            self.tableView.reloadData()
         }
-        self.loadViewIfNeeded()
-        self.tableView.reloadData()
     }
-    
+
     func reconciliation(localArticles: [Artical], onlineArticles: [TransactionWithAddr]) {
         var mid: Artical?
         for onlineArticle in onlineArticles {
             mid = articleContentedInLocal(localArticles: localArticles, address: onlineArticle.articleAddress)
-            if(mid != nil){
-                if(onlineArticle.dateCreated > mid!.modified!.timeIntervalSince1970){
-                    ArticleInstance.instance().saveArticle(instance: mid!, title: mid!.title!, content: mid!.content!, modified: Date(timeIntervalSince1970: onlineArticle.dateCreated))
+            if (mid != nil) {
+                if (onlineArticle.dateCreated > mid!.modified!.timeIntervalSince1970) {
+                    ArticleInstance.instance()
+                        .saveArticle(instance: mid!,
+                            title: mid!.title!,
+                            content: mid!.content!,
+                            modified: Date(timeIntervalSince1970: onlineArticle.dateCreated))
                 }
             } else {
-                ArticleInstance.instance().saveArticle(title: onlineArticle.title, content: onlineArticle.content, modified: Date(timeIntervalSince1970: onlineArticle.dateCreated), keyaddress: onlineArticle.articleAddress)
+                ArticleInstance.instance()
+                    .saveArticle(title: onlineArticle.title,
+                        content: onlineArticle.content,
+                        modified: Date(timeIntervalSince1970: onlineArticle.dateCreated),
+                        keyaddress: onlineArticle.articleAddress)
             }
         }
         self.tableView.reloadData()
     }
-    
+
     func articleContentedInLocal(localArticles: [Artical], address: String) -> Artical? {
-        for article in localArticles{
-            if(article.addressKey == address){ return article }
+        for article in localArticles {
+            if (article.addressKey == address) {
+                return article
+            }
         }
         return nil
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchType != .none {
             if searchType == .server {
@@ -324,11 +336,11 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
             return self.renderedCellData.count
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "NoteRootTableViewCell",
-                                                 for: indexPath) as! NoteRootTableViewCell
-        
+            for: indexPath) as! NoteRootTableViewCell
+
         if (searchType != .none) {
             if searchType == .server {
                 if serverSearchResults.count > indexPath.row {
@@ -349,7 +361,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
             let data = self.renderedCellData[indexPath.row]
             cell = getTableCellOfPersonalTab(cell: cell, data: data)
         }
-        
+
         return cell
     }
 
@@ -373,7 +385,9 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
             print(action)
             print(index)
             ArticleInstance.instance().deleteArtical(artical: data)
-            if(data.addressKey != nil){self.deleteArticleOnline(title: data.title!, content: data.content!, address: data.addressKey!)}
+            if (data.addressKey != nil) {
+                self.deleteArticleOnline(title: data.title!, content: data.content!, address: data.addressKey!)
+            }
             self.tableView.reloadData()
         }
         more.backgroundColor = .red
@@ -389,11 +403,14 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         let closeAction = UIContextualAction(style: .normal,
             title: "Upload",
             handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
-                if(data.dirty == true || data.addressKey == nil){
-                    if(data.addressKey != nil){
-                        self.uploadArtical(articleAddress: data.addressKey!, title: data.title!, content: data.content!, instance: data)
+                if (data.dirty == true || data.addressKey == nil) {
+                    if (data.addressKey != nil) {
+                        self.uploadArticle(articleAddress: data.addressKey!,
+                            title: data.title!,
+                            content: data.content!,
+                            instance: data)
                     } else {
-                        self.uploadArtical(instance: data)
+                        self.uploadArticle(instance: data)
                     }
                     print("OK, marked as Closed")
                     self.alertMessage(title: "Success", message: "Article uploaded")
@@ -404,11 +421,11 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         closeAction.backgroundColor = (data.dirty || data.addressKey == nil) ? .purple : .gray
         return UISwipeActionsConfiguration(actions: [closeAction])
     }
-    
+
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()
     }
-    
+
     func alertMessage(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         self.present(alertController, animated: true, completion: nil)
@@ -423,8 +440,8 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         }
         self.tableView.reloadData()
     }
-    
-    @objc func refreshtables(){
+
+    @objc func refreshTables() {
         fetchData()
     }
 }

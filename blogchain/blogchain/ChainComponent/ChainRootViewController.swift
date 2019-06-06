@@ -48,7 +48,7 @@ class ChainRootViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.blockchain.blocks[section + 1].transactions.last?.title 
+        return self.blockchain.blocks[section + 1].transactions.last?.title
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

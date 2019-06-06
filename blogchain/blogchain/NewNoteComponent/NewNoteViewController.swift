@@ -9,7 +9,7 @@
 import SnapKit
 
 class NewNoteViewController: UIViewController {
-    let tx = TextFileEdutior(showButton: false)
+    let tx = TextFileEditor(showButton: false)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +24,11 @@ class NewNoteViewController: UIViewController {
         tx.addLeftButton(title: "CLEAR")
         tx.viewInitial()
         tx.addRightButton(title: "SAVE")
-        tx.rightButton.addTarget(self, action: #selector(savaArtical), for: .touchUpInside)
+        tx.rightButton.addTarget(self, action: #selector(sanaArticle), for: .touchUpInside)
         tx.leftButton.addTarget(self, action: #selector(cleanAll), for: .touchUpInside)
     }
 
-    @objc func savaArtical() {
+    @objc func sanaArticle() {
         self.tx.contentView.resignFirstResponder()
         self.tx.titleView.resignFirstResponder()
         // local saving
@@ -39,6 +39,4 @@ class NewNoteViewController: UIViewController {
         tx.contentView.text = nil
         tx.titleView.text = nil
     }
-
 }
-

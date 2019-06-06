@@ -11,10 +11,10 @@ import SnapKit
 class PinPage: UIView {
     public let notionLabel = UILabel()
     public let hidedLabel = UITextField()
-    public let code1 = UILabel()
-    public let code2 = UILabel()
-    public let code3 = UILabel()
-    public let code4 = UILabel()
+    public let label1 = UILabel()
+    public let label2 = UILabel()
+    public let label3 = UILabel()
+    public let label4 = UILabel()
 
     init() {
         super.init(frame: CGRect.zero)
@@ -57,42 +57,42 @@ class PinPage: UIView {
         hidedLabel.keyboardType = .numberPad
 
         self.layoutIfNeeded()
-        self.addSubview(code1)
-        self.addSubview(code2)
-        self.addSubview(code3)
-        self.addSubview(code4)
-        code1.snp.makeConstraints { make -> Void in
+        self.addSubview(label1)
+        self.addSubview(label2)
+        self.addSubview(label3)
+        self.addSubview(label4)
+        label1.snp.makeConstraints { make -> Void in
             make.centerY.equalTo(hidedLabel.snp.centerY)
             make.height.width.equalTo(self.snp.width).multipliedBy(0.2)
             make.leading.equalToSuperview().offset(self.frame.width * 0.04)
         }
-        code2.snp.makeConstraints { make -> Void in
+        label2.snp.makeConstraints { make -> Void in
             make.centerY.equalTo(hidedLabel.snp.centerY)
             make.height.width.equalTo(self.snp.width).multipliedBy(0.2)
             make.leading.equalToSuperview().offset(self.frame.width * 0.28)
         }
-        code3.snp.makeConstraints { make -> Void in
+        label3.snp.makeConstraints { make -> Void in
             make.centerY.equalTo(hidedLabel.snp.centerY)
             make.height.width.equalTo(self.snp.width).multipliedBy(0.2)
             make.leading.equalToSuperview().offset(self.frame.width * 0.52)
         }
-        code4.snp.makeConstraints { make -> Void in
+        label4.snp.makeConstraints { make -> Void in
             make.centerY.equalTo(hidedLabel.snp.centerY)
             make.height.width.equalTo(self.snp.width).multipliedBy(0.2)
             make.leading.equalToSuperview().offset(self.frame.width * 0.76)
         }
-        code1.layer.borderColor = UIColor.lightGray.cgColor
-        code1.layer.borderWidth = 1
-        code1.textAlignment = .center
-        code2.layer.borderColor = UIColor.lightGray.cgColor
-        code2.layer.borderWidth = 1
-        code2.textAlignment = .center
-        code3.layer.borderColor = UIColor.lightGray.cgColor
-        code3.layer.borderWidth = 1
-        code3.textAlignment = .center
-        code4.layer.borderColor = UIColor.lightGray.cgColor
-        code4.layer.borderWidth = 1
-        code4.textAlignment = .center
+        label1.layer.borderColor = UIColor.lightGray.cgColor
+        label1.layer.borderWidth = 1
+        label1.textAlignment = .center
+        label2.layer.borderColor = UIColor.lightGray.cgColor
+        label2.layer.borderWidth = 1
+        label2.textAlignment = .center
+        label3.layer.borderColor = UIColor.lightGray.cgColor
+        label3.layer.borderWidth = 1
+        label3.textAlignment = .center
+        label4.layer.borderColor = UIColor.lightGray.cgColor
+        label4.layer.borderWidth = 1
+        label4.textAlignment = .center
     }
 }
 

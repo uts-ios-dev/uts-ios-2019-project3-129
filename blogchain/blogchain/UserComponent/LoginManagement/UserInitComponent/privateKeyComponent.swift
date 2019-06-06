@@ -42,9 +42,9 @@ class privateKeysPage: UIView {
         noteLabel.text = "Enter your user name"
         noteLabel.textColor = .black
         noteLabel.textAlignment = .center
-        
+
         self.addSubview(usernameLabel)
-        usernameLabel.snp.makeConstraints{ make -> Void in
+        usernameLabel.snp.makeConstraints { make -> Void in
             make.top.equalTo(noteLabel.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)

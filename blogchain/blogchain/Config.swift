@@ -36,11 +36,11 @@ let persistentContainer: NSPersistentContainer = {
 }()
 
 var Author: String {
-        get {
-            return UserDefaults.standard.string(forKey: "author") ?? "name"
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "author")
-        }
-    
+    get {
+        return UserDefaults.standard.string(forKey: "author") ?? "name"
+    }
+    set {
+        UserDefaults.standard.set(newValue, forKey: "author")
+    }
+
 }

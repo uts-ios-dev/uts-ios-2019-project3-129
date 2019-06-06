@@ -62,14 +62,14 @@ class keyChainExtension {
     static func updateKeyChainItem(account: String, newKey: String) -> OSStatus {
         let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
                                     kSecAttrAccount as String: account]
-        
-        if SecItemCopyMatching(query as CFDictionary, nil) == noErr{
+
+        if SecItemCopyMatching(query as CFDictionary, nil) == noErr {
             let attributes: [String: Any] = [kSecAttrAccount as String: account,
                                              kSecValueData as String: newKey.data(using: String.Encoding.utf8)!]
             let status = SecItemUpdate(query as CFDictionary, attributes as CFDictionary)
             print(status)
             return status
-        }else{
+        } else {
             return (6)
         }
     }

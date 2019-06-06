@@ -1,19 +1,87 @@
 # BlogChain
 
-BlogChain is a blog platform running on iOS which hosts its blogs on the blockchain. By doing so, it is easier to protect the intellectual property and may extend the lifehood of articles (as long as one copy exists in the network).
+BlogChain is a blog platform running on iOS which hosts its blogs on the blockchain. By doing so, it is easier to protect the intellectual property and may extend the life-hood of articles (as long as at least one copy exists in the network).
 
-To have an quick and interactive view of our prototype, please click [here](https://org.modao.cc/app/bd50d3c66b2971209139a37fd8fc63d1025654ce).
+## How to run
+Install Vapor
 
-![Home](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/Home.png)
+```shell
+brew tap vapor/tap
+brew install vapor/tap/vapor
+```
 
-## Frameworks
-### Storage
-The implementation of the blockchain is based on [IPFS](https://ipfs.io/) (InterPlanetary File System), which is backed by Ethereum.
+Execute following commands in `/server` folder
 
-### Query
+```shell
+vapor build
+```
 
-For now, we use [Oraclize](https://docs.oraclize.it/#security-deep-dive) to get our data on IPFS.
+```shell
+vapor run --port=8080
+```
+(You may run another server on a different port to see how the blockchain sync between servers.)
 
-### Search
-Because of the speciality of the back-end, we are considering implementing our search engine by [Lens](https://github.com/RTradeLtd/Lens).
+Install Cocoapods
 
+```shell
+sudo gem install cocoapods
+```
+
+Install the pods by executing the following command in the `/blogchain` folder.
+
+```shell
+pod install
+```
+
+
+## Features
+
+#### Sign-in is protected by Touch ID
+
+![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-Touch-ID.PNG)
+
+#### PIN code is supported as well
+
+![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-PIN-code.png)
+
+#### Create a note
+
+![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-New-Note.png)
+
+*Notes support markdown!*
+
+#### Modify and upload a note
+
+![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-Upload-Note.png)
+
+#### Search notes
+
+![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-Search-Notes.png)
+
+#### Delete a note
+
+![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-Delete-Note.png)
+
+#### User
+
+![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-User.png)
+
+#### Sync blockchains between servers
+
+(Each server has to register on others)
+
+##### Register by POST `\api\nodes\register`
+
+![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-Register-Node.png)
+
+##### Sync by GET `\resolve`
+
+![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-Resolve.png)
+
+## Frameworks used
+
+- SnapKit
+- Alamofire
+- Notepad
+- CommonCrypto
+- CodableFirebase

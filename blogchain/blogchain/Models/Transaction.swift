@@ -63,4 +63,5 @@ struct UpdateArticle: Codable {
 
 struct PostArticleResult: Codable {
     let articleAddress: String
+    let createdDate: String
 }

@@ -41,16 +41,17 @@ class BlockchainService: Service {
         return self.blockchain.nodes
     }
     
-    func getLatestTransactionsByUser(hash userHash: String) -> [Transaction] {
-        var transactions = [Transaction]()
-        self.blockchain.blocks.forEach { (block) in
+    func getLatestTransactionsByUser(hash userHash: String) -> [ArticleResponse] {
+        var articles = [ArticleResponse]()
+        self.blockchain.blocks.forEach { block in
             if (block.owner == userHash) {
                 if let transaction = block.getLatestTransaction() {
-                    transactions.append(transaction)
+                    let article = ArticleResponse(transaction: transaction, articleAddress: block.hash)
+                    articles.append(article)
                 }
             }
         }
-        return transactions
+        return articles
     }
     // new article
     func addNewBlockWith(transaction: Transaction) -> String {

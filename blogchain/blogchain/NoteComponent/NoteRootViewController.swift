@@ -53,6 +53,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         loadAllArticles()
+        fetchData();
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -66,13 +67,8 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
 
     func fetchData() {
         // TODO: fill in the user private key
-        APIUtils.getArticlesFromUser(hash: keyChainExtension.keyAddress!) {
-            transactions in
-            for transaction in transactions {
-                #if DEBUG
-                print(transaction.content)
-                #endif
-            }
+        APIUtils.getArticlesFromUser(hash: keyChainExtension.keyAddress!) { transactions in
+            self.reconciliation(localArticles: self.renderedCellData, onlineArticles: transactions)
         }
     }
 
@@ -250,20 +246,21 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func uploadArtical(title: String, content: String) {
+    func uploadArtical(instance: Artical) {
         let category = "Dafault"
         let privateKey = keyChainExtension.keyAddress
         
-        let article = Article(title: title,
+        let article = Article(title: instance.title!,
                               author: Author,
                               sender: privateKey!,
                               category: category,
-                              content: content,
+                              content: instance.content!,
                               isHide: false)
         // chain saving
         APIUtils.postArticle(article: article) { result in
             // TODO: save the address to CoreData
-            print("Article address: \(result.articleAddress)")
+            print(result);
+            ArticleInstance.instance().saveArticle(instance: instance, addressKey: result.articleAddress, modified: Date());
         }
     }
     
@@ -298,6 +295,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
                 ArticleInstance.instance().saveArticle(title: onlineArticle.title, content: onlineArticle.content, modified: Date(timeIntervalSince1970: onlineArticle.dateCreated), keyaddress: onlineArticle.articleAddress);
             }
         }
+        self.tableView.reloadData();
     }
     
     func articleContentedInLocal(localArticles: [Artical], address: String) -> Artical? {
@@ -389,7 +387,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
                     if(data.addressKey != nil){
                         self.uploadArtical(articleAddress: data.addressKey!, title: data.title!, content: data.content!)
                     } else {
-                        self.uploadArtical(title: data.title!, content: data.content!)
+                        self.uploadArtical(instance: data)
                     }
                     print("OK, marked as Closed")
                     self.alertMessage(title: "Success", message: "Article uploaded")

@@ -80,9 +80,13 @@ class ArticleInstance {
         instance.title = title
         instance.content = content
         instance.dirty = false;
-        if (instance.addressKey != nil) {
-            instance.dirty = true
-        }
+        saveContext()
+    }
+    
+    func saveArticle(instance: Artical, addressKey: String, modified: Date?) {
+        instance.modified = modified
+        instance.dirty = false;
+        instance.addressKey = addressKey;
         saveContext()
     }
     
@@ -94,6 +98,7 @@ class ArticleInstance {
         newArticle?.created = modified
         newArticle?.modified = modified
         newArticle?.addressKey = keyaddress
+        newArticle?.dirty = false;
         saveContext()
         self.articles = fetchAllArticle()
     }

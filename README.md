@@ -36,45 +36,45 @@ pod install
 
 ## Features
 
-Sign-in is protected by Touch ID
+#### Sign-in is protected by Touch ID
 
 ![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-Touch-ID.PNG)
 
-PIN code is supported as well
+#### PIN code is supported as well
 
 ![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-PIN-code.png)
 
-Create a note
+#### Create a note
 
 ![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-New-Note.png)
 
 *Notes support markdown!*
 
-Modify and upload a note
+#### Modify and upload a note
 
 ![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-Upload-Note.png)
 
-Search notes
+#### Search notes
 
 ![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-Search-Notes.png)
 
-Delete a note
+#### Delete a note
 
 ![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-Delete-Note.png)
 
-User
+#### User
 
 ![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-User.png)
 
-Sync blockchains between servers
+#### Sync blockchains between servers
 
 (Each server has to register on others)
 
-Register by POST `\api\nodes\register`
+##### Register by POST `\api\nodes\register`
 
 ![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-Register-Node.png)
 
-Sync by GET `\resolve`
+##### Sync by GET `\resolve`
 
 ![](https://github.com/uts-ios-dev/uts-ios-2019-project3-129/blob/master/docs/BC-Resolve.png)
 

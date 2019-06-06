@@ -22,14 +22,14 @@ class UserLoginViewController: UIViewController {
             passwordBoard.updateLabel(content: pinCode)
             if (pinCode.count == 4) {
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.08) {
-                    if(self.callback4C == nil){self.validation(sample: self.truePinCode!);}
+                    if(self.callback4C == nil){self.validation(sample: self.truePinCode!)}
                     else {self.callback4C!()}
                 }
             }
         }
-    };
-    var rePinCode: String?;
-    var truePinCode: String?;
+    }
+    var rePinCode: String?
+    var truePinCode: String?
     
     override func loadView() {
         super.loadView()
@@ -94,7 +94,7 @@ class UserLoginViewController: UIViewController {
 
     func validation(sample: String) {
         if(self.pinCode == sample){
-            if (self.callbackSuccess != nil){ self.callbackSuccess!(); }
+            if (self.callbackSuccess != nil){ self.callbackSuccess!() }
         } else {
             invalied()
         }
@@ -119,18 +119,18 @@ class UserLoginViewController: UIViewController {
     }
     
     func changePinCode() {
-        self.pinCode = "";
-        self.noteLabel.text = "Enter your new pin code";
+        self.pinCode = ""
+        self.noteLabel.text = "Enter your new pin code"
         self.callback4C = {
-            self.rePinCode = self.pinCode;
-            self.pinCode = "";
-            self.noteLabel.text = "Conform your pin code";
+            self.rePinCode = self.pinCode
+            self.pinCode = ""
+            self.noteLabel.text = "Conform your pin code"
             self.callback4C = {
                 self.callbackSuccess = {
-                    _ = keyChainExtension.updateKeyChainItem(account: keyChainExtension.account.pinCode.rawValue, newKey: self.rePinCode!);
-                    self.selfDismiss();
+                    _ = keyChainExtension.updateKeyChainItem(account: keyChainExtension.account.pinCode.rawValue, newKey: self.rePinCode!)
+                    self.selfDismiss()
                 }
-                self.validation(sample: self.rePinCode!);
+                self.validation(sample: self.rePinCode!)
             }
         }
     }

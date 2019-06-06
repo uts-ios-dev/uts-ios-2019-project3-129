@@ -32,15 +32,15 @@ let persistentContainer: NSPersistentContainer = {
             fatalError("Unresolved error \(error), \(error.userInfo)")
         }
     })
-    return container;
-}();
+    return container
+}()
 
 var Author: String {
         get {
-            return UserDefaults.standard.string(forKey: "author") ?? "name";
+            return UserDefaults.standard.string(forKey: "author") ?? "name"
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: "author");
+            UserDefaults.standard.set(newValue, forKey: "author")
         }
     
-};
+}

@@ -28,8 +28,8 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     private var localSearchResults = [Artical]()
     private var renderedCellData: [Artical] {
         get {
-            if(!searchBar.text!.isEmpty){ return localSearchResults; }
-            return dataInstance.allArticles!;
+            if(!searchBar.text!.isEmpty){ return localSearchResults }
+            return dataInstance.allArticles!
         }
     }
     private var searchType = SearchType.none
@@ -53,7 +53,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         loadAllArticles()
-        fetchData();
+        fetchData()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -239,12 +239,12 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
                               category: "Default",
                               content: content,
                               isHide: true)
-        let articleAddress = address;
+        let articleAddress = address
         let updateArticle = UpdateArticle(address: articleAddress, article: article)
         APIUtils.updateArticle(article: updateArticle) { success in
             // TODO: HUD
         }
-        self.tableView.reloadData();
+        self.tableView.reloadData()
     }
     
     func uploadArtical(instance: Artical) {
@@ -260,11 +260,11 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         // chain saving
         APIUtils.postArticle(article: article) { result in
             // TODO: save the address to CoreData
-            print(result);
-            ArticleInstance.instance().saveArticle(instance: instance, addressKey: result.articleAddress, modified: Date(timeIntervalSince1970: Double(result.createdDate)!));
+            print(result)
+            ArticleInstance.instance().saveArticle(instance: instance, addressKey: result.articleAddress, modified: Date(timeIntervalSince1970: Double(result.createdDate)!))
         }
-        self.loadViewIfNeeded();
-        self.tableView.reloadData();
+        self.loadViewIfNeeded()
+        self.tableView.reloadData()
     }
     
     func uploadArtical(articleAddress: String, title: String, content: String, instance: Artical) {
@@ -283,32 +283,32 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         
         APIUtils.updateArticle(article: updateArticle) { date in
             // TODO: HUD
-            ArticleInstance.instance().saveArticle(instance: instance, modified: Date(timeIntervalSince1970: Double(date)!));
+            ArticleInstance.instance().saveArticle(instance: instance, modified: Date(timeIntervalSince1970: Double(date)!))
         }
-        self.loadViewIfNeeded();
-        self.tableView.reloadData();
+        self.loadViewIfNeeded()
+        self.tableView.reloadData()
     }
     
     func reconciliation(localArticles: [Artical], onlineArticles: [TransactionWithAddr]) {
-        var mid: Artical?;
+        var mid: Artical?
         for onlineArticle in onlineArticles {
-            mid = articleContentedInLocal(localArticles: localArticles, address: onlineArticle.articleAddress);
+            mid = articleContentedInLocal(localArticles: localArticles, address: onlineArticle.articleAddress)
             if(mid != nil){
                 if(onlineArticle.dateCreated > mid!.modified!.timeIntervalSince1970){
-                    ArticleInstance.instance().saveArticle(instance: mid!, title: mid!.title!, content: mid!.content!, modified: Date(timeIntervalSince1970: onlineArticle.dateCreated));
+                    ArticleInstance.instance().saveArticle(instance: mid!, title: mid!.title!, content: mid!.content!, modified: Date(timeIntervalSince1970: onlineArticle.dateCreated))
                 }
             } else {
-                ArticleInstance.instance().saveArticle(title: onlineArticle.title, content: onlineArticle.content, modified: Date(timeIntervalSince1970: onlineArticle.dateCreated), keyaddress: onlineArticle.articleAddress);
+                ArticleInstance.instance().saveArticle(title: onlineArticle.title, content: onlineArticle.content, modified: Date(timeIntervalSince1970: onlineArticle.dateCreated), keyaddress: onlineArticle.articleAddress)
             }
         }
-        self.tableView.reloadData();
+        self.tableView.reloadData()
     }
     
     func articleContentedInLocal(localArticles: [Artical], address: String) -> Artical? {
         for article in localArticles{
             if(article.addressKey == address){ return article }
         }
-        return nil;
+        return nil
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -368,7 +368,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         if inAllTab() || searchType == .local {
             return []
         }
-        let data = self.renderedCellData[indexPath.row];
+        let data = self.renderedCellData[indexPath.row]
         let more = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
             print(action)
             print(index)
@@ -385,7 +385,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         if inAllTab() || searchType == .local {
             return nil
         }
-        let data = self.renderedCellData[indexPath.row];
+        let data = self.renderedCellData[indexPath.row]
         let closeAction = UIContextualAction(style: .normal,
             title: "Upload",
             handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
@@ -397,7 +397,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
                     }
                     print("OK, marked as Closed")
                     self.alertMessage(title: "Success", message: "Article uploaded")
-                    self.tableView.reloadData();
+                    self.tableView.reloadData()
                 }
                 success(true)
             })
@@ -406,7 +406,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        self.searchBar.resignFirstResponder();
+        self.searchBar.resignFirstResponder()
     }
     
     func alertMessage(title: String, message: String) {

@@ -53,7 +53,7 @@ class ChainRootViewController: UIViewController, UITableViewDelegate, UITableVie
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteRootTableViewCell",
-            for: indexPath) as! NoteRootTableViewCell;
+            for: indexPath) as! NoteRootTableViewCell
         let data = self.blockchain.blocks[indexPath.section + 1].transactions[indexPath.row]
         let hash = data.hash.prefix(6)
         cell.titleLabel.text = "\(data.title) #\(hash)"
@@ -83,7 +83,7 @@ class ChainRootViewController: UIViewController, UITableViewDelegate, UITableVie
 
     override func viewWillAppear(_ animated: Bool) {
         print("appear")
-        self.tableView.reloadData();
+        self.tableView.reloadData()
     }
 
     func selfStyleSetting() {

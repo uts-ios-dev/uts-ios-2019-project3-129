@@ -29,8 +29,8 @@ class NewNoteViewController: UIViewController {
     }
 
     @objc func savaArtical() {
-        self.tx.contentView.resignFirstResponder();
-        self.tx.titleView.resignFirstResponder();
+        self.tx.contentView.resignFirstResponder()
+        self.tx.titleView.resignFirstResponder()
         // local saving
         ArticleInstance.instance().saveArticle(title: tx.titleView.text, content: tx.contentView.text)
     }

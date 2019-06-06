@@ -79,7 +79,7 @@ class ArticleInstance {
         instance.modified = modified
         instance.title = title
         instance.content = content
-        instance.dirty = false;
+        instance.dirty = false
         saveContext()
     }
     
@@ -104,7 +104,7 @@ class ArticleInstance {
         newArticle?.created = modified
         newArticle?.modified = modified
         newArticle?.addressKey = keyaddress
-        newArticle?.dirty = false;
+        newArticle?.dirty = false
         saveContext()
         self.articles = fetchAllArticle()
     }

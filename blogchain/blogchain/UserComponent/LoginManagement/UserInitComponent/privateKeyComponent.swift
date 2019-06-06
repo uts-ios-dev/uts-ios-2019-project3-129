@@ -39,16 +39,16 @@ class privateKeysPage: UIView {
             make.leading.trailing.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.3)
         }
-        noteLabel.text = "Enter your user name";
-        noteLabel.textColor = .black;
-        noteLabel.textAlignment = .center;
+        noteLabel.text = "Enter your user name"
+        noteLabel.textColor = .black
+        noteLabel.textAlignment = .center
         
-        self.addSubview(usernameLabel);
+        self.addSubview(usernameLabel)
         usernameLabel.snp.makeConstraints{ make -> Void in
-            make.top.equalTo(noteLabel.snp.bottom).offset(10);
-            make.leading.equalToSuperview().offset(20);
-            make.trailing.equalToSuperview().offset(-20);
-            make.height.equalToSuperview().multipliedBy(0.1);
+            make.top.equalTo(noteLabel.snp.bottom).offset(10)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalToSuperview().multipliedBy(0.1)
         }
         usernameLabel.placeholder = "User name"
         usernameLabel.textAlignment = .center

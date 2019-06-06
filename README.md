@@ -33,6 +33,8 @@ Install the pods by executing the following command in the `/blogchain` folder.
 pod install
 ```
 
+For the Notepad package which provides the markdown editor feature, you may need to follow this [issue](https://github.com/ruddfawcett/Notepad/issues/52#issuecomment-496066568) to fix the "theme not found" problem, since the developer has not combined the fixing solution in his main branch.
+
 
 ## Features
 

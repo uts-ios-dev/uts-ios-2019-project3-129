@@ -244,6 +244,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         APIUtils.updateArticle(article: updateArticle) { success in
             // TODO: HUD
         }
+        self.tableView.reloadData();
     }
     
     func uploadArtical(instance: Artical) {
@@ -260,11 +261,12 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         APIUtils.postArticle(article: article) { result in
             // TODO: save the address to CoreData
             print(result);
-            ArticleInstance.instance().saveArticle(instance: instance, addressKey: result.articleAddress, modified: Date());
+            ArticleInstance.instance().saveArticle(instance: instance, addressKey: result.articleAddress, modified: Date(timeIntervalSince1970: Double(result.createdDate)!));
         }
+        self.tableView.reloadData();
     }
     
-    func uploadArtical(articleAddress: String, title: String, content: String) {
+    func uploadArtical(articleAddress: String, title: String, content: String, instance: Artical) {
         
         let privateKey = keyChainExtension.keyAddress
         let category = "Dafault"
@@ -278,9 +280,11 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         
         let updateArticle = UpdateArticle(address: articleAddress, article: article)
         
-        APIUtils.updateArticle(article: updateArticle) { success in
+        APIUtils.updateArticle(article: updateArticle) { date in
             // TODO: HUD
+            ArticleInstance.instance().saveArticle(instance: instance, modified: Date(timeIntervalSince1970: Double(date)!));
         }
+        self.tableView.reloadData();
     }
     
     func reconciliation(localArticles: [Artical], onlineArticles: [TransactionWithAddr]) {
@@ -385,7 +389,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
             handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
                 if(data.dirty == true || data.addressKey == nil){
                     if(data.addressKey != nil){
-                        self.uploadArtical(articleAddress: data.addressKey!, title: data.title!, content: data.content!)
+                        self.uploadArtical(articleAddress: data.addressKey!, title: data.title!, content: data.content!, instance: data)
                     } else {
                         self.uploadArtical(instance: data)
                     }

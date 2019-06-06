@@ -85,8 +85,14 @@ class ArticleInstance {
     
     func saveArticle(instance: Artical, addressKey: String, modified: Date?) {
         instance.modified = modified
-        instance.dirty = false;
-        instance.addressKey = addressKey;
+        instance.dirty = false
+        instance.addressKey = addressKey
+        saveContext()
+    }
+    
+    func saveArticle(instance: Artical, modified: Date?) {
+        instance.modified = modified
+        instance.dirty = false
         saveContext()
     }
     

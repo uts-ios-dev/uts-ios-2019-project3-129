@@ -20,7 +20,7 @@ class BlockchainController {
         }
     }
     
-    func registerNodes(req:Request, nodes:[BlockchainNode]) throws -> [BlockchainNode] {
+    func registerNodes(req: Request, nodes: [BlockchainNode]) throws -> [BlockchainNode] {
         return try req.make(BlockchainService.self).registerNodes(nodes: nodes)
     }
     
@@ -28,9 +28,9 @@ class BlockchainController {
         return try req.make(BlockchainService.self).getNodes()
     }
     
-    func getArticlesFromUser(req: Request) throws -> Future<[Transaction]> {
+    func getArticlesFromUser(req: Request) throws -> Future<[ArticleResponse]> {
         let userHash = try req.parameters.next(String.self)
-        return Future.map(on: req){ () -> [Transaction] in
+        return Future.map(on: req){ () -> [ArticleResponse] in
             return try req.make(BlockchainService.self).getLatestTransactionsByUser(hash: userHash)
         }
     }

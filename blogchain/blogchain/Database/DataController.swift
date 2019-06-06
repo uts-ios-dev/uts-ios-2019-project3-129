@@ -74,6 +74,29 @@ class ArticleInstance {
         }
         saveContext()
     }
+    
+    func saveArticle(instance: Artical, title: String?, content: String?, modified: Date?) {
+        instance.modified = modified
+        instance.title = title
+        instance.content = content
+        instance.dirty = false;
+        if (instance.addressKey != nil) {
+            instance.dirty = true
+        }
+        saveContext()
+    }
+    
+    func saveArticle(title: String?, content: String?, modified: Date?, keyaddress: String?) {
+        let entity = NSEntityDescription.entity(forEntityName: "Artical", in: persistentContainer.viewContext)!
+        let newArticle = NSManagedObject(entity: entity, insertInto: persistentContainer.viewContext) as? Artical
+        newArticle?.title = title
+        newArticle?.content = content
+        newArticle?.created = modified
+        newArticle?.modified = modified
+        newArticle?.addressKey = keyaddress
+        saveContext()
+        self.articles = fetchAllArticle()
+    }
 
     private func saveContext() {
         let context = persistentContainer.viewContext

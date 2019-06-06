@@ -66,7 +66,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
 
     func fetchData() {
         // TODO: fill in the user private key
-        APIUtils.getArticlesFromUser(hash: "9e7cd9cb5a63a3591e16f4d835f32a1c4a84ab66e39ae27aa448c03b66bf63e7") {
+        APIUtils.getArticlesFromUser(hash: keyChainExtension.keyAddress!) {
             transactions in
             for transaction in transactions {
                 #if DEBUG
@@ -200,48 +200,6 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchType != .none {
-            if searchType == .server {
-                return serverSearchResults.count
-            } else {
-                return localSearchResults.count
-            }
-        } else if inAllTab() {
-            return self.allArticlesInBlockchain.count - 1
-        } else {
-            return self.renderedCellData.count
-        }
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "NoteRootTableViewCell",
-            for: indexPath) as! NoteRootTableViewCell
-
-        if (searchType != .none) {
-            if searchType == .server {
-                if serverSearchResults.count > indexPath.row {
-                    let data = serverSearchResults[indexPath.row]
-                    cell = getTableCellOfAllTab(cell: cell, data: data)
-                }
-            } else {
-                // local search
-                if localSearchResults.count > indexPath.row {
-                    let data = localSearchResults[indexPath.row]
-                    cell = getTableCellOfPersonalTab(cell: cell, data: data)
-                }
-            }
-        } else if inAllTab() {
-            let data = self.allArticlesInBlockchain[indexPath.row + 1].transactions.last!
-            cell = getTableCellOfAllTab(cell: cell, data: data)
-        } else {
-            let data = self.renderedCellData[indexPath.row]
-            cell = getTableCellOfPersonalTab(cell: cell, data: data)
-        }
-
-        return cell
-    }
-
     func getTableCellOfAllTab(cell: NoteRootTableViewCell, data: Transaction) -> NoteRootTableViewCell {
         let dateformatter = DateFormatter()
         dateformatter.dateStyle = .short
@@ -276,6 +234,120 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         }
         return cell
     }
+    
+    func deleteArticleOnline(title: String, content: String, address: String) {
+        // chain deleting
+        let article = Article(title: title,
+                              author: Author,
+                              sender: keyChainExtension.keyAddress!,
+                              category: "Default",
+                              content: content,
+                              isHide: true)
+        let articleAddress = address;
+        let updateArticle = UpdateArticle(address: articleAddress, article: article)
+        APIUtils.updateArticle(article: updateArticle) { success in
+            // TODO: HUD
+        }
+    }
+    
+    func uploadArtical(title: String, content: String) {
+        let category = "Dafault"
+        let privateKey = keyChainExtension.keyAddress
+        
+        let article = Article(title: title,
+                              author: Author,
+                              sender: privateKey!,
+                              category: category,
+                              content: content,
+                              isHide: false)
+        // chain saving
+        APIUtils.postArticle(article: article) { result in
+            // TODO: save the address to CoreData
+            print("Article address: \(result.articleAddress)")
+        }
+    }
+    
+    func uploadArtical(articleAddress: String, title: String, content: String) {
+        
+        let privateKey = keyChainExtension.keyAddress
+        let category = "Dafault"
+        // chain saving
+        let article = Article(title: title,
+                              author: Author,
+                              sender: privateKey!,
+                              category: category,
+                              content: content,
+                              isHide: false)
+        
+        let updateArticle = UpdateArticle(address: articleAddress, article: article)
+        
+        APIUtils.updateArticle(article: updateArticle) { success in
+            // TODO: HUD
+        }
+    }
+    
+    func reconciliation(localArticles: [Artical], onlineArticles: [Transaction]) {
+        var mid: Artical?;
+        for onlineArticle in onlineArticles {
+            mid = articleContentedInLocal(localArticles: localArticles, address: onlineArticle.articleAddress);
+            if(mid != nil){
+                if(onlineArticle.dateCreated > mid!.modified!.timeIntervalSince1970){
+                    ArticleInstance.instance().saveArticle(instance: mid!, title: mid!.title!, content: mid!.content!, modified: Date(timeIntervalSince1970: onlineArticle.dateCreated));
+                }
+            } else {
+                ArticleInstance.instance().saveArticle(title: onlineArticle.title, content: onlineArticle.content, modified: Date(timeIntervalSince1970: onlineArticle.dateCreated), keyaddress: onlineArticle.articleAddress);
+            }
+        }
+    }
+    
+    func articleContentedInLocal(localArticles: [Artical], address: String) -> Artical? {
+        for article in localArticles{
+            if(article.addressKey == address){ return article }
+        }
+        return nil;
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchType != .none {
+            if searchType == .server {
+                return serverSearchResults.count
+            } else {
+                return localSearchResults.count
+            }
+        } else if inAllTab() {
+            return self.allArticlesInBlockchain.count - 1
+        } else {
+            return self.renderedCellData.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "NoteRootTableViewCell",
+                                                 for: indexPath) as! NoteRootTableViewCell
+        
+        if (searchType != .none) {
+            if searchType == .server {
+                if serverSearchResults.count > indexPath.row {
+                    let data = serverSearchResults[indexPath.row]
+                    cell = getTableCellOfAllTab(cell: cell, data: data)
+                }
+            } else {
+                // local search
+                if localSearchResults.count > indexPath.row {
+                    let data = localSearchResults[indexPath.row]
+                    cell = getTableCellOfPersonalTab(cell: cell, data: data)
+                }
+            }
+        } else if inAllTab() {
+            let data = self.allArticlesInBlockchain[indexPath.row + 1].transactions.last!
+            cell = getTableCellOfAllTab(cell: cell, data: data)
+        } else {
+            let data = self.renderedCellData[indexPath.row]
+            cell = getTableCellOfPersonalTab(cell: cell, data: data)
+        }
+        
+        return cell
+    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let noteDetailed = NoteDetailedViewController()
@@ -292,26 +364,15 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         if inAllTab() || searchType == .local {
             return []
         }
+        let data = self.renderedCellData[indexPath.row];
         let more = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
             print(action)
             print(index)
-            ArticleInstance.instance().deleteArtical(artical: self.renderedCellData[indexPath.row])
+            ArticleInstance.instance().deleteArtical(artical: data)
+            if(data.addressKey != nil){self.deleteArticleOnline(title: data.title!, content: data.content!, address: data.addressKey!)}
             self.tableView.reloadData()
-            // chain deleting
-            let article = Article(title: "111",
-                author: "Frank",
-                sender: "test",
-                category: "IpHONE",
-                content: "Make blog great again!",
-                isHide: true)
-            let articleAddress = "d754daeebb51bb4bb17f1ac39e47297e4b18c2291b77c95b3e1793e5de656720"
-            let updateArticle = UpdateArticle(address: articleAddress, article: article)
-            APIUtils.updateArticle(article: updateArticle) { success in
-                // TODO: HUD
-            }
         }
         more.backgroundColor = .red
-
         return [more]
     }
 
@@ -320,15 +381,31 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         if inAllTab() || searchType == .local {
             return nil
         }
+        let data = self.renderedCellData[indexPath.row];
         let closeAction = UIContextualAction(style: .normal,
             title: "Upload",
             handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
-                print("OK, marked as Closed")
+                if(data.dirty == true || data.addressKey == nil){
+                    if(data.addressKey != nil){
+                        self.uploadArtical(articleAddress: data.addressKey!, title: data.title!, content: data.content!)
+                    } else {
+                        self.uploadArtical(title: data.title!, content: data.content!)
+                    }
+                    print("OK, marked as Closed")
+                    self.alertMessage(title: "Success", message: "Article uploaded")
+                }
                 success(true)
             })
-        closeAction.backgroundColor = self.renderedCellData[indexPath.row].dirty ? .gray : .purple
-
+        closeAction.backgroundColor = (data.dirty || data.addressKey == nil) ? .purple : .gray
         return UISwipeActionsConfiguration(actions: [closeAction])
+    }
+    
+    func alertMessage(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        self.present(alertController, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            self.view.window?.rootViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
+        }
     }
 
     @objc func segmentedControlChange(_ segmented: UISegmentedControl) {

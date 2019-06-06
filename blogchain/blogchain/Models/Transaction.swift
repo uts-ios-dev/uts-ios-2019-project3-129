@@ -17,6 +17,7 @@ struct Transaction: Codable {
     let category: String
     let content: String
     let dateCreated: Double
+    let articleAddress: String
     let isHide: Bool
 }
 

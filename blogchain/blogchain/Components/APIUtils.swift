@@ -83,17 +83,17 @@ class APIUtils {
         }
     }
 
-    static func updateArticle(article: UpdateArticle, completion: @escaping (_ success: Bool) -> Void) {
+    static func updateArticle(article: UpdateArticle, completion: @escaping (_ date: String) -> Void) {
         let parameters: Parameters = try! FirestoreEncoder().encode(article)
 
         Alamofire.request("\(hostAddr)api/updateArticle", method: .post, parameters: parameters)
             .responseData { response in
                 switch response.result {
-                case .success(_):
-                    completion(true)
+                case .success(let value):
+                    let date = String(data: value, encoding: .utf8)!
+                    completion(date)
                 case .failure(let error):
                     print("Error: \(error)")
-                    completion(false)
                 }
             }
     }

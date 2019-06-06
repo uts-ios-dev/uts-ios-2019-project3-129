@@ -54,6 +54,7 @@ class BlockchainController {
     }
 
     func updateArticle(req: Request) throws -> Future<HTTPResponse> {
+        var updateDate: Double = 0
         return try req.content.decode(UpdateArticleRequest.self).map(to: HTTPResponse.self) { updateArticleRequest in
             guard let sender = updateArticleRequest.sender.sha256() else { return HTTPResponse(status: .notAcceptable, body: "Missing sender's key") }
             if updateArticleRequest.content.isEmpty { return HTTPResponse(status: .notAcceptable, body: "Missing content") }
@@ -64,13 +65,14 @@ class BlockchainController {
                                           category: category,
                                           content: updateArticleRequest.content,
                                           isHide: updateArticleRequest.isHide)
+            updateDate = transaction.dateCreated
             let service = try req.make(BlockchainService.self)
             do {
                 try service.appendTransactionToBlock(hash: updateArticleRequest.articleAddress, transaction: transaction)
             } catch BlockError.blockHashNotExist {
                 return HTTPResponse(status: .badRequest, body: "Article not existed")
             }
-            return HTTPResponse(status: .ok, body: "Article updated")
+            return HTTPResponse(status: .ok, body: String(updateDate))
         }
     }
     

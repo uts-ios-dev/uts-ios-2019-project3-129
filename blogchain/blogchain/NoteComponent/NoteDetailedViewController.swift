@@ -66,47 +66,15 @@ class NoteDetailedViewController: UIViewController, UIGestureRecognizerDelegate 
     // TODO: share the save article btw new note and edit note
     @objc func saveArticle() {
         // TODO: Refactor (same with new note
-        let author = "ANONYMOUS"
-        let privateKey = "sender-hash-test"
-        let category = "Dafault"
-        let articleAddress = "d754daeebb51bb4bb17f1ac39e47297e4b18c2291b77c95b3e1793e5de656720"
-
-        guard let title = tx.titleView.text else {
-            // TODO: HUD
-            #if DEBUG
-            print("Missing the title")
-            #endif
-            return
-        }
-        guard let content = tx.contentView.text else {
-            // TODO: HUD
-            #if DEBUG
-            print("Missing the content")
-            #endif
-            return
-        }
         // local saving
-//        ArticalInstance.instance().saveArtical(instance: articalData!, title: tx.titleView.text, content: tx.contentView.text)
-        ArticleInstance.instance()
-            .saveArticle(instance: articalData!, title: tx.titleView.text, content: tx.mdEditor?.text)
+        ArticleInstance.instance().saveArticle(instance: articalData!, title: tx.titleView.text, content: tx.mdEditor?.text)
         self.tabBarController?.tabBar.isHidden = false
         tx.titleView.isEnabled = false
-//        tx.contentView.isEditable = false
+        tx.contentView.isEditable = false
         tx.mdEditor?.isEditable = false
         tx.rightButton.removeTarget(nil, action: nil, for: .allEvents)
         tx.rightButton.setTitle("EDIT", for: .normal)
         tx.rightButton.addTarget(self, action: #selector(editArtical), for: .touchUpInside)
-        // chain saving
-        let article = Article(title: title,
-            author: author,
-            sender: privateKey,
-            category: category,
-            content: content,
-            isHide: false)
-        let updateArticle = UpdateArticle(address: articleAddress, article: article)
-        APIUtils.updateArticle(article: updateArticle) { success in
-            // TODO: HUD
-        }
     }
 
     @objc func backButtonSelector() {

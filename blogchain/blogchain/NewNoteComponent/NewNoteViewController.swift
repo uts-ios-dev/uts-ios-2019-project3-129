@@ -29,39 +29,10 @@ class NewNoteViewController: UIViewController {
     }
 
     @objc func savaArtical() {
-        // TODO: Refactor
-        let author = "ANONYMOUS"
-        let privateKey = "sender-hash-test"
-        let category = "Dafault"
         self.tx.contentView.resignFirstResponder();
         self.tx.titleView.resignFirstResponder();
-        guard let title = tx.titleView.text else {
-            // TODO: HUD
-            #if DEBUG
-            print("Missing the title")
-            #endif
-            return
-        }
-        guard let content = tx.contentView.text else {
-            // TODO: HUD
-            #if DEBUG
-            print("Missing the content")
-            #endif
-            return
-        }
         // local saving
         ArticleInstance.instance().saveArticle(title: tx.titleView.text, content: tx.contentView.text)
-        let article = Article(title: title,
-            author: author,
-            sender: privateKey,
-            category: category,
-            content: content,
-            isHide: false)
-        // chain saving
-        APIUtils.postArticle(article: article) { result in
-            // TODO: save the address to CoreData
-            print("Article address: \(result.articleAddress)")
-        }
     }
 
     @objc func cleanAll() {

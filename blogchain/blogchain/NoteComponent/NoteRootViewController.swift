@@ -179,10 +179,10 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func addButton() {
-        let rightButton = UIBarButtonItem(title: "\u{2022}\u{2022}\u{2022}", style: .plain, target: self, action: nil)
-        rightButton.tintColor = .black
-        self.navigationItem.rightBarButtonItem = rightButton
-        let leftButton = UIBarButtonItem(title: "Update", style: .plain, target: self, action: nil)
+//        let rightButton = UIBarButtonItem(title: "\u{2022}\u{2022}\u{2022}", style: .plain, target: self, action: nil)
+//        rightButton.tintColor = .black
+//        self.navigationItem.rightBarButtonItem = rightButton
+        let leftButton = UIBarButtonItem(title: "Update", style: .plain, target: self, action: #selector(refreshtables))
         leftButton.tintColor = .black
         self.navigationItem.leftBarButtonItem = leftButton
     }
@@ -422,5 +422,9 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
             self.bottomBar.frame.origin.x = self.segments.frame.width / 2 * CGFloat(self.segments.selectedSegmentIndex)
         }
         self.tableView.reloadData()
+    }
+    
+    @objc func refreshtables(){
+        fetchData()
     }
 }

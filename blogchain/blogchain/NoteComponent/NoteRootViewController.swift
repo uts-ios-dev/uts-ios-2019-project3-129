@@ -263,6 +263,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
             print(result);
             ArticleInstance.instance().saveArticle(instance: instance, addressKey: result.articleAddress, modified: Date(timeIntervalSince1970: Double(result.createdDate)!));
         }
+        self.loadViewIfNeeded();
         self.tableView.reloadData();
     }
     
@@ -284,6 +285,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
             // TODO: HUD
             ArticleInstance.instance().saveArticle(instance: instance, modified: Date(timeIntervalSince1970: Double(date)!));
         }
+        self.loadViewIfNeeded();
         self.tableView.reloadData();
     }
     
@@ -401,6 +403,10 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
             })
         closeAction.backgroundColor = (data.dirty || data.addressKey == nil) ? .purple : .gray
         return UISwipeActionsConfiguration(actions: [closeAction])
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder();
     }
     
     func alertMessage(title: String, message: String) {

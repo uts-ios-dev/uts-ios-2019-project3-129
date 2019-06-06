@@ -263,7 +263,6 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         // chain saving
         APIUtils.postArticle(article: article) { result in
             // TODO: save the address to CoreData
-            print("Article address: \(result.articleAddress)")
         }
     }
     

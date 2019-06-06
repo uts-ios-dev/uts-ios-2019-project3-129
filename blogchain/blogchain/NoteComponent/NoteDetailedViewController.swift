@@ -10,7 +10,7 @@ import SnapKit
 
 class NoteDetailedViewController: UIViewController, UIGestureRecognizerDelegate {
 
-    var articalData: Artical?
+    var articalData: LocalArticle?
     let tx = TextFileEditor(showButton: true)
     var transaction: Transaction?
 

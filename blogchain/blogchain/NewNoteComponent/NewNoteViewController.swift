@@ -24,15 +24,15 @@ class NewNoteViewController: UIViewController {
         tx.addLeftButton(title: "CLEAR")
         tx.viewInitial()
         tx.addRightButton(title: "SAVE")
-        tx.rightButton.addTarget(self, action: #selector(sanaArticle), for: .touchUpInside)
+        tx.rightButton.addTarget(self, action: #selector(saveArticle), for: .touchUpInside)
         tx.leftButton.addTarget(self, action: #selector(cleanAll), for: .touchUpInside)
     }
 
-    @objc func sanaArticle() {
+    @objc func saveArticle() {
         self.tx.contentView.resignFirstResponder()
         self.tx.titleView.resignFirstResponder()
         // local saving
-        ArticleInstance.instance().saveArticle(title: tx.titleView.text, content: tx.contentView.text)
+        ArticleInstance.instance().saveArticle(title: tx.titleView.text, content: tx.mdEditor?.text)
     }
 
     @objc func cleanAll() {

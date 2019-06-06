@@ -22,8 +22,8 @@ class ArticleInstance {
         return _instance!
     }
 
-    private var articles: [Artical]?
-    public var allArticles: [Artical]? {
+    private var articles: [LocalArticle]?
+    public var allArticles: [LocalArticle]? {
         get {
             if (articles != nil) {
                 return articles
@@ -35,8 +35,8 @@ class ArticleInstance {
 
     func saveArticle(title: String?, content: String?) {
         let now = Date()
-        let entity = NSEntityDescription.entity(forEntityName: "Artical", in: persistentContainer.viewContext)!
-        let newArticle = NSManagedObject(entity: entity, insertInto: persistentContainer.viewContext) as? Artical
+        let entity = NSEntityDescription.entity(forEntityName: "LocalArticle", in: persistentContainer.viewContext)!
+        let newArticle = NSManagedObject(entity: entity, insertInto: persistentContainer.viewContext) as? LocalArticle
         newArticle?.title = title
         newArticle?.content = content
         newArticle?.created = now
@@ -45,17 +45,17 @@ class ArticleInstance {
         self.articles = fetchAllArticle()
     }
 
-    func searchArticles(keyword: String) -> [Artical] {
-        let fetch: NSFetchRequest<Artical> = Artical.fetchRequest()
+    func searchArticles(keyword: String) -> [LocalArticle] {
+        let fetch: NSFetchRequest<LocalArticle> = LocalArticle.fetchRequest()
         let predicate = NSPredicate(format: "(%K contains [c] %@) OR (%K contains [c] %@)",
-            #keyPath(Artical.title),
+            #keyPath(LocalArticle.title),
             keyword,
-            #keyPath(Artical.content),
+            #keyPath(LocalArticle.content),
             keyword)
 
         fetch.predicate = predicate
         let context = persistentContainer.viewContext
-        var articles = [Artical]()
+        var articles = [LocalArticle]()
         do {
             articles = try context.fetch(fetch)
         } catch {
@@ -64,7 +64,7 @@ class ArticleInstance {
         return articles
     }
 
-    func saveArticle(instance: Artical, title: String?, content: String?) {
+    func saveArticle(instance: LocalArticle, title: String?, content: String?) {
         let now = Date()
         instance.modified = now
         instance.title = title
@@ -75,7 +75,7 @@ class ArticleInstance {
         saveContext()
     }
 
-    func saveArticle(instance: Artical, title: String?, content: String?, modified: Date?) {
+    func saveArticle(instance: LocalArticle, title: String?, content: String?, modified: Date?) {
         instance.modified = modified
         instance.title = title
         instance.content = content
@@ -83,22 +83,22 @@ class ArticleInstance {
         saveContext()
     }
 
-    func saveArticle(instance: Artical, addressKey: String, modified: Date?) {
+    func saveArticle(instance: LocalArticle, addressKey: String, modified: Date?) {
         instance.modified = modified
         instance.dirty = false
         instance.addressKey = addressKey
         saveContext()
     }
 
-    func saveArticle(instance: Artical, modified: Date?) {
+    func saveArticle(instance: LocalArticle, modified: Date?) {
         instance.modified = modified
         instance.dirty = false
         saveContext()
     }
 
     func saveArticle(title: String?, content: String?, modified: Date?, keyaddress: String?) {
-        let entity = NSEntityDescription.entity(forEntityName: "Artical", in: persistentContainer.viewContext)!
-        let newArticle = NSManagedObject(entity: entity, insertInto: persistentContainer.viewContext) as? Artical
+        let entity = NSEntityDescription.entity(forEntityName: "LocalArticle", in: persistentContainer.viewContext)!
+        let newArticle = NSManagedObject(entity: entity, insertInto: persistentContainer.viewContext) as? LocalArticle
         newArticle?.title = title
         newArticle?.content = content
         newArticle?.created = modified
@@ -121,12 +121,12 @@ class ArticleInstance {
     }
 
 //    private func resetInstance() {
-//        let entity = NSEntityDescription.entity(forEntityName: "Artical", in: persistentContainer.viewContext)!
-//        self.article = NSManagedObject(entity: entity, insertInto: persistentContainer.viewContext) as? Artical
+//        let entity = NSEntityDescription.entity(forEntityName: "LocalArticle", in: persistentContainer.viewContext)!
+//        self.article = NSManagedObject(entity: entity, insertInto: persistentContainer.viewContext) as? LocalArticle
 //    }
 
-    func fetchAllArticle() -> [Artical]? {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Artical")
+    func fetchAllArticle() -> [LocalArticle]? {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "LocalArticle")
         request.returnsObjectsAsFaults = false
         request.sortDescriptors = [NSSortDescriptor(key: "modified", ascending: false)]
 
@@ -135,20 +135,20 @@ class ArticleInstance {
             print(result)
 
             print("fetch success")
-            return result as? [Artical]
+            return result as? [LocalArticle]
         } catch {
             print("Failed")
             return nil
         }
     }
 
-    func deleteArtical(artical: Artical) {
-        persistentContainer.viewContext.delete(artical)
+    func deleteArticle(article: LocalArticle) {
+        persistentContainer.viewContext.delete(article)
         saveContext()
         articles = fetchAllArticle()
     }
 
-    func deleteArticle(articles: [Artical]) {
+    func deleteArticle(articles: [LocalArticle]) {
         for article in articles {
             persistentContainer.viewContext.delete(article)
         }
@@ -157,7 +157,7 @@ class ArticleInstance {
     }
 
     func deleteAllArticle() {
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: "Artical"))
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: "LocalArticle"))
         do {
             try persistentContainer.viewContext.execute(deleteRequest)
         } catch {

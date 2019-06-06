@@ -10,8 +10,8 @@ import SnapKit
 
 class UserRootViewController: UIViewController {
 
-    private let keyLable = UILabel()
-    private let keyHashLable = UILabel()
+    private let keyLabel = UILabel()
+    private let keyHashLabel = UILabel()
     let authorNameLabel = UILabel()
     private var key: String?
 

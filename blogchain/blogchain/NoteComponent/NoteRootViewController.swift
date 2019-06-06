@@ -25,8 +25,8 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
     private let segments = UISegmentedControl(items: ["Personal", "All"])
 //    private var inSearchMode = false
     private var serverSearchResults = [Transaction]()
-    private var localSearchResults = [Artical]()
-    private var renderedCellData: [Artical] {
+    private var localSearchResults = [LocalArticle]()
+    private var renderedCellData: [LocalArticle] {
         get {
             if (!searchBar.text!.isEmpty) {
                 return localSearchResults
@@ -211,7 +211,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
 
-    func getTableCellOfPersonalTab(cell: NoteRootTableViewCell, data: Artical) -> NoteRootTableViewCell {
+    func getTableCellOfPersonalTab(cell: NoteRootTableViewCell, data: LocalArticle) -> NoteRootTableViewCell {
         let dateformatter = DateFormatter()
         dateformatter.dateStyle = .short
         dateformatter.timeStyle = .short
@@ -248,7 +248,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
-    func uploadArticle(instance: Artical) {
+    func uploadArticle(instance: LocalArticle) {
         let category = "Dafault"
         let privateKey = keyChainExtension.keyAddress
 
@@ -269,7 +269,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
-    func uploadArticle(articleAddress: String, title: String, content: String, instance: Artical) {
+    func uploadArticle(articleAddress: String, title: String, content: String, instance: LocalArticle) {
 
         let privateKey = keyChainExtension.keyAddress
         let category = "Dafault"
@@ -291,8 +291,8 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
-    func reconciliation(localArticles: [Artical], onlineArticles: [TransactionWithAddr]) {
-        var mid: Artical?
+    func reconciliation(localArticles: [LocalArticle], onlineArticles: [TransactionWithAddr]) {
+        var mid: LocalArticle?
         for onlineArticle in onlineArticles {
             mid = articleContentedInLocal(localArticles: localArticles, address: onlineArticle.articleAddress)
             if (mid != nil) {
@@ -314,7 +314,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.reloadData()
     }
 
-    func articleContentedInLocal(localArticles: [Artical], address: String) -> Artical? {
+    func articleContentedInLocal(localArticles: [LocalArticle], address: String) -> LocalArticle? {
         for article in localArticles {
             if (article.addressKey == address) {
                 return article
@@ -382,9 +382,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         }
         let data = self.renderedCellData[indexPath.row]
         let more = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
-            print(action)
-            print(index)
-            ArticleInstance.instance().deleteArtical(artical: data)
+            ArticleInstance.instance().deleteArticle(article: data)
             if (data.addressKey != nil) {
                 self.deleteArticleOnline(title: data.title!, content: data.content!, address: data.addressKey!)
             }

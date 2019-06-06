@@ -16,9 +16,16 @@ Execute following commands in `/server` folder
 vapor build
 ```
 
+Use the following command to create xcode project file.
+
+```shell
+vapor xcode
+```
+
 ```shell
 vapor run --port=8080
 ```
+
 (You may run another server on a different port to see how the blockchain sync between servers.)
 
 Install Cocoapods

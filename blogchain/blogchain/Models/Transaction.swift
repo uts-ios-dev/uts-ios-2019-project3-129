@@ -9,7 +9,7 @@
 import Foundation
 
 // A version of article
-struct Transaction: Codable {
+struct TransactionWithAddr: Codable {
     let hash: String // generate from the content
     let sender: String // farc757a-3fvb-4bdf-a418-15a29870c82a
     let author: String
@@ -18,6 +18,17 @@ struct Transaction: Codable {
     let content: String
     let dateCreated: Double
     let articleAddress: String
+    let isHide: Bool
+}
+
+struct Transaction: Codable {
+    let hash: String // generate from the content
+    let sender: String // farc757a-3fvb-4bdf-a418-15a29870c82a
+    let author: String
+    let title: String
+    let category: String
+    let content: String
+    let dateCreated: Double
     let isHide: Bool
 }
 

@@ -19,6 +19,7 @@ class APIUtils {
             do {
                 switch response.result {
                 case .success(let value):
+                    print(value)
                     let decoder = JSONDecoder()
                     let jsonData = try decoder.decode(Blockchain.self, from: value)
                     completion(jsonData)
@@ -85,7 +86,6 @@ class APIUtils {
     
     static func updateArticle(article: UpdateArticle, completion: @escaping (_ date: String) -> Void) {
         let parameters: Parameters = try! FirestoreEncoder().encode(article)
-        
         Alamofire.request("\(hostAddr)api/updateArticle", method: .post, parameters: parameters)
             .responseData { response in
                 switch response.result {

@@ -283,7 +283,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func reconciliation(localArticles: [Artical], onlineArticles: [Transaction]) {
+    func reconciliation(localArticles: [Artical], onlineArticles: [TransactionWithAddr]) {
         var mid: Artical?;
         for onlineArticle in onlineArticles {
             mid = articleContentedInLocal(localArticles: localArticles, address: onlineArticle.articleAddress);
@@ -391,6 +391,7 @@ class NoteRootViewController: UIViewController, UITableViewDelegate, UITableView
                     }
                     print("OK, marked as Closed")
                     self.alertMessage(title: "Success", message: "Article uploaded")
+                    self.tableView.reloadData();
                 }
                 success(true)
             })
